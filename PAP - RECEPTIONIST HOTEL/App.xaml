@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL"
              StartupUri="View/Login.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

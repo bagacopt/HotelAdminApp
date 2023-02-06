@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/PAP - RECEPTIONIST HOTEL/MVVMLoginDbDataSet.xss
+/PAP - RECEPTIONIST HOTEL/MVVMLoginDbDataSet.xsd
+/PAP - RECEPTIONIST HOTEL/MVVMLoginDbDataSet.xsc
+/PAP - RECEPTIONIST HOTEL/MVVMLoginDbDataSet.Designer.cs

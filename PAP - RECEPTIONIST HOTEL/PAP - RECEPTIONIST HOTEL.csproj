@@ -71,7 +71,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MVVMLoginDbDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\ViewModel\ControlViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ControlPanelViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Page Include="MVVM\View\ControlPanel.xaml">
       <SubType>Designer</SubType>

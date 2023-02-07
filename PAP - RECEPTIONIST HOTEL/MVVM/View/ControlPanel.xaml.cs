@@ -13,12 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PAP___RECEPTIONIST_HOTEL
+namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ControlPanel.xaml
     /// </summary>
-    public partial class ControlPanel : Window
+    public partial class ControlPanel : UserControl
     {
         public ControlPanel()
         {

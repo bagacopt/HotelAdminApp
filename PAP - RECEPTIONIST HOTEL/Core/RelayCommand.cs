@@ -21,7 +21,7 @@ namespace PAP___RECEPTIONIST_HOTEL.Core
         }
 
 
-        public bool canExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
             return _canExecute == null || _canExecute(parameter);
         }

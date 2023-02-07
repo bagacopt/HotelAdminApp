@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PAP___RECEPTIONIST_HOTEL.View
+namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -30,6 +30,16 @@ namespace PAP___RECEPTIONIST_HOTEL.View
             {
                 DragMove();
             }
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

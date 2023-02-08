@@ -41,5 +41,15 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 DragMove();
             }
         }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtUser.Text == "admin" && txtPass.Password.ToString() == "admin123")
+            {
+                MainWindow program = new MainWindow();
+                program.Show();
+                this.Hide();
+            }
+        }
     }
 }

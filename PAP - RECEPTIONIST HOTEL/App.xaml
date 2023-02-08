@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL"
              xmlns:viewModel="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel"
              xmlns:view="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MVVM/View/Login.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -12,6 +12,10 @@
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type viewModel:ControlPanelViewModel}">
                 <view:ControlPanel />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ReservasViewModel}">
+                <view:Reservas />
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

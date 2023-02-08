@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
@@ -23,6 +24,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         {
             InitializeComponent();
         }
+
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -44,12 +47,31 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (txtUser.Text == "admin" && txtPass.Password.ToString() == "admin123")
+            con.Open();
+
+            string data = "SELECT * FROM Users WHERE username = @username AND password = @pass";
+
+            SqlCommand cmd = new SqlCommand(data, con);
+
+            cmd.Parameters.AddWithValue("@username", txtUser.Text);
+            cmd.Parameters.AddWithValue("@username", txtPass.Password.ToString());
+            cmd.ExecuteNonQuery();
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            con.Close();
+
+            if (count > 0)
             {
-                MainWindow program = new MainWindow();
-                program.Show();
-                this.Hide();
+
             }
         }
+
+        private void Forgot_pass(object sender, MouseButtonEventArgs e)
+        {
+            Forgot_pass forgot = new Forgot_pass();
+            forgot.Show();
+            this.Hide();
+        }
+
+        
     }
 }

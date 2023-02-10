@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 
-namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
+namespace PAP___RECEPTIONIST_HOTEL
 {
     /// <summary>
     /// Interaction logic for Login.xaml
@@ -54,14 +54,21 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             SqlCommand cmd = new SqlCommand(data, con);
 
             cmd.Parameters.AddWithValue("@username", txtUser.Text);
-            cmd.Parameters.AddWithValue("@username", txtPass.Password.ToString());
+            cmd.Parameters.AddWithValue("@pass", passwordHidden.Password);
             cmd.ExecuteNonQuery();
             int count = Convert.ToInt32(cmd.ExecuteScalar());
+
             con.Close();
 
             if (count > 0)
             {
-
+                MainWindow program = new MainWindow();
+                program.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Inseriu o username / password errados, insira novamente", "Erro!!!");
             }
         }
 
@@ -72,6 +79,26 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             this.Hide();
         }
 
-        
+        private void PressKey(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
+
+        private void HidePasswordChecked(object sender, RoutedEventArgs e)
+        {
+            passwordHidden.Visibility = Visibility.Hidden;
+            passwordShow.Visibility = Visibility.Visible;
+            passwordShow.Text = passwordHidden.Password;
+        }
+
+        private void HidePasswordUnchecked(object sender, RoutedEventArgs e)
+        {
+            passwordHidden.Visibility = Visibility.Visible;
+            passwordShow.Visibility = Visibility.Hidden;
+
+        }
     }
 }

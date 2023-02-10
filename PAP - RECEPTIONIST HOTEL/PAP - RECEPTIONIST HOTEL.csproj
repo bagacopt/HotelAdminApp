@@ -59,15 +59,15 @@
     </ApplicationDefinition>
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Forms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\ViewModel\ReservasViewModel.cs" />
     <Compile Include="MVVM\ViewModel\UserViewModel.cs" />
-    <Compile Include="MVVM\View\Forgot_pass.xaml.cs">
+    <Compile Include="Forms\Forgot_pass.xaml.cs">
       <DependentUpon>Forgot_pass.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\Login.xaml.cs">
+    <Compile Include="Forms\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -76,7 +76,7 @@
     </Compile>
     <Compile Include="MVVM\ViewModel\ControlPanelViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="Forms\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -84,11 +84,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\Forgot_pass.xaml">
+    <Page Include="Forms\Forgot_pass.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\Login.xaml">
+    <Page Include="Forms\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,17 +138,21 @@
     <Folder Include="MVVM\Model\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\key-icon.png" />
-    <Resource Include="Images\user-icon.png" />
+    <Resource Include="Forms\Images\key-icon.png" />
+    <Resource Include="Forms\Images\user-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\back-image.jpg" />
+    <Resource Include="Forms\Images\back-image.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\logo-painel.png" />
+    <Resource Include="Forms\Images\logo-painel.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\logo.png" />
+    <Resource Include="Forms\Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Forms\Images\hidepass.png" />
+    <Resource Include="Forms\Images\showpass.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

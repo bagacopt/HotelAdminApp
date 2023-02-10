@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL"
              xmlns:viewModel="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel"
              xmlns:view="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View"
-             StartupUri="MVVM/View/Login.xaml">
+             StartupUri="Forms/Login.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

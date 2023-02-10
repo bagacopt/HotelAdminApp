@@ -1,9 +1,9 @@
-﻿<Window x:Class="PAP___RECEPTIONIST_HOTEL.MVVM.View.Login"
+﻿<Window x:Class="PAP___RECEPTIONIST_HOTEL.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View"
+        xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL"
         mc:Ignorable="d"
         Height="800" Width="1280"
         WindowStyle="None"
@@ -11,25 +11,38 @@
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         AllowsTransparency="True"
-        MouseDown="Window_MouseDown">
+        MouseLeftButtonDown="Window_MouseDown"
+        KeyDown="PressKey">
+    <Window.Resources>
+        <Style TargetType="{x:Type CheckBox}" x:Key="hidePassCheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <Image x:Name="checkBoxImage" Source="Images/hidepass.png"></Image>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="checkBoxImage" Property="Source" Value="Images/showpass.png"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="checkBoxImage" Property="Source" Value="Images/hidepass.png"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush ImageSource="/Images/back-image.jpg"
+            <ImageBrush ImageSource="Images/back-image.jpg"
                         Stretch="Fill"/>
         </Border.Background>
 
         <Border CornerRadius="10"
             BorderThickness="2"
             Opacity="0.95">
-
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#462AD8" Offset="0"/>
-                    <GradientStop Color="#DA34AE" Offset="0.75"/>
-                    <GradientStop Color="#8A16C1" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-
 
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
@@ -119,11 +132,11 @@
                     </Button>
                 </Grid>
 
-                <StackPanel Width="350"
+                <StackPanel Width="450"
                             Grid.Row="2"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
-                    <Image Source="/Images/logo.png"
+                    <Image Source="Images/logo.png"
                            Width="250" Height="100"/>
 
                     <TextBlock Text="LOGIN"
@@ -151,11 +164,11 @@
                              BorderThickness="0,0,0,1"
                              Height="28"
                              VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
+                             Margin="0,5,75,0"
                              Padding="20,0,0,0">
 
                         <TextBox.Background>
-                            <ImageBrush ImageSource="/Images/user-icon.png"
+                            <ImageBrush ImageSource="Images/user-icon.png"
                                         Stretch="None"
                                         AlignmentX="Left"/>
                         </TextBox.Background>
@@ -169,7 +182,7 @@
                                FontFamily="Montserrat"
                                Margin="0,15,0,0"/>
 
-                    <PasswordBox x:Name="txtPass"
+                    <PasswordBox x:Name="passwordHidden"
                              FontSize="18"
                              FontWeight="Medium"
                              FontFamily="Montserrat"
@@ -179,15 +192,45 @@
                              BorderThickness="0,0,0,1"
                              Height="28"
                              VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
+                             Margin="0,5,75,0"
                              Padding="20,0,0,0">
 
                         <PasswordBox.Background>
-                            <ImageBrush ImageSource="/Images/key-icon.png"
+                            <ImageBrush ImageSource="Images/key-icon.png"
                                         Stretch="None"
                                         AlignmentX="Left"/>
                         </PasswordBox.Background>
                     </PasswordBox>
+                    <CheckBox Style="{DynamicResource hidePassCheckBox}"
+                              x:Name="hidePassword" 
+                              HorizontalAlignment="Left" 
+                              Margin="390,-50,0,0" 
+                              Height="48" 
+                              Width="45" 
+                              Checked="HidePasswordChecked"
+                              Unchecked="HidePasswordUnchecked" Cursor="Hand" Grid.Column="1" IsTabStop="False"/>
+
+                    <TextBox x:Name="passwordShow"
+                             FontSize="18"
+                             FontWeight="Medium"
+                             FontFamily="Montserrat"
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="white"
+                             BorderThickness="0,0,0,1"
+                             Visibility="Hidden"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,-28,75,0"
+                             Padding="20,0,0,0" >
+
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="Images/key-icon.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    
 
                     <Button x:Name="btnLogin"
                             BorderThickness="0"

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for Reservas.xaml
+    /// Interaction logic for Requests.xaml
     /// </summary>
-    public partial class Reservas : UserControl
+    public partial class Requests : UserControl
     {
-        public Reservas()
+        public Requests()
         {
             InitializeComponent();
         }

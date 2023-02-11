@@ -10,13 +10,27 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
             <DataTemplate DataType="{x:Type viewModel:ControlPanelViewModel}">
                 <view:ControlPanel />
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:ReservasViewModel}">
-                <view:Reservas />
+            <DataTemplate DataType="{x:Type viewModel:ManageReservationsViewModel}">
+                <view:ManageReservations />
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:RequestsViewModel}">
+                <view:Requests />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ManageRequestsViewModel}">
+                <view:ManageRequests />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ManageUsersViewModel}">
+                <view:ManageUsers />
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

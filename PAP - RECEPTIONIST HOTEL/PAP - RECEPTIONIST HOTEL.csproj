@@ -62,8 +62,10 @@
     <Compile Include="Forms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\ViewModel\ReservasViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\UserViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ManageReservationsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ManageRequestsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ManageUsersViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\RequestsViewModel.cs" />
     <Compile Include="Forms\Forgot_pass.xaml.cs">
       <DependentUpon>Forgot_pass.xaml</DependentUpon>
     </Compile>
@@ -92,7 +94,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\Reservas.xaml">
+    <Page Include="MVVM\View\ManageReservations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ManageRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ManageUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Requests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,8 +119,17 @@
     <Compile Include="MVVM\View\ControlPanel.xaml.cs">
       <DependentUpon>ControlPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\Reservas.xaml.cs">
-      <DependentUpon>Reservas.xaml</DependentUpon>
+    <Compile Include="MVVM\View\ManageReservations.xaml.cs">
+      <DependentUpon>ManageReservations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ManageRequests.xaml.cs">
+      <DependentUpon>ManageRequests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ManageUsers.xaml.cs">
+      <DependentUpon>ManageUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Requests.xaml.cs">
+      <DependentUpon>Requests.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

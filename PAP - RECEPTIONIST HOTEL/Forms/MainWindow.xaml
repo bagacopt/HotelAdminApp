@@ -98,7 +98,7 @@
                 </Button.Template>
             </Button>
 
-            <Image Source="Images/logo-painel.png" Height="50" Margin="0,0,5,15"/>
+            <Image Source="Images/logo-painel.png" Height="50" Margin="0,6,5,9"/>
 
             <StackPanel Grid.Row="1">
                 <RadioButton Content="Painel de Controlo"
@@ -110,27 +110,37 @@
                              IsChecked="True"
                              Command="{Binding ControlViewCommand}"/>
 
-                <RadioButton Content="Reservas"
+                <RadioButton Content="Gerir Reservas"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Margin="0,20,0,0"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ReservasViewCommand}"/>
+                             Command="{Binding ManageReservationsViewCommand}"/>
 
-                <RadioButton Content="Requisitar"
+                <RadioButton Content="Pedidos"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Margin="0,20,0,0"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding RequestsViewCommand}"/>
 
-                <RadioButton Content="Utilizadores"
+                <RadioButton Content="Gerir Pedidos"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Margin="0,20,0,0"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ManageRequestsViewCommand}"/>
+
+                <RadioButton Content="Gerir Utilizadores"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Margin="0,20,0,0"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ManageUsersViewCommand}"/>
             </StackPanel>
             
             <ContentControl Grid.Row="1" Grid.Column="1"

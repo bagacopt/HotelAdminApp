@@ -98,7 +98,7 @@ namespace PAP___RECEPTIONIST_HOTEL
         {
             passwordHidden.Visibility = Visibility.Visible;
             passwordShow.Visibility = Visibility.Hidden;
-
+            passwordHidden.Password = passwordShow.Text;
         }
     }
 }

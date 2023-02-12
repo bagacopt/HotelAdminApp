@@ -6,45 +6,97 @@
              xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock Text="Painel de Controlo"
-                   Foreground="White"
-                   FontSize="28"
-                   HorizontalAlignment="Left"
-                   Margin="0,0,0,20"/>
+    <Grid>
 
-        <StackPanel Orientation="Horizontal">
-            <Border Width="400"
-                    Height="200">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#5BC3FF" Offset="0"/>
-                        <GradientStop Color="#3AA0FF" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
+        <StackPanel Width="200" HorizontalAlignment="Left" Margin="20,20,0,20" Grid.Column="0">
+            <Image Source="/Forms/Images/user.png" Width="100" Margin="0,0,0,-20" />
 
-                <Border.Clip>
-                    <RectangleGeometry RadiusX="10" RadiusY="10"
-                                       Rect="0,0,400,200" />
-                </Border.Clip>
+            <Label Content="___________________________________________________________________________"
+               Foreground="White"/>
+            <Label Content="Nome de utilizador:"
+               Margin="0,5,0,-10"
+               Foreground="White"
+               HorizontalAlignment="Center"/>
+            <TextBox x:Name="usernameTxtBox"
+                 FontSize="18"
+                 FontWeight="Medium"
+                 FontFamily="Montserrat"
+                 TextAlignment="Center"
+                 Foreground="White"
+                 BorderBrush="White"
+                 Background="Transparent"
+                 BorderThickness="0,0,0,1"
+                 Height="28"
+                 VerticalContentAlignment="Center"
+                 Margin="20,0,20,0"
+                 IsReadOnly="True"/>
 
-                <Grid>
-                    <StackPanel>
-                        <TextBlock Text="World aka gay"
-                                   Foreground="White"
-                                   FontSize="28"
-                                   Margin="20,10,10,0"/>
+            <Label Content="ID da reserva:"
+               Margin="0,20,0,-10"
+               Foreground="White"
+               HorizontalAlignment="Center"/>
+            <TextBox x:Name="idReservaTxtBox"
+                 FontSize="18"
+                 FontWeight="Medium"
+                 TextAlignment="Center"
+                 FontFamily="Montserrat"
+                 Foreground="White"
+                 BorderBrush="White"
+                 Background="Transparent"
+                 BorderThickness="0,0,0,1"
+                 Height="28"
+                 VerticalContentAlignment="Center"
+                 Margin="20,0,20,0"
+                 IsReadOnly="True"/>
 
-                        <TextBlock Text="oigjfj"
-                                   Foreground="White"
-                                   FontSize="28"
-                                   Margin="20,10,10,0"/>
-                    </StackPanel>
-                </Grid>
+            <Label Content="Número do quarto:"
+               Margin="0,20,0,-10"
+               Foreground="White"
+               HorizontalAlignment="Center"/>
+            <TextBox x:Name="nQuartoTxtBox"
+                 FontSize="18"
+                 FontWeight="Medium"
+                 TextAlignment="Center"
+                 FontFamily="Montserrat"
+                 Foreground="White"
+                 BorderBrush="White"
+                 Background="Transparent"
+                 BorderThickness="0,0,0,1"
+                 Height="28"
+                 VerticalContentAlignment="Center"
+                 Margin="20,0,20,0"
+                 IsReadOnly="True"/>
 
-            </Border>
+            <Label Content="Classifique-nos:"
+               Margin="0,20,0,-10"
+               Foreground="White"
+               HorizontalAlignment="Center"/>
+
+            <StackPanel Height="50" Orientation="Horizontal">
+                <Image x:Name="star_1" Source="/Forms/Images/full_gray_star.png" Width="30" Margin="27,0,0,0" MouseLeftButtonDown="classificationStars1_Click"/>
+                <Image x:Name="star_2" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="classificationStars2_Click"/>
+                <Image x:Name="star_3" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="classificationStars3_Click"/>
+                <Image x:Name="star_4" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="classificationStars4_Click"/>
+                <Image x:Name="star_5" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="classificationStars5_Click"/>
+            </StackPanel>
+
+            <Button Content="Classificar" />
         </StackPanel>
-    </StackPanel>
-    
+        <Image Source="/Forms/Images/line.png" 
+               Width="30" Height="450" 
+               Stretch="Fill" 
+               HorizontalAlignment="Left" 
+               Margin="0,-235,0,0" 
+               Grid.Column="1"/>
+
+        <StackPanel Grid.Column="2">
+
+        </StackPanel>
+    </Grid>
 </UserControl>

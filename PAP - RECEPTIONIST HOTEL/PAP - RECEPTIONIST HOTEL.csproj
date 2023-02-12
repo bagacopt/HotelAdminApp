@@ -177,5 +177,15 @@
     <Resource Include="Forms\Images\hidepass.png" />
     <Resource Include="Forms\Images\showpass.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Forms\Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Forms\Images\full_gold_star.png" />
+    <Resource Include="Forms\Images\full_gray_star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Forms\Images\line.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

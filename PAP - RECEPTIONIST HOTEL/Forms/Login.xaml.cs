@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using PAP___RECEPTIONIST_HOTEL.Properties;
 
 namespace PAP___RECEPTIONIST_HOTEL
 {
@@ -54,21 +55,46 @@ namespace PAP___RECEPTIONIST_HOTEL
             SqlCommand cmd = new SqlCommand(data, con);
 
             cmd.Parameters.AddWithValue("@username", txtUser.Text);
-            cmd.Parameters.AddWithValue("@pass", passwordHidden.Password);
-            cmd.ExecuteNonQuery();
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            Settings.Default.n_cliente = txtUser.Text;
 
-            con.Close();
-
-            if (count > 0)
+            PasswordBox myPasswordBox = this.FindName("passwordHidden") as PasswordBox;
+            if (myPasswordBox.Name == "passwordHidden")
             {
-                MainWindow program = new MainWindow();
-                program.Show();
-                this.Close();
+                cmd.Parameters.AddWithValue("@pass", passwordHidden.Password);
+                cmd.ExecuteNonQuery();
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                con.Close();
+
+                if (count > 0)
+                {
+                    MainWindow program = new MainWindow();
+                    program.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Inseriu o username / password errados, insira novamente", "Erro!!!");
+                }
             }
             else
             {
-                MessageBox.Show("Inseriu o username / password errados, insira novamente", "Erro!!!");
+                cmd.Parameters.AddWithValue("@pass", passwordShow.Text);
+                cmd.ExecuteNonQuery();
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                con.Close();
+
+                if (count > 0)
+                {
+                    MainWindow program = new MainWindow();
+                    program.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Inseriu o username / password errados, insira novamente", "Erro!!!");
+                }
             }
         }
 

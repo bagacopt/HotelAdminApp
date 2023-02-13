@@ -42,5 +42,17 @@ namespace PAP___RECEPTIONIST_HOTEL.Properties {
                 return ((string)(this["reservas_PAP"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string n_cliente {
+            get {
+                return ((string)(this["n_cliente"]));
+            }
+            set {
+                this["n_cliente"] = value;
+            }
+        }
     }
 }

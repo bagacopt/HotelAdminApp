@@ -18,5 +18,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-LQBQ1HM;Initial Catalog=MVVMLoginDb;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="n_cliente" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

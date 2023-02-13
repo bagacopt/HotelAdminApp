@@ -185,7 +185,10 @@
     <Resource Include="Forms\Images\full_gray_star.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Forms\Images\line.png" />
+    <Resource Include="Forms\Images\line_horizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Forms\Images\line_vertical.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

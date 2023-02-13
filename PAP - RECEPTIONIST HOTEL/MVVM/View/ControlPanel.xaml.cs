@@ -29,7 +29,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
         int nStars;
 
         private void classificationStars1_Click(object sender, RoutedEventArgs e)
@@ -93,9 +93,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             usernameTxtBox.Text = Settings.Default.n_cliente;
 
-            string data = "SELECT id_reservation FROM Users WHERE username = @username";
+            string data = "SELECT id_reservation, stars, fullname FROM Users WHERE username = @username";
             string data1 = "SELECT Rooms.n_room FROM Rooms INNER JOIN Reservations ON Rooms.id_room = Reservations.id_room INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
-            string data2 = "SELECT stars FROM Users WHERE username = @username";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -106,8 +105,32 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     while (reader.Read())
                     {
                         string idReserva = reader["id_reservation"].ToString();
+                        string stars = reader["stars"].ToString();
+                        string fullname = reader["fullname"].ToString();
 
                         idReservaTxtBox.Text = idReserva;
+
+                        switch (stars)
+                        {
+                            case "0":
+                                break;
+                            case "1":
+                                classificationStars1_Click(sender, e);
+                                break;
+                            case "2":
+                                classificationStars2_Click(sender, e);
+                                break;
+                            case "3":
+                                classificationStars3_Click(sender, e);
+                                break;
+                            case "4":
+                                classificationStars4_Click(sender, e);
+                                break;
+                            case "5":
+                                classificationStars5_Click(sender, e);
+                                break;
+                        }
+                        nClienteTxtBox.Text = fullname;
                     }
                 }
             }
@@ -125,41 +148,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     }
                 }
             }
-
-            using (SqlCommand cmd = new SqlCommand(data2, con))
-            {
-                cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string stars = reader["stars"].ToString();
-
-                        switch (stars)
-                        {
-                            case "0":
-                                continue;
-                            case "1":
-                                classificationStars1_Click(sender, e);
-                                break;
-                            case "2":
-                                classificationStars2_Click(sender, e);
-                                break;
-                            case "3":
-                                classificationStars3_Click(sender, e);
-                                break;
-                            case "4":
-                                classificationStars4_Click(sender, e);
-                                break;
-                            case "5":
-                                classificationStars5_Click(sender, e);
-                                break;
-                        }
-                        
-                    }
-                }
-            }
             con.Close();
         }
 
@@ -168,14 +156,16 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             con.Open();
 
             string data = "UPDATE Users SET stars = @stars WHERE username = @username";
+
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@stars", nStars);
                 cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
                 cmd.ExecuteNonQuery();
             }
-
             con.Close();
+
+            MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrelas! \nSomos muito agradecidos", "Obrigado!!!");
         }
     }
 }

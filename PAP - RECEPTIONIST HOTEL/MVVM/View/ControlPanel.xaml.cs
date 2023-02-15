@@ -29,7 +29,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
         int nStars;
 
         private void classificationStars1_Click(object sender, RoutedEventArgs e)

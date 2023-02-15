@@ -94,7 +94,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             usernameTxtBox.Text = Settings.Default.n_cliente;
 
             string data = "SELECT id_reservation, stars, fullname FROM Users WHERE username = @username";
-            string data1 = "SELECT Rooms.n_room FROM Rooms INNER JOIN Reservations ON Rooms.id_room = Reservations.id_room INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -134,7 +133,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     }
                 }
             }
-            using (SqlCommand cmd = new SqlCommand(data1, con))
+
+            data = "SELECT Rooms.n_room FROM Rooms INNER JOIN Reservations ON Rooms.id_room = Reservations.id_room INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
+            using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
 
@@ -145,6 +146,24 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                         string nQuarto = reader["n_room"].ToString();
 
                         nQuartoTxtBox.Text = nQuarto;
+                    }
+                }
+            }
+
+            data = "SELECT Reservations.[check-in], Reservations.[check-out] FROM Reservations Inner JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
+            using (SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string checkin = reader["check-in"].ToString();
+                        string checkout = reader["check-out"].ToString();
+
+                        checkinTxtBox.Text = checkin;
+                        checkoutTxtBox.Text = checkout;
                     }
                 }
             }

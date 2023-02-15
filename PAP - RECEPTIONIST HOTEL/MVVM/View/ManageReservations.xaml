@@ -36,7 +36,7 @@
                  BorderBrush="White"
                  Background="Transparent"
                  BorderThickness="0,0,0,1"
-                 Height="28"
+                 Height="24"
                  VerticalContentAlignment="Center"
                  Margin="20,2,20,0"
                  IsReadOnly="True"
@@ -57,7 +57,7 @@
                  BorderBrush="White"
                  Background="Transparent"
                  BorderThickness="0,0,0,1"
-                 Height="28"
+                 Height="24"
                  VerticalContentAlignment="Center"
                  Margin="20,2,20,0"
                  IsReadOnly="True"
@@ -111,7 +111,7 @@
                          BorderBrush="White"
                          Background="Transparent"
                          BorderThickness="0,0,0,1"
-                         Height="28"
+                         Height="24"
                          VerticalContentAlignment="Center"
                          Margin="0,15,0,0"
                          IsReadOnly="True"
@@ -143,8 +143,12 @@
                        Foreground="White"
                        FontSize="18"
                        FontFamily="Montserrat" />
+<<<<<<< HEAD
                 
                 <TextBox Width="40" Height="20"
+=======
+                <TextBox Width="50" Height="20"
+>>>>>>> 54716e6ab0857de6b788da7909e878cc1a96cb36
                          FontSize="18"
                          TextAlignment="Center"
                          FontFamily="Montserrat"
@@ -153,7 +157,65 @@
                          BorderThickness="0,0,0,1"
                          Margin="0,25,0,0"/>
             </StackPanel>
-            <Button Width="110" Height="50"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Check-in:"
+                       Margin="0,10,0,0"
+                       Foreground="White"
+                       FontSize="18"
+                       FontFamily="Montserrat" />
+                <TextBox x:Name="checkinTxtBox"
+                         Width="150"
+                         FontSize="18"
+                         Text=""
+                         FontWeight="Medium"
+                         TextAlignment="Left"
+                         FontFamily="Montserrat"
+                         Foreground="White"
+                         BorderBrush="White"
+                         Background="Transparent"
+                         BorderThickness="0,0,0,1"
+                         Height="24"
+                         VerticalContentAlignment="Center"
+                         Margin="0,0,0,0"
+                         IsReadOnly="True"
+                         IsTabStop="False"
+                         IsEnabled="False" />
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Check-out:"
+                   Margin="0,10,0,0"
+                   Foreground="White"
+                   FontSize="18"
+                   FontFamily="Montserrat" />
+                <TextBox x:Name="checkoutTxtBox"
+                         Width="150"
+                         FontSize="18"
+                         Text=""
+                         FontWeight="Medium"
+                         TextAlignment="Left"
+                         FontFamily="Montserrat"
+                         Foreground="White"
+                         BorderBrush="White"
+                         Background="Transparent"
+                         BorderThickness="0,0,0,1"
+                         Height="24"
+                         VerticalContentAlignment="Center"
+                         Margin="0,0,0,0"
+                         IsReadOnly="True"
+                         IsTabStop="False"
+                         IsEnabled="False" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Width="130" Height="60" Margin="-30,30,0,0" >
+                    <TextBlock Text="Mudar número &#xa;do quarto" TextAlignment="Center" />
+                </Button>
+                <Button Width="130" Height="60" Margin="60,30,0,0" Content="Adiar estadia"/>
+                <Button Width="130" Height="60" Margin="60,30,0,0" Content="Exigir check-out"/>
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </UserControl>

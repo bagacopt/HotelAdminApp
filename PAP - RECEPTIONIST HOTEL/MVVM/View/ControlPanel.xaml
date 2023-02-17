@@ -156,7 +156,7 @@
                    FontSize="18"
                    FontFamily="Montserrat" />
                 <TextBox x:Name="checkinTxtBox"
-                         Width="150"
+                         Width="165"
                          FontSize="18"
                          Text=""
                          FontWeight="Medium"
@@ -182,7 +182,7 @@
                    FontSize="18"
                    FontFamily="Montserrat" />
                 <TextBox x:Name="checkoutTxtBox"
-                         Width="150"
+                         Width="165"
                          FontSize="18"
                          Text=""
                          FontWeight="Medium"
@@ -202,17 +202,21 @@
             
             
             <!-- Pagamento -->
-            <Label Content="Valor ao check-out da reserva:"
-                   Margin="0,20,0,0"
-                   Foreground="White"
-                   FontSize="18"
-                   FontFamily="Montserrat" />
-            <Label x:Name="labelPagamentoTxt"
-                   Content=""
-                   Margin="9,0,260,0"
-                   Foreground="White"
-                   FontSize="18"
-                   FontFamily="Montserrat" />
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Valor ao check-out da reserva:"
+                       Margin="0,20,0,0"
+                       Foreground="White"
+                       FontSize="18"
+                       FontFamily="Montserrat" />
+                <Label x:Name="labelPagamentoTxt"
+                       Content=""
+                       Width="150"
+                       Height="29"
+                       Margin="0,15,0,0"
+                       Foreground="White"
+                       FontSize="18"
+                       FontFamily="Montserrat" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

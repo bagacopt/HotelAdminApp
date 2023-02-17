@@ -209,7 +209,7 @@
                    FontFamily="Montserrat" />
             <Label x:Name="labelPagamentoTxt"
                    Content=""
-                   Margin="0,20,0,0"
+                   Margin="9,0,260,0"
                    Foreground="White"
                    FontSize="18"
                    FontFamily="Montserrat" />

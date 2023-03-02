@@ -160,7 +160,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
             }
 
-            // FALTA A CONSULTA SQL
             data = "SELECT Reservations.reserva_price FROM Reservations " +
                 "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
             using (SqlCommand cmd = new SqlCommand(data, con))

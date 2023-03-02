@@ -122,7 +122,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
             }
 
-            data = "SELECT Rooms.n_room FROM Rooms INNER JOIN Reservations ON Rooms.id_room = Reservations.id_room INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
+            data = "SELECT Rooms.n_room FROM Rooms INNER JOIN Reservations " +
+                "ON Rooms.id_room = Reservations.id_room INNER JOIN Users ON " +
+                "Reservations.id_reservation = Users.id_reservation WHERE username = @username";
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
@@ -138,7 +140,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
             }
 
-            data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | hh:mm tt') AS 'check-in', FORMAT(Reservations.[check-out], 'dd/MM/yy | hh:mm tt') AS 'check-out' FROM Reservations INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
+            data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | hh:mm tt') AS 'check-in', " +
+                "FORMAT(Reservations.[check-out], 'dd/MM/yy | hh:mm tt') AS 'check-out' FROM Reservations " +
+                "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
@@ -157,7 +161,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             }
 
             // FALTA A CONSULTA SQL
-            data = "SELECT Reservations.reserva_price FROM Reservations INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
+            data = "SELECT Reservations.reserva_price FROM Reservations " +
+                "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);

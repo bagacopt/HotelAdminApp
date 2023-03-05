@@ -17,8 +17,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
         int nStars;
+        string data;
 
         private void classificationStars1_Click(object sender, RoutedEventArgs e)
         {
@@ -81,7 +82,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             usernameTxtBox.Text = Settings.Default.n_cliente;
 
-            string data = "SELECT * FROM Users WHERE username = @username";
+            data = "SELECT * FROM Users WHERE username = @username";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -125,6 +126,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             data = "SELECT Rooms.n_room FROM Rooms INNER JOIN Reservations " +
                 "ON Rooms.id_room = Reservations.id_room INNER JOIN Users ON " +
                 "Reservations.id_reservation = Users.id_reservation WHERE username = @username";
+
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
@@ -140,13 +142,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
             }
 
-<<<<<<< HEAD
-            data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | HH:mm') AS 'check-in', FORMAT(Reservations.[check-out], 'dd/MM/yy | HH:mm') AS 'check-out' FROM Reservations INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
-=======
             data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | hh:mm tt') AS 'check-in', " +
                 "FORMAT(Reservations.[check-out], 'dd/MM/yy | hh:mm tt') AS 'check-out' FROM Reservations " +
                 "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
->>>>>>> 0ba435449c5f386f8aebf9994b4ea416370f652f
+
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
@@ -187,7 +186,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         {
             con.Open();
 
-            string data = "UPDATE Users SET stars = @stars WHERE username = @username";
+            data = "UPDATE Users SET stars = @stars WHERE username = @username";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {

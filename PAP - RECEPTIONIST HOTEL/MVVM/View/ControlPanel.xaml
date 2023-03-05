@@ -146,7 +146,6 @@
                          IsTabStop="False"
                          IsEnabled="False" />
             </StackPanel>
-            
 
             <!-- Check-in e check-out -->
             <StackPanel Orientation="Horizontal">
@@ -199,8 +198,7 @@
                          IsTabStop="False"
                          IsEnabled="False" />
             </StackPanel>
-            
-            
+
             <!-- Pagamento -->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Valor ao check-out da reserva:"

@@ -27,9 +27,9 @@ namespace PAP___RECEPTIONIST_HOTEL.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BAGACINHO;Initial Catalog=MVVMLoginDb;Integrated Security=True")]
-        public string MVVMLoginDbConnectionString {
+        public string ConnectionString {
             get {
-                return ((string)(this["MVVMLoginDbConnectionString"]));
+                return ((string)(this["ConnectionString"]));
             }
         }
         

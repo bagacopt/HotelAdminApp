@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PAP___RECEPTIONIST_HOTEL.Properties;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,33 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         public ManageReservations()
         {
             InitializeComponent();
+        }
+
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+
+        private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
+        {
+            con.Open();
+
+            string data = "SELECT * FROM Users WHERE type_user = 3 AND username = @username";
+
+            using (SqlCommand cmd = new SqlCommand(data, con)) 
+            {
+                cmd.Parameters.AddWithValue("@username", Settings.Default.n_cliente);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string user = reader["username"].ToString();
+                        string id = reader["id_user"].ToString();
+
+                        usernameTxtBox.Text = user;
+                        idReservaTxtBox.Text = id;
+                    }
+                }
+            }
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -27,13 +28,15 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        string data;
+
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
         {
             con.Open();
 
-            string data = "SELECT * FROM Users WHERE type_user = 3 AND username = @username";
+            data = "SELECT * FROM Users WHERE type_user = 3 AND username = @username";
 
             using (SqlCommand cmd = new SqlCommand(data, con)) 
             {
@@ -51,6 +54,21 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     }
                 }
             }
+
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Users WHERE type_user = 1", con);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                reservationcombo.Items.Add(dt.Rows[i]["id_user"] + " - " + dt.Rows[i]["username"]);
+            }
+        }
+
+        private void ComboBoxSelectClient(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }

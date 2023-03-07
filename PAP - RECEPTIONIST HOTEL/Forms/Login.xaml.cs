@@ -23,13 +23,13 @@ namespace PAP___RECEPTIONIST_HOTEL
         // VARIABLES
         int count;
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             // CLOSES APPLICATION
             Application.Current.Shutdown();
         }
 
-        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             // MINIMIZES APPLICATION
             WindowState = WindowState.Minimized;
@@ -44,7 +44,7 @@ namespace PAP___RECEPTIONIST_HOTEL
             }
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
             con.Open();
@@ -113,7 +113,7 @@ namespace PAP___RECEPTIONIST_HOTEL
             // PRESSES THE BUTTON OF THE LOGIN
             if (e.Key == Key.Enter)
             {
-                btnLogin_Click(sender, e);
+                BtnLogin_Click(sender, e);
             }
         }
 

@@ -25,7 +25,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         string data;
 
         // 1 STAR RATE
-        private void classificationStars1_Click(object sender, RoutedEventArgs e)
+        private void ClassificationStars1_Click(object sender, RoutedEventArgs e)
         {
             star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
             star_2.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
@@ -37,7 +37,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // 2 STAR RATE
-        private void classificationStars2_Click(object sender, RoutedEventArgs e)
+        private void ClassificationStars2_Click(object sender, RoutedEventArgs e)
         {
             star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
             star_2.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
@@ -49,7 +49,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // 3 STAR RATE
-        private void classificationStars3_Click(object sender, RoutedEventArgs e)
+        private void ClassificationStars3_Click(object sender, RoutedEventArgs e)
         {
             star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
             star_2.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
@@ -61,7 +61,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // 4 STAR RATE
-        private void classificationStars4_Click(object sender, RoutedEventArgs e)
+        private void ClassificationStars4_Click(object sender, RoutedEventArgs e)
         {
             star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
             star_2.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
@@ -73,7 +73,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // 5 STAR RATE
-        private void classificationStars5_Click(object sender, RoutedEventArgs e)
+        private void ClassificationStars5_Click(object sender, RoutedEventArgs e)
         {
             star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
             star_2.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
@@ -114,19 +114,19 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                             case "0":
                                 break;
                             case "1":
-                                classificationStars1_Click(sender, e);
+                                ClassificationStars1_Click(sender, e);
                                 break;
                             case "2":
-                                classificationStars2_Click(sender, e);
+                                ClassificationStars2_Click(sender, e);
                                 break;
                             case "3":
-                                classificationStars3_Click(sender, e);
+                                ClassificationStars3_Click(sender, e);
                                 break;
                             case "4":
-                                classificationStars4_Click(sender, e);
+                                ClassificationStars4_Click(sender, e);
                                 break;
                             case "5":
-                                classificationStars5_Click(sender, e);
+                                ClassificationStars5_Click(sender, e);
                                 break;
                         }
                     }
@@ -191,7 +191,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // RATE HOTEL BUTTON
-        private void ratehotel_Click(object sender, RoutedEventArgs e)
+        private void Ratehotel_Click(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
             con.Open();

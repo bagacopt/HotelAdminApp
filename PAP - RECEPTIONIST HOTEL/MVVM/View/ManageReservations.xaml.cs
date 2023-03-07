@@ -32,7 +32,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
-        string data, user, id, client_id;
+        string data, client_id;
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
         {

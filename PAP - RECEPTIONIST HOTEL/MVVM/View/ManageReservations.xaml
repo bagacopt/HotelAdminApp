@@ -11,7 +11,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <StackPanel Width="200" HorizontalAlignment="Left" Margin="20,20,0,20" Grid.Column="0">
@@ -48,7 +48,7 @@
                    Margin="0,20,0,-10"
                    Foreground="White"
                    HorizontalAlignment="Center" />
-            
+
             <TextBox x:Name="idReservaTxtBox"
                  FontSize="15"
                  FontWeight="Medium"
@@ -68,16 +68,16 @@
                    Margin="0,20,0,-10"
                    Foreground="White"
                    HorizontalAlignment="Center" />
-            
+
             <ComboBox Margin="0,20,0,0" x:Name="reservationcombo" SelectionChanged="ComboBoxSelectClient"/>
         </StackPanel>
 
         <!-- Divisão das informações com os dados da reserva -->
         <Image Source="/Forms/Images/line_vertical.png" 
-               Width="3" Height="450" 
+               Width="3" 
                Stretch="Fill" 
                HorizontalAlignment="Left" 
-               Margin="0,-235,0,0" 
+               Margin="0,-118,0,118" 
                Grid.Column="1" />
 
         <StackPanel Grid.Column="2">
@@ -92,7 +92,7 @@
             <!-- Divisão do título com os dados da reserva -->
             <Image Source="/Forms/Images/line_horizontal.png" 
                    Width="507" Height="4" />
-            
+
             <StackPanel Orientation="Horizontal">
                 <!-- Nome do cliente -->
                 <Label Content="Nome do cliente:"
@@ -100,7 +100,7 @@
                        Foreground="White"
                        FontSize="18"
                        FontFamily="Montserrat" />
-                
+
                 <TextBox x:Name="nClienteTxtBox"
                          FontSize="18"
                          Width="340"
@@ -119,7 +119,7 @@
                          IsTabStop="False"
                          IsEnabled="False" />
             </StackPanel>
-            
+
             <!-- Serviços selecionados pelos utilizadores -->
             <StackPanel Orientation="Horizontal" Margin="0,-20,0,0" >
                 <Label Content="ID da reserva:"
@@ -127,7 +127,7 @@
                        Foreground="White"
                        FontSize="18"
                        FontFamily="Montserrat" />
-                
+
                 <TextBox x:Name="idReservationTxtBox"
                          Width="40" Height="20"
                          FontSize="18"
@@ -207,14 +207,15 @@
                          IsTabStop="False"
                          IsEnabled="False" />
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Width="130" Height="60" Margin="-30,30,0,0" >
+                <Button Width="130" Height="60" Margin="-30,30,0,0" Click="ChangeNumberRoom_Click" >
                     <TextBlock Text="Mudar número &#xa;do quarto" TextAlignment="Center" />
                 </Button>
                 <Button Width="130" Height="60" Margin="60,30,0,0" Content="Adiar estadia"/>
-                <Button Width="130" Height="60" Margin="60,30,0,0" Content="Exigir check-out"/>
+                <Button Width="130" Height="60" Margin="60,30,0,0" Content="Antecipar check-out"/>
             </StackPanel>
-            
+
         </StackPanel>
     </Grid>
 </UserControl>

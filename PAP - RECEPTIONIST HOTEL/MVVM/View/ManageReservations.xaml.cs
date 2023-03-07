@@ -28,33 +28,37 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             InitializeComponent();
         }
 
-        string data, user, id, client_id;
+        // CONNECTION
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        // VARIABLES
+        string data, user, id, client_id;
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
         {
+            // OPEN CONNECTION
             con.Open();
 
-            data = "SELECT * FROM Users WHERE type_user = 3 AND username = @username";
+
+            // GET ADMINS
+            data = "SELECT * FROM Users WHERE type_user = 3 AND username = @user";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@username", Settings.Default.n_cliente);
+                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        user = reader["username"].ToString();
-                        id = reader["id_user"].ToString();
-
-                        usernameTxtBox.Text = user;
-                        idReservaTxtBox.Text = id;
+                        usernameTxtBox.Text = reader["username"].ToString();
+                        idReservaTxtBox.Text = reader["id_user"].ToString();
                     }
                 }
             }
 
+
+            // GET CLIENTS
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Users WHERE type_user = 1", con);
 
             DataTable dt = new DataTable();
@@ -66,24 +70,24 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 reservationcombo.Items.Add(i + 1 + " - " + dt.Rows[i]["username"]);
             }
 
+
+            // CLOSE CONNECTION
             con.Close();
         }
 
         private void ComboBoxSelectClient(object sender, SelectionChangedEventArgs e)
         {
-
             // OPEN CONNECTION
             con.Open();
 
-            // GET USERNAME OF THE CLIENT AND SHOW THE RESERVATION ID
+
+            // SHOW RESERVATION ID BY CLIENT USERNAME
             data = "SELECT * FROM Users WHERE type_user = 1 AND username = @user";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                client_id = reservationcombo.SelectedValue.ToString();
-
-                string[] temp_client = client_id.Split('-');
-                client_id = temp_client[1].Trim();
+                string[] temp_str = reservationcombo.SelectedValue.ToString().Split('-');
+                client_id = temp_str[1].Trim();
 
                 cmd.Parameters.AddWithValue("@user", client_id);
 
@@ -95,6 +99,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     }
                 }
             }
+
 
             // GET NAME OF THE CLIENT
             data = "SELECT * FROM Users WHERE type_user = 1 AND username = @user";
@@ -111,6 +116,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     }
                 }
             }
+
 
             // GET NUMBER OF THE ROOM
             data = "SELECT Rooms.n_room FROM Rooms INNER JOIN Reservations " +
@@ -132,9 +138,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
             }
 
+
             // GET CHECK-IN AND CHECK-OUT OF THE RESERVATION
-            data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | hh:mm tt') AS 'check-in'," +
-                "FORMAT(Reservations.[check-out], 'dd/MM/yy | hh:mm tt') AS 'check-out'" +
+            data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | HH:mm') AS 'check-in'," +
+                "FORMAT(Reservations.[check-out], 'dd/MM/yy | HH:mm') AS 'check-out'" +
                 "FROM Reservations INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation " +
                 "WHERE username = @user";
 
@@ -145,19 +152,22 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
-
                     {
-                        string checkin = reader["check-in"].ToString();
-                        string checkout = reader["check-out"].ToString();
-
-                        checkinTxtBox.Text = checkin;
-                        checkoutTxtBox.Text = checkout;
+                        checkinTxtBox.Text = reader["check-in"].ToString();
+                        checkoutTxtBox.Text = reader["check-out"].ToString();
                     }
                 }
             }
 
+
             // CLOSE CONNECTION
             con.Close();
+        }
+        private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)
+        {
+            con.Open();
+
+            data = "UPDATE Reservations SET id_room WHERE id ";
         }
     }
 }

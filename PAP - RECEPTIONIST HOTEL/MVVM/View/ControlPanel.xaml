@@ -96,7 +96,7 @@
                 <Image x:Name="star_4" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="classificationStars4_Click"/>
                 <Image x:Name="star_5" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="classificationStars5_Click"/>
             </StackPanel>
-            <Button Content="Classificar" Click="honortehotel_Click"/>
+            <Button Content="Classificar" Click="ratehotel_Click"/>
             
         </StackPanel>
 

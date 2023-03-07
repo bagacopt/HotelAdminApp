@@ -17,10 +17,14 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        // CONNECTION
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+
+        // VARIABLES
         int nStars;
         string data;
 
+        // 1 STAR RATE
         private void classificationStars1_Click(object sender, RoutedEventArgs e)
         {
             star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
@@ -32,6 +36,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             nStars = 1;
         }
 
+        // 2 STAR RATE
         private void classificationStars2_Click(object sender, RoutedEventArgs e)
         {
             star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
@@ -43,6 +48,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             nStars = 2;
         }
 
+        // 3 STAR RATE
         private void classificationStars3_Click(object sender, RoutedEventArgs e)
         {
             star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
@@ -54,6 +60,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             nStars = 3;
         }
 
+        // 4 STAR RATE
         private void classificationStars4_Click(object sender, RoutedEventArgs e)
         {
             star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
@@ -65,6 +72,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             nStars = 4;
         }
 
+        // 5 STAR RATE
         private void classificationStars5_Click(object sender, RoutedEventArgs e)
         {
             star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
@@ -78,25 +86,28 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void ControlPanel_Loaded(object sender, RoutedEventArgs e)
         {
+            
+            // OPEN CONNECTION
             con.Open();
 
+            // TEXT OF USERNAME
             usernameTxtBox.Text = Settings.Default.n_cliente;
 
-            data = "SELECT * FROM Users WHERE username = @username";
+
+            // GET CLIENT
+            data = "SELECT * FROM Users WHERE username = @user";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
+                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        string idReserva = reader["id_reservation"].ToString();
+                        idReservaTxtBox.Text = reader["id_reservation"].ToString();
                         string stars = reader["stars"].ToString();
-                        string fullname = reader["fullname"].ToString();
-
-                        idReservaTxtBox.Text = idReserva;
+                        nClienteTxtBox.Text = reader["fullname"].ToString();
 
                         switch (stars)
                         {
@@ -118,18 +129,18 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                                 classificationStars5_Click(sender, e);
                                 break;
                         }
-                        nClienteTxtBox.Text = fullname;
                     }
                 }
             }
 
+            // GET NUMBER OF THE ROOM
             data = "SELECT Rooms.n_room FROM Rooms INNER JOIN Reservations " +
                 "ON Rooms.id_room = Reservations.id_room INNER JOIN Users ON " +
-                "Reservations.id_reservation = Users.id_reservation WHERE username = @username";
+                "Reservations.id_reservation = Users.id_reservation WHERE username = @user";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
+                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -141,59 +152,60 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     }
                 }
             }
-            data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | hh:mm tt') AS 'check-in', " +
-                "FORMAT(Reservations.[check-out], 'dd/MM/yy | hh:mm tt') AS 'check-out' FROM Reservations " +
-                "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
+
+            // GET CHECK-IN AND CHECK-OUT OF THE RESERVATION
+            data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | HH:mm') AS 'check-in', " +
+                "FORMAT(Reservations.[check-out], 'dd/MM/yy | HH:mm') AS 'check-out' FROM Reservations " +
+                "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @user";
             
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
+                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
-
                     {
-                        string checkin = reader["check-in"].ToString();
-                        string checkout = reader["check-out"].ToString();
-
-                        checkinTxtBox.Text = checkin;
-                        checkoutTxtBox.Text = checkout;
+                        checkinTxtBox.Text = reader["check-in"].ToString();
+                        checkoutTxtBox.Text = reader["check-out"].ToString();
                     }
                 }
             }
 
+            // GET RESERVATION PRICE
             data = "SELECT Reservations.reserva_price FROM Reservations " +
-                "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
+                "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @user";
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
+                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        string reservaprice = reader["reserva_price"].ToString();
-
-                        labelPagamentoTxt.Content = reservaprice + "€";
+                        labelPagamentoTxt.Content = reader["reserva_price"].ToString() + "€";
                     }
                 }
             }
             con.Close();
         }
 
-        private void honortehotel_Click(object sender, RoutedEventArgs e)
+        // RATE HOTEL BUTTON
+        private void ratehotel_Click(object sender, RoutedEventArgs e)
         {
+            // OPEN CONNECTION
             con.Open();
 
-            data = "UPDATE Users SET stars = @stars WHERE username = @username";
+            //UPDATE THE RATING OF THE HOTEL
+            data = "UPDATE Users SET stars = @stars WHERE username = @user";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@stars", nStars);
-                cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
+                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
                 cmd.ExecuteNonQuery();
             }
+            // CLOSE CONNECTION
             con.Close();
 
             MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrelas! \nSomos muito agradecidos", "Obrigado!!!");

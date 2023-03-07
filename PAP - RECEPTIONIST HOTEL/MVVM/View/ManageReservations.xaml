@@ -128,11 +128,13 @@
                        FontSize="18"
                        FontFamily="Montserrat" />
                 
-                <TextBox Width="40" Height="20"
+                <TextBox x:Name="idReservationTxtBox"
+                         Width="40" Height="20"
                          FontSize="18"
                          TextAlignment="Center"
                          FontFamily="Montserrat"
                          Foreground="White"
+                         IsEnabled="False"
                          Background="Transparent"
                          BorderThickness="0,0,0,1"
                          Margin="0,25,0,0"/>
@@ -144,13 +146,15 @@
                    Foreground="White"
                    FontSize="18"
                    FontFamily="Montserrat" />
-                <TextBox Width="40" Height="20"
+                <TextBox x:Name="nRoomTxtBox"
+                         Width="40" Height="20"
                          FontSize="18"
                          TextAlignment="Center"
                          FontFamily="Montserrat"
                          Foreground="White"
                          Background="Transparent"
                          BorderThickness="0,0,0,1"
+                         IsEnabled="False"
                          Margin="0,25,0,0"/>
             </StackPanel>
 
@@ -161,7 +165,7 @@
                        FontSize="18"
                        FontFamily="Montserrat" />
                 <TextBox x:Name="checkinTxtBox"
-                         Width="150"
+                         Width="170"
                          FontSize="18"
                          Text=""
                          FontWeight="Medium"
@@ -177,7 +181,6 @@
                          IsReadOnly="True"
                          IsTabStop="False"
                          IsEnabled="False" />
-
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -187,7 +190,7 @@
                    FontSize="18"
                    FontFamily="Montserrat" />
                 <TextBox x:Name="checkoutTxtBox"
-                         Width="150"
+                         Width="170"
                          FontSize="18"
                          Text=""
                          FontWeight="Medium"

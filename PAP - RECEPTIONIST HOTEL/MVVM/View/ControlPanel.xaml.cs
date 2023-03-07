@@ -17,7 +17,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
         int nStars;
         string data;
 
@@ -141,14 +141,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     }
                 }
             }
-
             data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | hh:mm tt') AS 'check-in', " +
                 "FORMAT(Reservations.[check-out], 'dd/MM/yy | hh:mm tt') AS 'check-out' FROM Reservations " +
                 "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @username";
-<<<<<<< HEAD
-=======
-
->>>>>>> fcf4e843869fd80e34fdbdb1aaae5438126a5643
+            
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@username", usernameTxtBox.Text);
@@ -156,6 +152,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
+
                     {
                         string checkin = reader["check-in"].ToString();
                         string checkout = reader["check-out"].ToString();

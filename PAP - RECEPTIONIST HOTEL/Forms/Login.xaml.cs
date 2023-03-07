@@ -17,7 +17,7 @@ namespace PAP___RECEPTIONIST_HOTEL
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -41,52 +41,50 @@ namespace PAP___RECEPTIONIST_HOTEL
         {
             con.Open();
 
-            string data = "SELECT * FROM Users WHERE username = @username AND password = @pass";
+            string data = "SELECT * FROM Users WHERE username = @user AND password = @pass";
 
-            SqlCommand cmd = new SqlCommand(data, con);
-
-            cmd.Parameters.AddWithValue("@username", txtUser.Text);
-            Settings.Default.n_cliente = txtUser.Text;
-
-            PasswordBox myPasswordBox = this.FindName("passwordHidden") as PasswordBox;
-            if (myPasswordBox.Name == "passwordHidden")
+            using(SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@pass", passwordHidden.Password);
-                cmd.ExecuteNonQuery();
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.Parameters.AddWithValue("@user", txtUser.Text.ToLower());
+                Settings.Default.n_cliente = txtUser.Text.ToLower();
 
-                con.Close();
-
-                if (count > 0)
+                PasswordBox myPasswordBox = this.FindName("passwordHidden") as PasswordBox;
+                if (myPasswordBox.Name == "passwordHidden")
                 {
-                    MainWindow program = new MainWindow();
-                    program.Show();
-                    this.Close();
+                    cmd.Parameters.AddWithValue("@pass", passwordHidden.Password.ToLower());
+                    cmd.ExecuteNonQuery();
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        MainWindow program = new MainWindow();
+                        program.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Inseriu o username / password errados, insira novamente", "Erro!!!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Inseriu o username / password errados, insira novamente", "Erro!!!");
+                    cmd.Parameters.AddWithValue("@pass", passwordShow.Text.ToLower());
+                    cmd.ExecuteNonQuery();
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        MainWindow program = new MainWindow();
+                        program.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Inseriu o username / password errados, insira novamente", "Erro!!!");
+                    }
                 }
             }
-            else
-            {
-                cmd.Parameters.AddWithValue("@pass", passwordShow.Text);
-                cmd.ExecuteNonQuery();
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                con.Close();
-
-                if (count > 0)
-                {
-                    MainWindow program = new MainWindow();
-                    program.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Inseriu o username / password errados, insira novamente", "Erro!!!");
-                }
-            }
+            con.Close();
         }
 
         private void Forgot_pass(object sender, MouseButtonEventArgs e)

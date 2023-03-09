@@ -18,7 +18,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
         int nStars;
@@ -203,8 +203,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             {
                 cmd.Parameters.AddWithValue("@stars", nStars);
                 cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
-                cmd.ExecuteNonQuery();
             }
+
             // CLOSE CONNECTION
             con.Close();
 

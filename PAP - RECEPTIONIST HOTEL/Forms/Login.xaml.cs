@@ -18,9 +18,10 @@ namespace PAP___RECEPTIONIST_HOTEL
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
+        string data;
         int count;
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
@@ -50,7 +51,7 @@ namespace PAP___RECEPTIONIST_HOTEL
             con.Open();
 
             // LOGIN
-            string data = "SELECT * FROM Users WHERE username = @user AND password = @pass";
+            data = "SELECT * FROM Users WHERE username = @user AND password = @pass";
 
             using(SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -62,7 +63,7 @@ namespace PAP___RECEPTIONIST_HOTEL
                 {
                     cmd.Parameters.AddWithValue("@pass", passwordHidden.Password.ToLower());
                     cmd.ExecuteNonQuery();
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    count = Convert.ToInt32(cmd.ExecuteScalar());
 
                     if (count > 0)
                     {

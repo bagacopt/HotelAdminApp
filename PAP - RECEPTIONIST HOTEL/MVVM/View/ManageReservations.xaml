@@ -25,7 +25,7 @@
 
             <!-- Nome de Utilizador | Informação -->
             <Label Content="Nome do Administrador:"
-               Margin="0,5,0,-10"
+               Margin="0,5,0,-5"
                Foreground="White"
                HorizontalAlignment="Center" />
             <TextBox x:Name="usernameTxtBox"
@@ -45,12 +45,12 @@
 
             <!-- ID da Reserva | Informação -->
             <Label Content="ID do utilizador:"
-                   Margin="0,20,0,-10"
+                   Margin="0,20,0,-5"
                    Foreground="White"
                    HorizontalAlignment="Center" />
 
             <TextBox x:Name="idReservaTxtBox"
-                 FontSize="15"
+                 FontSize="18"
                  FontWeight="Medium"
                  TextAlignment="Center"
                  FontFamily="Montserrat"
@@ -74,10 +74,10 @@
 
         <!-- Divisão das informações com os dados da reserva -->
         <Image Source="/Forms/Images/line_vertical.png" 
-               Width="3" 
+               Width="3" Height="450" 
                Stretch="Fill" 
                HorizontalAlignment="Left" 
-               Margin="0,-118,0,118" 
+               Margin="0,-200,0,0" 
                Grid.Column="1" />
 
         <StackPanel Grid.Column="2">
@@ -112,9 +112,9 @@
                          BorderBrush="White"
                          Background="Transparent"
                          BorderThickness="0,0,0,1"
-                         Height="24"
+                         Height="20"
                          VerticalContentAlignment="Center"
-                         Margin="0,15,0,0"
+                         Margin="0,20,0,0"
                          IsReadOnly="True"
                          IsTabStop="False"
                          IsEnabled="False" />
@@ -165,7 +165,7 @@
                        FontSize="18"
                        FontFamily="Montserrat" />
                 <TextBox x:Name="checkinTxtBox"
-                         Width="170"
+                         Width="150"
                          FontSize="18"
                          Text=""
                          FontWeight="Medium"
@@ -175,9 +175,9 @@
                          BorderBrush="White"
                          Background="Transparent"
                          BorderThickness="0,0,0,1"
-                         Height="24"
+                         Height="20"
                          VerticalContentAlignment="Center"
-                         Margin="0,0,0,0"
+                         Margin="0,5,0,0"
                          IsReadOnly="True"
                          IsTabStop="False"
                          IsEnabled="False" />
@@ -190,7 +190,7 @@
                    FontSize="18"
                    FontFamily="Montserrat" />
                 <TextBox x:Name="checkoutTxtBox"
-                         Width="170"
+                         Width="150"
                          FontSize="18"
                          Text=""
                          FontWeight="Medium"
@@ -200,9 +200,9 @@
                          BorderBrush="White"
                          Background="Transparent"
                          BorderThickness="0,0,0,1"
-                         Height="24"
+                         Height="20"
                          VerticalContentAlignment="Center"
-                         Margin="0,0,0,0"
+                         Margin="0,5,0,0"
                          IsReadOnly="True"
                          IsTabStop="False"
                          IsEnabled="False" />

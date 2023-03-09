@@ -230,7 +230,7 @@
                                         AlignmentX="Left"/>
                         </TextBox.Background>
                     </TextBox>
-                    
+
 
                     <Button x:Name="btnLogin"
                             BorderThickness="0"

@@ -29,7 +29,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
         string data, client_id;

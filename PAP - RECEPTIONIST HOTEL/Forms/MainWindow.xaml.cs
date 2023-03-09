@@ -41,5 +41,12 @@ namespace PAP___RECEPTIONIST_HOTEL
                 DragMove();
             }
         }
+
+        private void Logout_Checked(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            this.Close();
+            login.Show();
+        }
     }
 }

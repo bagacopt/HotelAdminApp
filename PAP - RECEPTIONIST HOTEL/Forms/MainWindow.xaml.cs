@@ -33,7 +33,7 @@ namespace PAP___RECEPTIONIST_HOTEL
         SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
-        string data, type_user;
+        string data, typeUser;
         MainViewModel changeView = new MainViewModel();
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -65,6 +65,17 @@ namespace PAP___RECEPTIONIST_HOTEL
             login.Show();
         }
 
+        private void GoBack(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                // OPENS LOGIN FORM
+                Login login = new Login();
+                this.Close();
+                login.Show();
+            }
+        }
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
@@ -81,7 +92,7 @@ namespace PAP___RECEPTIONIST_HOTEL
                 {
                     while (reader.Read())
                     {
-                        type_user = reader["type_user"].ToString();
+                        typeUser = reader["type_user"].ToString();
                     }
                 }
             }
@@ -90,7 +101,7 @@ namespace PAP___RECEPTIONIST_HOTEL
             con.Close();
 
             // "PRIVILEGES" OF EACH TYPE OF USER
-            if (Convert.ToInt32(type_user) == 1)
+            if (Convert.ToInt32(typeUser) == 1)
             {
                 ManageReservationsRadionButton.Visibility = Visibility.Collapsed;
                 ManageRequestsRadioButton.Visibility = Visibility.Collapsed;
@@ -99,13 +110,12 @@ namespace PAP___RECEPTIONIST_HOTEL
                 ControlPanelRadioButton.Command = changeView.ControlPanelViewCommand;
                 ControlPanelRadioButton.IsChecked = true;
             }
-            else if (Convert.ToInt32(type_user) == 2)
+            else if (Convert.ToInt32(typeUser) == 2)
             {
                 ControlPanelRadioButton.Visibility = Visibility.Collapsed;
                 ManageUsersRadionButton.Visibility = Visibility.Collapsed;
                 RequestsRadioButton.Visibility = Visibility.Collapsed;
                 LogoutRadioButton.Margin = new Thickness(0, 490, 0, 0);
-                ControlPanelRadioButton.Command = changeView.ManageReservationsViewCommand;
                 ManageReservationsRadionButton.IsChecked = true;
             }
             else

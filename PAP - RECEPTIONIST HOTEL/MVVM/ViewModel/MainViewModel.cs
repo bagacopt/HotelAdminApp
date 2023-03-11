@@ -1,4 +1,6 @@
 ﻿using PAP___RECEPTIONIST_HOTEL.Core;
+using PAP___RECEPTIONIST_HOTEL.Properties;
+using System;
 using System.Data.SqlClient;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
@@ -63,11 +65,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             ManageRequestsVM = new ManageRequestsViewModel();
             ManageUsersVM = new ManageUsersViewModel();
 
-            /*
             // OPEN CONNECTION
             con.Open();
 
-            
             // SQL QUERY
             data = "SELECT type_user FROM Users WHERE username = @user";
 
@@ -100,8 +100,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             {
                 CurrentView = AdminControlPanelVM;
             }
-            */
-            CurrentView = ControlPanelVM;
             // ----------------------------------- ViewCommand ---------------------------------------- //
 
             ControlPanelViewCommand = new RelayCommand(o => { CurrentView = ControlPanelVM; });

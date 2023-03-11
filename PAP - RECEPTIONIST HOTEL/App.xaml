@@ -15,12 +15,16 @@
                 <view:ControlPanel />
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:ManageReservationsViewModel}">
-                <view:ManageReservations />
+            <DataTemplate DataType="{x:Type viewModel:AdminControlPanelViewModel}">
+                <view:AdminControlPanel />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:RequestsViewModel}">
                 <view:Requests />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ManageReservationsViewModel}">
+                <view:ManageReservations />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:ManageRequestsViewModel}">
@@ -30,7 +34,6 @@
             <DataTemplate DataType="{x:Type viewModel:ManageUsersViewModel}">
                 <view:ManageUsers />
             </DataTemplate>
-            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

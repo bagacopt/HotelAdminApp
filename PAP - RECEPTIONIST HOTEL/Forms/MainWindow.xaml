@@ -12,7 +12,8 @@
         Background="#Fc191819"
         AllowsTransparency="True"
         MouseLeftButtonDown="Window_MouseDown"
-        Loaded="MainWindow_Loaded">
+        Loaded="MainWindow_Loaded"
+        KeyDown="GoBack">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
@@ -109,6 +110,7 @@
                              Foreground="White"
                              Margin="0,20,0,0"
                              Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ControlPanelViewCommand}"
                              x:Name="ControlPanelRadioButton"/>
 
                 <RadioButton Content="Gerir Reservas"
@@ -153,7 +155,7 @@
             
             <ContentControl Grid.Row="1" Grid.Column="1"
                             Margin="0,0,0,50"
-                            Content=""/>
+                            Content="{Binding CurrentView}"/>
         </Grid>
     </Border>
 </Window>

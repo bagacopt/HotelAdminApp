@@ -62,6 +62,7 @@
     <Compile Include="Forms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\ViewModel\AdminControlPanelViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ManageReservationsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ManageRequestsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ManageUsersViewModel.cs" />
@@ -79,6 +80,10 @@
     <Compile Include="MVVM\ViewModel\ControlPanelViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Page Include="Forms\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\AdminControlPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,6 +121,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\View\AdminControlPanel.xaml.cs">
+      <DependentUpon>AdminControlPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\ControlPanel.xaml.cs">
       <DependentUpon>ControlPanel.xaml</DependentUpon>
     </Compile>

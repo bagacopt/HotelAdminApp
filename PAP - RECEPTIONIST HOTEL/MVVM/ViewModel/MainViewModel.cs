@@ -1,17 +1,29 @@
 ﻿using PAP___RECEPTIONIST_HOTEL.Core;
+using PAP___RECEPTIONIST_HOTEL.MVVM.View;
+using PAP___RECEPTIONIST_HOTEL.Properties;
+using System;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 {
     class MainViewModel : ObservableObject
     {
+        // CONNECTION
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+
+        // VARIABLES
+        string data, type_user;
 
         // ------------------------------------ RelayCommand ---------------------------------------- //
 
-        public RelayCommand ControlViewCommand { get; set; }
+        public RelayCommand ControlPanelViewCommand { get; set; }
 
-        public RelayCommand ManageReservationsViewCommand { get; set; }
+        public RelayCommand AdminControlPanelViewCommand { get; set; }
 
         public RelayCommand RequestsViewCommand { get; set; }
+
+        public RelayCommand ManageReservationsViewCommand { get; set; }
 
         public RelayCommand ManageRequestsViewCommand { get; set; }
 
@@ -19,11 +31,13 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 
         // ------------------------------------- ViewModel ----------------------------------------- //
 
-        public ControlPanelViewModel ControlVM { get; set; }
+        public ControlPanelViewModel ControlPanelVM { get; set; }
 
-        public ManageReservationsViewModel ReservasVM { get; set; }
+        public AdminControlPanelViewModel AdminControlPanelVM { get; set; }
 
         public RequestsViewModel RequestsVM { get; set; }
+
+        public ManageReservationsViewModel ManageReservationsVM { get; set; }
 
         public ManageRequestsViewModel ManageRequestsVM { get; set; }
 
@@ -45,23 +59,66 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 
         public MainViewModel()
         {
-            ControlVM = new ControlPanelViewModel();
-            ReservasVM = new ManageReservationsViewModel();
+            // CALLS OF THE VIEWMODELS
+            ControlPanelVM = new ControlPanelViewModel();
+            AdminControlPanelVM = new AdminControlPanelViewModel();
             RequestsVM = new RequestsViewModel();
+            ManageReservationsVM = new ManageReservationsViewModel();
             ManageRequestsVM = new ManageRequestsViewModel();
             ManageUsersVM = new ManageUsersViewModel();
 
-            CurrentView = ControlVM;
+            /*
+            // OPEN CONNECTION
+            con.Open();
 
-            ControlViewCommand = new RelayCommand(o => { CurrentView = ControlVM; });
+            
+            // SQL QUERY
+            data = "SELECT type_user FROM Users WHERE username = @user";
 
-            ManageReservationsViewCommand = new RelayCommand(o => { CurrentView = ReservasVM; });
+            using (SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
 
-            RequestsViewCommand= new RelayCommand(o => { CurrentView = RequestsVM; });
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        type_user = reader["type_user"].ToString();
+                    }
+                }
+            }
+            
+            // CLOSE CONNECTION
+            con.Close();
 
-            ManageRequestsViewCommand= new RelayCommand(o => { CurrentView = ManageRequestsVM; });
+            // CURRENT VIEW OF THE TYPE OF THE USER
+            if (Convert.ToInt32(type_user) == 1)
+            {
+                CurrentView = ControlPanelVM;
+            }
+            else if (Convert.ToInt32(type_user) == 2)
+            {
+                CurrentView = ManageReservationsVM;
+            }
+            else
+            {
+                CurrentView = AdminControlPanelVM;
+            }
+            */
+            CurrentView = ControlPanelVM;
+            // ----------------------------------- ViewCommand ---------------------------------------- //
 
-            ManageRequestsViewCommand= new RelayCommand(o => { CurrentView= ManageUsersVM; });
+            ControlPanelViewCommand = new RelayCommand(o => { CurrentView = ControlPanelVM; });
+
+            AdminControlPanelViewCommand = new RelayCommand(o => { CurrentView = AdminControlPanelVM; });
+
+            RequestsViewCommand = new RelayCommand(o => { CurrentView = RequestsVM; });
+
+            ManageReservationsViewCommand = new RelayCommand(o => { CurrentView = ManageReservationsVM; });
+
+            ManageRequestsViewCommand = new RelayCommand(o => { CurrentView = ManageRequestsVM; });
+
+            ManageUsersViewCommand = new RelayCommand(o => { CurrentView = ManageUsersVM; });
         }
     }
 }

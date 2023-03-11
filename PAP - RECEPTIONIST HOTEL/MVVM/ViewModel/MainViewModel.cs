@@ -1,9 +1,5 @@
 ﻿using PAP___RECEPTIONIST_HOTEL.Core;
-using PAP___RECEPTIONIST_HOTEL.MVVM.View;
-using PAP___RECEPTIONIST_HOTEL.Properties;
-using System;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 {

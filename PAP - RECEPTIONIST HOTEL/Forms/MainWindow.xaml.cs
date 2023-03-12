@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Windows.Input.CommandConverter;
 
 namespace PAP___RECEPTIONIST_HOTEL
 {
@@ -33,7 +35,9 @@ namespace PAP___RECEPTIONIST_HOTEL
         SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
-        string data, typeUser;
+        string data;
+        int typeUser;
+        MainViewModel test = new MainViewModel();
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -75,6 +79,19 @@ namespace PAP___RECEPTIONIST_HOTEL
             }
         }
 
+        private void ControlPanelChecked(object sender, RoutedEventArgs e)
+        {
+            // OPEN CORRECT CONTROL PANEL
+            if (typeUser == 1)
+            {
+                test.CurrentView = test.ControlPanelVM;
+            }
+            else
+            {
+                test.CurrentView = test.AdminControlPanelVM;
+            }
+        }
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
@@ -91,7 +108,7 @@ namespace PAP___RECEPTIONIST_HOTEL
                 {
                     while (reader.Read())
                     {
-                        typeUser = reader["type_user"].ToString();
+                        typeUser = Convert.ToInt32(reader["type_user"]);
                     }
                 }
             }
@@ -100,29 +117,26 @@ namespace PAP___RECEPTIONIST_HOTEL
             con.Close();
 
             // "PRIVILEGES" OF EACH TYPE OF USER
-            if (Convert.ToInt32(typeUser) == 1)
+            if (typeUser == 1)
             {
+                ControlPanelRadioButton.IsChecked = true;
                 ManageReservationsRadionButton.Visibility = Visibility.Collapsed;
                 ManageRequestsRadioButton.Visibility = Visibility.Collapsed;
                 ManageUsersRadionButton.Visibility = Visibility.Collapsed;
                 LogoutRadioButton.Margin = new Thickness(0, 490, 0, 0);
-                ControlPanelRadioButton.IsChecked = true;
-                //ControlPanelRadioButton.Command = ;
             }
-            else if (Convert.ToInt32(typeUser) == 2)
+            else if (typeUser == 2)
             {
-                ControlPanelRadioButton.Visibility = Visibility.Collapsed;
+                ManageReservationsRadionButton.IsChecked = true;
                 ManageUsersRadionButton.Visibility = Visibility.Collapsed;
                 RequestsRadioButton.Visibility = Visibility.Collapsed;
-                LogoutRadioButton.Margin = new Thickness(0, 490, 0, 0);
-                ManageReservationsRadionButton.IsChecked = true;
+                LogoutRadioButton.Margin = new Thickness(0, 420, 0, 0);
             }
             else
             {
                 RequestsRadioButton.Visibility = Visibility.Collapsed;
                 LogoutRadioButton.Margin = new Thickness(0, 350, 0, 0);
                 ControlPanelRadioButton.IsChecked = true;
-                //ControlPanelRadioButton.Command = ;
             }
         }
     }

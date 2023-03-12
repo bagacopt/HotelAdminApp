@@ -12,7 +12,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
         SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
-        string data, typeUser;
+        string data;
+        int typeUser;
 
         // ------------------------------------ RelayCommand ---------------------------------------- //
 
@@ -80,27 +81,13 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
                 {
                     while (reader.Read())
                     {
-                        typeUser = reader["type_user"].ToString();
+                        typeUser = Convert.ToInt32(reader["type_user"]);
                     }
                 }
             }
 
             // CLOSE CONNECTION
             con.Close();
-
-            // CURRENT VIEW OF THE TYPE OF THE USER
-            if (Convert.ToInt32(typeUser) == 1)
-            {
-                CurrentView = ControlPanelVM;
-            }
-            else if (Convert.ToInt32(typeUser) == 2)
-            {
-                CurrentView = ManageReservationsVM;
-            }
-            else
-            {
-                CurrentView = AdminControlPanelVM;
-            }
 
             // ----------------------------------- ViewCommand ---------------------------------------- //
             ControlPanelViewCommand = new RelayCommand(o => { CurrentView = ControlPanelVM; });

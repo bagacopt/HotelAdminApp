@@ -111,7 +111,8 @@
                              Margin="0,20,0,0"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ControlPanelViewCommand}"
-                             x:Name="ControlPanelRadioButton" Checked="ControlPanelChecked"/>
+                             x:Name="ControlPanelRadioButton"
+                             IsChecked="True"/>
 
                 <RadioButton Content="Gerir Reservas"
                              Height="50"

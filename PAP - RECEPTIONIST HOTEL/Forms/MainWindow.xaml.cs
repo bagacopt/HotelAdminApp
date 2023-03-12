@@ -79,19 +79,6 @@ namespace PAP___RECEPTIONIST_HOTEL
             }
         }
 
-        private void ControlPanelChecked(object sender, RoutedEventArgs e)
-        {
-            // OPEN CORRECT CONTROL PANEL
-            if (typeUser == 1)
-            {
-                test.CurrentView = test.ControlPanelVM;
-            }
-            else
-            {
-                test.CurrentView = test.AdminControlPanelVM;
-            }
-        }
-
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
@@ -118,8 +105,7 @@ namespace PAP___RECEPTIONIST_HOTEL
 
             // "PRIVILEGES" OF EACH TYPE OF USER
             if (typeUser == 1)
-            {
-                ControlPanelRadioButton.IsChecked = true;
+            {         
                 ManageReservationsRadionButton.Visibility = Visibility.Collapsed;
                 ManageRequestsRadioButton.Visibility = Visibility.Collapsed;
                 ManageUsersRadionButton.Visibility = Visibility.Collapsed;
@@ -127,7 +113,7 @@ namespace PAP___RECEPTIONIST_HOTEL
             }
             else if (typeUser == 2)
             {
-                ManageReservationsRadionButton.IsChecked = true;
+
                 ManageUsersRadionButton.Visibility = Visibility.Collapsed;
                 RequestsRadioButton.Visibility = Visibility.Collapsed;
                 LogoutRadioButton.Margin = new Thickness(0, 420, 0, 0);
@@ -136,7 +122,6 @@ namespace PAP___RECEPTIONIST_HOTEL
             {
                 RequestsRadioButton.Visibility = Visibility.Collapsed;
                 LogoutRadioButton.Margin = new Thickness(0, 350, 0, 0);
-                ControlPanelRadioButton.IsChecked = true;
             }
         }
     }

@@ -86,6 +86,15 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
                 }
             }
 
+            if (typeUser == 1)
+            {
+                CurrentView = ControlPanelVM;
+            }
+            else
+            {
+                CurrentView = AdminControlPanelVM;
+            }
+
             // CLOSE CONNECTION
             con.Close();
 

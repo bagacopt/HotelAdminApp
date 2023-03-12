@@ -9,7 +9,7 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Background="#Fc191819"
+        Background="#FC191819"
         AllowsTransparency="True"
         MouseLeftButtonDown="Window_MouseDown"
         Loaded="MainWindow_Loaded"
@@ -39,7 +39,7 @@
                     FontFamily="Montserrat"
                     Cursor="Hand"
                     Grid.Column="1"
-                    Click="btnMinimize_Click"
+                    Click="BtnMinimize_Click"
                     HorizontalAlignment="Right"
                     Margin="0,0,35,30">
                 <Button.Style>
@@ -73,7 +73,7 @@
                     FontFamily="Montserrat"
                     Cursor="Hand"
                     Grid.Column="2"
-                    Click="btnClose_Click"
+                    Click="BtnClose_Click"
                     HorizontalAlignment="Right"
                     Margin="0,0,10,30">
 

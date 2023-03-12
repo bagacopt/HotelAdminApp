@@ -50,7 +50,7 @@ namespace PAP___RECEPTIONIST_HOTEL
             // OPEN CONNECTION
             con.Open();
 
-            // LOGIN
+            // SQL QUERY
             data = "SELECT * FROM Users WHERE username = @user AND password = @pass";
 
             using(SqlCommand cmd = new SqlCommand(data, con))
@@ -115,6 +115,13 @@ namespace PAP___RECEPTIONIST_HOTEL
             if (e.Key == Key.Enter)
             {
                 BtnLogin_Click(sender, e);
+            }
+
+            // PRESSES ESCAPE
+            if (e.Key == Key.Escape)
+            {
+                // CLOSES PROGRAM
+                Application.Current.Shutdown();
             }
         }
 

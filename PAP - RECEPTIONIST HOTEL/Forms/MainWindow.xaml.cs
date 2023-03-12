@@ -34,15 +34,14 @@ namespace PAP___RECEPTIONIST_HOTEL
 
         // VARIABLES
         string data, typeUser;
-        MainViewModel changeView = new MainViewModel();
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             // CLOSES APPLICATION
             Application.Current.Shutdown();
         }
 
-        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             // MINIMIZES APPLICATION
             WindowState = WindowState.Minimized;
@@ -107,8 +106,8 @@ namespace PAP___RECEPTIONIST_HOTEL
                 ManageRequestsRadioButton.Visibility = Visibility.Collapsed;
                 ManageUsersRadionButton.Visibility = Visibility.Collapsed;
                 LogoutRadioButton.Margin = new Thickness(0, 490, 0, 0);
-                ControlPanelRadioButton.Command = changeView.ControlPanelViewCommand;
                 ControlPanelRadioButton.IsChecked = true;
+                //ControlPanelRadioButton.Command = ;
             }
             else if (Convert.ToInt32(typeUser) == 2)
             {
@@ -122,8 +121,8 @@ namespace PAP___RECEPTIONIST_HOTEL
             {
                 RequestsRadioButton.Visibility = Visibility.Collapsed;
                 LogoutRadioButton.Margin = new Thickness(0, 350, 0, 0);
-                ControlPanelRadioButton.Command = changeView.AdminControlPanelViewCommand;
                 ControlPanelRadioButton.IsChecked = true;
+                //ControlPanelRadioButton.Command = ;
             }
         }
     }

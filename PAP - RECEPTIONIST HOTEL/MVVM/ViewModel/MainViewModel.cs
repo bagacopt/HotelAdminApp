@@ -2,6 +2,7 @@
 using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
 using System.Data.SqlClient;
+using System.Windows.Input;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 {
@@ -11,7 +12,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
         SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
-        string data, type_user;
+        string data, typeUser;
 
         // ------------------------------------ RelayCommand ---------------------------------------- //
 
@@ -79,20 +80,20 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
                 {
                     while (reader.Read())
                     {
-                        type_user = reader["type_user"].ToString();
+                        typeUser = reader["type_user"].ToString();
                     }
                 }
             }
-            
+
             // CLOSE CONNECTION
             con.Close();
 
             // CURRENT VIEW OF THE TYPE OF THE USER
-            if (Convert.ToInt32(type_user) == 1)
+            if (Convert.ToInt32(typeUser) == 1)
             {
                 CurrentView = ControlPanelVM;
             }
-            else if (Convert.ToInt32(type_user) == 2)
+            else if (Convert.ToInt32(typeUser) == 2)
             {
                 CurrentView = ManageReservationsVM;
             }
@@ -100,8 +101,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             {
                 CurrentView = AdminControlPanelVM;
             }
-            // ----------------------------------- ViewCommand ---------------------------------------- //
 
+            // ----------------------------------- ViewCommand ---------------------------------------- //
             ControlPanelViewCommand = new RelayCommand(o => { CurrentView = ControlPanelVM; });
 
             AdminControlPanelViewCommand = new RelayCommand(o => { CurrentView = AdminControlPanelVM; });

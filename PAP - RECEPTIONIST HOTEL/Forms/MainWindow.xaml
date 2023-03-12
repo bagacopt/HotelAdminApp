@@ -145,7 +145,7 @@
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ManageUsersViewCommand}"
                              x:Name="ManageUsersRadionButton"/>
-                
+
                 <RadioButton x:Name="LogoutRadioButton"
                              Content="Terminar sessão"
                              Height="50"

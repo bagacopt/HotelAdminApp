@@ -19,8 +19,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 
         public RelayCommand ControlPanelViewCommand { get; set; }
 
-        public RelayCommand AdminControlPanelViewCommand { get; set; }
-
         public RelayCommand RequestsViewCommand { get; set; }
 
         public RelayCommand ManageReservationsViewCommand { get; set; }
@@ -46,6 +44,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
         // ----------------------------------- CurrentView ---------------------------------------- //
 
         private object _currentView;
+
+        private object _ControlPanelView;
 
         public object CurrentView
         {
@@ -99,9 +99,18 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             con.Close();
 
             // ----------------------------------- ViewCommand ---------------------------------------- //
-            ControlPanelViewCommand = new RelayCommand(o => { CurrentView = ControlPanelVM; });
-
-            AdminControlPanelViewCommand = new RelayCommand(o => { CurrentView = AdminControlPanelVM; });
+            ControlPanelViewCommand = new RelayCommand(o => { 
+                if (typeUser == 1)
+                {
+                    CurrentView = ControlPanelVM;
+                    return;
+                }
+                else
+                {
+                    CurrentView = AdminControlPanelVM;
+                    return;
+                }
+            });
 
             RequestsViewCommand = new RelayCommand(o => { CurrentView = RequestsVM; });
 

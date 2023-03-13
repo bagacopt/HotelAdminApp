@@ -18,7 +18,7 @@ namespace PAP___RECEPTIONIST_HOTEL
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
         string data;

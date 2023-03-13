@@ -9,7 +9,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
     class MainViewModel : ObservableObject
     {
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
         string data;
@@ -44,8 +44,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
         // ----------------------------------- CurrentView ---------------------------------------- //
 
         private object _currentView;
-
-        private object _ControlPanelView;
 
         public object CurrentView
         {

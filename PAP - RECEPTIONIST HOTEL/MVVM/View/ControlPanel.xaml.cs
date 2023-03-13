@@ -1,8 +1,10 @@
 ﻿using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
@@ -10,7 +12,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
     /// <summary>
     /// Interaction logic for ControlPanel.xaml
     /// </summary>
-    public partial class ControlPanel : UserControl
+    public partial class ControlPanel : System.Windows.Controls.UserControl
     {
         public ControlPanel()
         {
@@ -18,7 +20,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
         int nStars;
@@ -27,72 +29,58 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         // 1 STAR RATE
         private void ClassificationStars1_Click(object sender, RoutedEventArgs e)
         {
-            star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_2.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-            star_3.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-            star_4.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-            star_5.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-
-            nStars = 1;
+            setStars(1);
         }
 
         // 2 STAR RATE
         private void ClassificationStars2_Click(object sender, RoutedEventArgs e)
         {
-            star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_2.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_3.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-            star_4.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-            star_5.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-
-            nStars = 2;
+            setStars(2);
         }
 
         // 3 STAR RATE
         private void ClassificationStars3_Click(object sender, RoutedEventArgs e)
         {
-            star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_2.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_3.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_4.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-            star_5.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-
-            nStars = 3;
+            setStars(3);
         }
 
         // 4 STAR RATE
         private void ClassificationStars4_Click(object sender, RoutedEventArgs e)
         {
-            star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_2.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_3.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_4.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_5.Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-
-            nStars = 4;
+            setStars(4);
         }
 
         // 5 STAR RATE
         private void ClassificationStars5_Click(object sender, RoutedEventArgs e)
         {
-            star_1.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_2.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_3.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_4.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
-            star_5.Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
+            setStars(5);
+        }
 
-            nStars = 5;
+        private void setStars(int rating) // 1 - 5
+        {
+            List<Image> starList = new List<Image>() { star_1, star_2, star_3, star_4, star_5 };
+            nStars = rating;
+
+            for (int i = 1; i < starList.Count + 1; i++)
+            {
+                if (i <= rating)
+                {
+                    starList[i - 1].Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
+                    continue;
+                }
+
+                starList[i -1].Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
+
+            }
         }
 
         private void ControlPanel_Loaded(object sender, RoutedEventArgs e)
         {
-            
             // OPEN CONNECTION
             con.Open();
 
             // TEXT OF USERNAME
             usernameTxtBox.Text = Settings.Default.n_cliente;
-
 
             // GET CLIENT
             data = "SELECT * FROM Users WHERE username = @user";
@@ -106,29 +94,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     while (reader.Read())
                     {
                         idReservaTxtBox.Text = reader["id_reservation"].ToString();
-                        string stars = reader["stars"].ToString();
+                        int stars = Convert.ToInt32(reader["stars"]);
                         nClienteTxtBox.Text = reader["fullname"].ToString();
 
-                        switch (stars)
-                        {
-                            case "0":
-                                break;
-                            case "1":
-                                ClassificationStars1_Click(sender, e);
-                                break;
-                            case "2":
-                                ClassificationStars2_Click(sender, e);
-                                break;
-                            case "3":
-                                ClassificationStars3_Click(sender, e);
-                                break;
-                            case "4":
-                                ClassificationStars4_Click(sender, e);
-                                break;
-                            case "5":
-                                ClassificationStars5_Click(sender, e);
-                                break;
-                        }
+                        setStars(stars);
                     }
                 }
             }
@@ -208,7 +177,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // CLOSE CONNECTION
             con.Close();
 
-            MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrelas! \nSomos muito agradecidos", "Obrigado!!!");
+            System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrelas! \nSomos muito agradecidos", "Obrigado!!!");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PAP___RECEPTIONIST_HOTEL.Properties;
+﻿using PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel;
+using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -21,7 +23,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
     /// <summary> 
     /// Interaction logic for Reservas.xaml
     /// </summary>
-    public partial class ManageReservations : UserControl
+    public partial class ManageReservations : System.Windows.Controls.UserControl
     {
         public ManageReservations()
         {
@@ -29,11 +31,13 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
         string data, client_id;
-        int idRoom, nRoom;
+        int idRoom;
+
+        MainViewModel ok = new MainViewModel();
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
         {
@@ -129,9 +133,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 {
                     while (reader.Read())
                     {
-                        string nRoom = reader["n_room"].ToString();
-
-                        nRoomTxtBox.Text = nRoom;
+                        nRoomTxtBox.Text = reader["n_room"].ToString();
                     }
                 }
             }
@@ -159,11 +161,15 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             // CLOSE CONNECTION
             con.Close();
+
+
         }
 
         private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)
         {
             changeRoomComboBox.Visibility = Visibility.Visible;
+
+            // changeRoomComboBox.Items.Clear();
 
             // OPEN CONNECTION
             con.Open();
@@ -189,6 +195,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void changeRoomSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // OPEN CONNECTION
             con.Open();
 
             data = "SELECT * FROM Rooms INNER JOIN Reservations " +
@@ -204,7 +211,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     while (reader.Read())
                     {
                         idRoom = Convert.ToInt32(reader["id_room"]);
-                        nRoom = Convert.ToInt32(reader["n_room"]);
                     }
                 }
             }
@@ -214,71 +220,45 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             using(SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@nRoom", changeRoomComboBox.SelectedValue);
-                cmd.ExecuteNonQuery();
             }
 
             data = "UPDATE Rooms SET available = 1 WHERE n_room = @nRoom";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@nRoom", nRoom);
-                cmd.ExecuteNonQuery();
+                cmd.Parameters.AddWithValue("@nRoom", nRoomTxtBox.Text);
             }
 
+<<<<<<< HEAD
             data = "UPDATE Reservations SET Reservations.id_room = @idRoom " +
                 "INNER JOIN Rooms ON Rooms.id_room = Reservations.id_room WHERE Rooms.nRoom = @nRoom";8ssss
+=======
+            data = "SELECT id_room FROM Rooms WHERE n_room = @nRoom";
+
+            using(SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@nRoom", changeRoomComboBox.SelectedValue);
+
+                idRoom = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+
+            data = "UPDATE Reservations SET id_room = @idRoom FROM Reservations WHERE id_reservation = @idReservation";
+>>>>>>> a6ade8a276bf6ade29165ecf750f859342b12edc
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@nRoom", nRoom);
                 cmd.Parameters.AddWithValue("@idRoom", idRoom);
-
-                cmd.ExecuteNonQuery();
+                cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
             }
 
             // CLOSE CONNECTION
             con.Close();
 
+            nRoomTxtBox.Text = changeRoomComboBox.SelectedValue.ToString();
 
-            /*
-            data = "SELECT n_room FROM Rooms INNER JOIN Reservations ON Rooms.id_room = Reservations.id_room " +
-                "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @user";
+            changeRoomComboBox.Visibility = Visibility.Collapsed;
 
-            using (SqlCommand cmd = new SqlCommand(data, con))
-            {
-                cmd.Parameters.AddWithValue("@user", client_id);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        nRoom = reader["n_room"].ToString();
-                    }
-                }
-            } 
-
-            
-            // SQL QUERY
-            data = "UPDATE Reservations SET id_room = @idRoom FROM Rooms INNER JOIN Reservations " +
-                    "ON Rooms.id_room = Reservations.id_room INNER JOIN Users " +
-                    "ON Reservations.id_reservation = Users.id_reservation WHERE Users.username = @user AND Rooms.n_room = @nRoom";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
-            {
-                cmd.Parameters.AddWithValue("@user", client_id);
-                cmd.Parameters.AddWithValue("@nRoom", changeRoomComboBox.SelectedValue);
-            }
-
-            data = "UPDATE Rooms SET available = 0 FROM Rooms INNER JOIN Reservations " +
-                "ON Rooms.id_room = Reservations.id_room INNER JOIN Users " +
-                "ON Reservations.id_reservation = Users.id_reservation WHERE Users.username = @user AND Rooms.n_room = @nRoom";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
-            {
-                cmd.Parameters.AddWithValue("@user", client_id);
-                cmd.Parameters.AddWithValue("@nRoom", nRoom);
-            }
-            */
+            changeRoomComboBox.Items.Clear();
         }
     }
 }

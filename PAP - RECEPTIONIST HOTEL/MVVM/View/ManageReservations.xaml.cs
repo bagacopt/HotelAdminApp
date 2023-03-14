@@ -226,7 +226,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             }
 
             data = "UPDATE Reservations SET Reservations.id_room = @idRoom " +
-                "INNER JOIN Rooms ON Rooms.id_room = Reservations.id_room WHERE Rooms.nRoom = @nRoom";
+                "INNER JOIN Rooms ON Rooms.id_room = Reservations.id_room WHERE Rooms.nRoom = @nRoom";8ssss
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {

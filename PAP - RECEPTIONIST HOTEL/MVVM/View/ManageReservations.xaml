@@ -220,7 +220,8 @@
                 <ComboBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"
                           Margin="0,10,0,0"
                           x:Name="changeRoomComboBox"
-                          Visibility="Hidden" 
+                          Visibility="Hidden"
+                          IsEnabled="False"
                           SelectionChanged="changeRoomSelectionChanged">
                     
                 </ComboBox>

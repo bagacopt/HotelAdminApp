@@ -9,7 +9,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
     class MainViewModel : ObservableObject
     {
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
         string data;
@@ -101,12 +101,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
                 if (typeUser == 1)
                 {
                     CurrentView = ControlPanelVM;
-                    return;
                 }
                 else
                 {
                     CurrentView = AdminControlPanelVM;
-                    return;
                 }
             });
 

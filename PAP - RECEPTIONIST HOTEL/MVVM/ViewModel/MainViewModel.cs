@@ -9,11 +9,12 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
     class MainViewModel : ObservableObject
     {
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        readonly SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
-        string data;
-        int typeUser;
+        readonly string data;
+        readonly int typeUser;
+        private object _currentView;
 
         // ------------------------------------ RelayCommand ---------------------------------------- //
 
@@ -42,8 +43,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
         public ManageUsersViewModel ManageUsersVM { get; set; }
 
         // ----------------------------------- CurrentView ---------------------------------------- //
-
-        private object _currentView;
 
         public object CurrentView
         {

@@ -34,7 +34,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
         string data, client_id;
@@ -123,7 +123,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     }
                 }
             }
-            lastIDRoom = Convert.ToInt32(nRoomTxtBox.Text);
 
             // SELECT check-in AND check-out OF TABLE Reservations
             data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | HH:mm') AS 'check-in'," +
@@ -186,68 +185,78 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // OPEN CONNECTION
             con.Open();
 
-            // SELECT ID ROOM OF Rooms
-            data = "SELECT id_room FROM Rooms WHERE n_room = @nRoom";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
+            try
             {
-                cmd.Parameters.AddWithValue("@nRoom", changeRoomComboBox.SelectedValue);
+                // SELECT ID ROOM OF Rooms
+                data = "SELECT id_room FROM Rooms WHERE n_room = @nRoom";
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand(data, con))
                 {
-                    while (reader.Read())
+                    cmd.Parameters.AddWithValue("@nRoom", changeRoomComboBox.SelectedValue);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        idRoom = Convert.ToInt32(reader["id_room"]);
+                        while (reader.Read())
+                        {
+                            idRoom = Convert.ToInt32(reader["id_room"]);
+                        }
                     }
                 }
-            }
 
-            // UPDATE AVAILABLE OF Rooms TO 0
-            data = "UPDATE Rooms SET available = 0 WHERE n_room = @nRoom";
+                // lastIDRoom VALUE
+                data = "SELECT n_room FROM Rooms INNER JOIN Reservations " +
+                    "ON Rooms.id_room = Reservations.id_room INNER JOIN Users " +
+                    "ON Reservations.id_reservation = Users.id_reservation WHERE username = @user";
 
-            using (SqlCommand cmd = new SqlCommand(data, con))
-            {
-                cmd.Parameters.AddWithValue("@nRoom", Convert.ToInt32(changeRoomComboBox.SelectedValue));
-
-                cmd.ExecuteNonQuery();
-            }
-
-            // UPDATE AVAILABLE OF Rooms TO 1
-            data = "UPDATE Rooms SET available = 1 WHERE n_room = @room";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
-            {
-                cmd.Parameters.AddWithValue("@room", lastIDRoom);
-                cmd.ExecuteNonQuery();
-            }
-
-            // UPDATE id_room OF TABLE Reservations
-            data = "UPDATE Reservations SET id_room = @idRoom FROM Reservations WHERE id_reservation = @idReservation";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
-            {
-                cmd.Parameters.AddWithValue("@idRoom", idRoom);
-                cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
-
-                cmd.ExecuteNonQuery();
-            }
-
-            // UPDATE ON THE nRoomTxtBox
-            data = "SELECT n_room FROM Rooms INNER JOIN Reservations " +
-                "ON Rooms.id_room = Reservations.id_room INNER JOIN Users " +
-                "ON Reservations.id_reservation = Users.id_reservation WHERE username = @user";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
-            {
-                cmd.Parameters.AddWithValue("@user", client_id);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand(data, con))
                 {
-                    while (reader.Read())
+                    cmd.Parameters.AddWithValue("@user", client_id);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        nRoomTxtBox.Text = reader["n_room"].ToString();
+                        while (reader.Read())
+                        {
+                            lastIDRoom = Convert.ToInt32(reader["n_room"]);
+                        }
                     }
                 }
+
+                // UPDATE AVAILABLE OF Rooms TO 0
+                data = "UPDATE Rooms SET available = 0 WHERE n_room = @nRoom";
+
+                using (SqlCommand cmd = new SqlCommand(data, con))
+                {
+                    cmd.Parameters.AddWithValue("@nRoom", Convert.ToInt32(changeRoomComboBox.SelectedValue));
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                // UPDATE AVAILABLE OF Rooms TO 1
+                data = "UPDATE Rooms SET available = 1 WHERE n_room = @room";
+
+                using (SqlCommand cmd = new SqlCommand(data, con))
+                {
+                    cmd.Parameters.AddWithValue("@room", lastIDRoom);
+                    cmd.ExecuteNonQuery();
+                }
+
+                // UPDATE id_room OF TABLE Reservations
+                data = "UPDATE Reservations SET id_room = @idRoom FROM Reservations WHERE id_reservation = @idReservation";
+
+                using (SqlCommand cmd = new SqlCommand(data, con))
+                {
+                    cmd.Parameters.AddWithValue("@idRoom", idRoom);
+                    cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                // UPDATE VALUE OF nRoomTxtBox 
+                nRoomTxtBox.Text = changeRoomComboBox.SelectedValue.ToString();
+            }
+            catch (SqlException)
+            {
+                System.Windows.MessageBox.Show("Não clicou em qualquer valor da combo box... Insira novamente", "Aviso");
             }
 
             // CLOSE CONNECTION

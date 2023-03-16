@@ -9,7 +9,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
     class MainViewModel : ObservableObject
     {
         // CONNECTION
-        readonly SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
+        readonly SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
         readonly string data;

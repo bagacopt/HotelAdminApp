@@ -38,13 +38,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         // VARIABLES
         string data, client_id;
-        int idRoom, lastIDRoom, x;
-
-
-        public void ClearComboBox()
-        {
-            changeRoomComboBox.Items.Clear();
-        }
+        int idRoom, lastIDRoom;
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
         {
@@ -154,7 +148,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)
         {
-            ClearComboBox();
+            changeRoomComboBox.Items.Clear();
             changeRoomComboBox.Visibility = Visibility.Visible;
             ChangeRoomButton.IsEnabled = false;
 
@@ -207,7 +201,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 cmd.Parameters.AddWithValue("@nRoom", Convert.ToInt32(changeRoomComboBox.SelectedValue));
 
                 cmd.ExecuteNonQuery();
-                x = Convert.ToInt32(cmd.ExecuteScalar());
             }
 
             data = "UPDATE Rooms SET available = 1 WHERE n_room = @room";
@@ -216,7 +209,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             {
                 cmd.Parameters.AddWithValue("@room", lastIDRoom);
                 cmd.ExecuteNonQuery();
-                x = Convert.ToInt32(cmd.ExecuteScalar());
             }
 
             data = "UPDATE Reservations SET id_room = @idRoom FROM Reservations WHERE id_reservation = @idReservation";
@@ -227,7 +219,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
 
                 cmd.ExecuteNonQuery();
-                x = Convert.ToInt32(cmd.ExecuteNonQuery());
             }
 
             // CLOSE CONNECTION

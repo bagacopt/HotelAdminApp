@@ -62,8 +62,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
             }
 
-            // GET CLIENTS
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Users WHERE type_user = 1", con);
+            // // INSERT username CONTENT IN reservationComboBox COMBO BOX
+            SqlDataAdapter da = new SqlDataAdapter("SELECT username FROM Users WHERE type_user = 1", con);
 
             DataTable dt = new DataTable();
 
@@ -71,7 +71,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                reservationcombo.Items.Add(i + 1 + " - " + dt.Rows[i]["username"]);
+                reservationComboBox.Items.Add(i + 1 + " - " + dt.Rows[i]["username"]);
             }
 
             // CLOSE CONNECTION
@@ -83,12 +83,15 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // OPEN CONNECTION
             con.Open();
 
-            // GET ID OF THE RESERVATION AND THE FULL NAME OF THE CLIENT
+            // SELECT id_reservation AND fullname OF TABLE Users
             data = "SELECT * FROM Users WHERE type_user = 1 AND username = @user";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                string[] temp_str = reservationcombo.SelectedValue.ToString().Split('-');
+                // DIVIDES THE reservationComboBox VALUES
+                string[] temp_str = reservationComboBox.SelectedValue.ToString().Split('-');
+
+                // GET CLIENT NAME OF THE reservationComboBox VALUE
                 client_id = temp_str[1].Trim();
 
                 cmd.Parameters.AddWithValue("@user", client_id);
@@ -103,8 +106,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
             }
 
-            // GET NUMBER OF THE ROOM
-            data = "SELECT * FROM Rooms INNER JOIN Reservations " +
+            // SELECT n_room OF TABLE Rooms
+            data = "SELECT n_room FROM Rooms INNER JOIN Reservations " +
                 "ON Rooms.id_room = Reservations.id_room INNER JOIN Users ON " +
                 "Reservations.id_reservation = Users.id_reservation WHERE username = @user";
 
@@ -122,7 +125,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             }
             lastIDRoom = Convert.ToInt32(nRoomTxtBox.Text);
 
-            // GET CHECK-IN AND CHECK-OUT OF THE RESERVATION
+            // SELECT check-in AND check-out OF TABLE Reservations
             data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | HH:mm') AS 'check-in'," +
                 "FORMAT(Reservations.[check-out], 'dd/MM/yy | HH:mm') AS 'check-out'" +
                 "FROM Reservations INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation " +
@@ -148,16 +151,20 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)
         {
+            // CLEAR OF ITEMS OF THE COMBO BOX
             changeRoomComboBox.Items.Clear();
+
+            // DESIGN AND VISIBILITY CHANGES
             changeRoomComboBox.Visibility = Visibility.Visible;
             ChangeRoomButton.IsEnabled = false;
 
             // OPEN CONNECTION
             con.Open();
 
-            // SQL QUERY
+            // SELECT n_room OF TABLE Rooms
             data = "SELECT n_room FROM Rooms WHERE available = 1";
 
+            // INSERT n_room CONTENT IN changeRoomComboBox
             using (SqlDataAdapter da = new SqlDataAdapter(data, con))
             {
                 DataTable dt = new DataTable();
@@ -179,6 +186,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // OPEN CONNECTION
             con.Open();
 
+            // SELECT ID ROOM OF Rooms
             data = "SELECT id_room FROM Rooms WHERE n_room = @nRoom";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
@@ -194,6 +202,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
             }
 
+            // UPDATE AVAILABLE OF Rooms TO 0
             data = "UPDATE Rooms SET available = 0 WHERE n_room = @nRoom";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
@@ -203,6 +212,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 cmd.ExecuteNonQuery();
             }
 
+            // UPDATE AVAILABLE OF Rooms TO 1
             data = "UPDATE Rooms SET available = 1 WHERE n_room = @room";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
@@ -211,6 +221,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 cmd.ExecuteNonQuery();
             }
 
+            // UPDATE id_room OF TABLE Reservations
             data = "UPDATE Reservations SET id_room = @idRoom FROM Reservations WHERE id_reservation = @idReservation";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
@@ -221,15 +232,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 cmd.ExecuteNonQuery();
             }
 
-            // CLOSE CONNECTION
-            con.Close();
-        }
-
-        private void ChangeRoomSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // OPEN CONNECTION
-            con.Open();
-
+            // UPDATE ON THE nRoomTxtBox
             data = "SELECT n_room FROM Rooms INNER JOIN Reservations " +
                 "ON Rooms.id_room = Reservations.id_room INNER JOIN Users " +
                 "ON Reservations.id_reservation = Users.id_reservation WHERE username = @user";
@@ -249,7 +252,11 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             // CLOSE CONNECTION
             con.Close();
+        }
 
+        private void ChangeRoomSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // DESIGN AND VISIBILITY CHANGES
             ChangeRoomButton.IsEnabled = true;
             changeRoomComboBox.Visibility = Visibility.Collapsed;
         }

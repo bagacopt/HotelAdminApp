@@ -232,7 +232,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             // CLOSE CONNECTION
             con.Close();
-            
         }
 
         private void ChangeRoomSelectionChanged(object sender, SelectionChangedEventArgs e)

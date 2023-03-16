@@ -12,7 +12,8 @@
         Background="Transparent"
         AllowsTransparency="True"
         MouseLeftButtonDown="Window_MouseDown"
-        KeyDown="PressKey">
+        KeyDown="PressKey"
+        Loaded="Login_Loaded">
     <Window.Resources>
         <Style TargetType="{x:Type CheckBox}" x:Key="hidePassCheckBox">
             <Setter Property="Template">

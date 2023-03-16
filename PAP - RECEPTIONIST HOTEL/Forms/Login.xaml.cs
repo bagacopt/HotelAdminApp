@@ -18,7 +18,7 @@ namespace PAP___RECEPTIONIST_HOTEL
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-LQBQ1HM;Initial Catalog=reservas_PAP;Integrated Security=True");
 
         // VARIABLES
         string data;
@@ -86,7 +86,7 @@ namespace PAP___RECEPTIONIST_HOTEL
 
                     if (count > 0)
                     {
-                        // GOES TO FIRST PART OF THE APPLICATION
+                        // GOES T5O FIRST PART OF THE APPLICATION
                         MainWindow program = new MainWindow();
                         program.Show();
                         this.Close();
@@ -139,6 +139,11 @@ namespace PAP___RECEPTIONIST_HOTEL
             passwordHidden.Visibility = Visibility.Visible;
             passwordShow.Visibility = Visibility.Hidden;
             passwordHidden.Password = passwordShow.Text;
+        }
+
+        private void Login_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtUser.Focus();
         }
     }
 }

@@ -34,10 +34,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection("Data Source=BAGACINHO;Initial Catalog=reservas_PAP;Integrated Security=True");
+        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         // VARIABLES
-        string data, client_id;
+        string data, clientName, checkinjm;
         int idRoom, lastIDRoom;
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
@@ -80,6 +80,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void ComboBoxSelectClient(object sender, SelectionChangedEventArgs e)
         {
+            // changeDateDatePicker.BlackoutDates.Add(new DateTime());
             // OPEN CONNECTION
             con.Open();
 
@@ -92,9 +93,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 string[] temp_str = reservationComboBox.SelectedValue.ToString().Split('-');
 
                 // GET CLIENT NAME OF THE reservationComboBox VALUE
-                client_id = temp_str[1].Trim();
+                clientName = temp_str[1].Trim();
 
-                cmd.Parameters.AddWithValue("@user", client_id);
+                cmd.Parameters.AddWithValue("@user", clientName);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -113,7 +114,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@user", client_id);
+                cmd.Parameters.AddWithValue("@user", clientName);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -132,7 +133,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@user", client_id);
+                cmd.Parameters.AddWithValue("@user", clientName);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -146,6 +147,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             // CLOSE CONNECTION
             con.Close();
+
+            string[] temp_date = checkinTxtBox.Text.ToString().Split('/');
+            checkin = temp_date[0].Trim();
         }
 
         private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)
@@ -210,7 +214,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
                 using (SqlCommand cmd = new SqlCommand(data, con))
                 {
-                    cmd.Parameters.AddWithValue("@user", client_id);
+                    cmd.Parameters.AddWithValue("@user", clientName);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -227,7 +231,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 using (SqlCommand cmd = new SqlCommand(data, con))
                 {
                     cmd.Parameters.AddWithValue("@nRoom", Convert.ToInt32(changeRoomComboBox.SelectedValue));
-
                     cmd.ExecuteNonQuery();
                 }
 
@@ -247,7 +250,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 {
                     cmd.Parameters.AddWithValue("@idRoom", idRoom);
                     cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
-
                     cmd.ExecuteNonQuery();
                 }
 
@@ -267,7 +269,21 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         {
             // DESIGN AND VISIBILITY CHANGES
             ChangeRoomButton.IsEnabled = true;
-            changeRoomComboBox.Visibility = Visibility.Collapsed;
+            changeRoomComboBox.Visibility = Visibility.Hidden;
+        }
+
+
+        // POSTPONE BUTTON AND EVENTS IT DOES
+
+
+        private void PostPoneStayButton_Click(object sender, RoutedEventArgs e)
+        {
+            changeDateDatePicker.Visibility = Visibility.Visible;
+        }
+
+        private void ChangeReservationDate(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

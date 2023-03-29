@@ -229,7 +229,7 @@
                             Visibility="Visible"
                             />
 
-                <Calendar Width="180" Height="160"
+                <Calendar x:Name="calendarPostPone" Width="180" Height="160"
                           VerticalAlignment="Top"
                           Margin="-167,-5,0,0" 
                           SelectedDatesChanged="ChangeReservationDate"

@@ -37,7 +37,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         // VARIABLES
-        string data, clientName, checkinjm;
+        string data, clientName, checkin, checkout;
         int idRoom, lastIDRoom;
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
@@ -148,8 +148,27 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // CLOSE CONNECTION
             con.Close();
 
+
+            DateTime checkin = Convert.ToDateTime(checkinTxtBox.Text);
+            DateTime checkout = Convert.ToDateTime(checkoutTxtBox.Text);
+
+            List<DateTime> dateStart = new List<DateTime>();
+
+
+
+
+            /*
             string[] temp_date = checkinTxtBox.Text.ToString().Split('/');
             checkin = temp_date[0].Trim();
+
+            temp_date = checkoutTxtBox.Text.ToString().Split('/');
+            checkout = temp_date[0].Trim();
+
+            for (int i = Convert.ToInt32(checkin); i <= Convert.ToInt32(checkout); i++)
+            {
+                calendarPostPone.BlackoutDates.Add(calendarPostPone(i));
+            }
+            */
         }
 
         private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)

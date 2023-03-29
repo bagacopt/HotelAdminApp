@@ -221,7 +221,15 @@
                           Margin="0,10,0,0"
                           x:Name="changeRoomComboBox"
                           Visibility="Hidden"
+<<<<<<< HEAD
+                          SelectionChanged="ChangeRoomSelectionChanged" DropDownClosed="ClosedDropDownChangeNRoom">
+                </ComboBox>
+
+                <DatePicker></DatePicker>
+            </StackPanel>
+=======
                           SelectionChanged="ChangeRoomSelectionChanged" DropDownClosed="ClosedDropDownChangeNRoom" />
+>>>>>>> 3259bd9b83fa805cafb6c61d26e54ec195c1f321
 
                 <DatePicker x:Name="changeDateDatePicker" Width="150" Height="25"
                             VerticalAlignment="Top"

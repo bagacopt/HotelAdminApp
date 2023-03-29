@@ -223,6 +223,8 @@
                           Visibility="Hidden"
                           SelectionChanged="ChangeRoomSelectionChanged" DropDownClosed="ClosedDropDownChangeNRoom">
                 </ComboBox>
+
+                <DatePicker></DatePicker>
             </StackPanel>
 
         </StackPanel>

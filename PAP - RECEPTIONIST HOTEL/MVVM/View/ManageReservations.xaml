@@ -224,18 +224,10 @@
                           SelectionChanged="ChangeRoomSelectionChanged" DropDownClosed="ClosedDropDownChangeNRoom">
                 </ComboBox>
 
-                <DatePicker></DatePicker>
-            </StackPanel>
-            <StackPanel>
-                <DatePicker x:Name="changeDateDatePicker" Width="150" Height="25"
-                            VerticalAlignment="Top"
-                            Margin="65,10,0,0"
-                            Visibility="Visible"
-                            />
-
                 <Calendar x:Name="calendarPostPone" Width="180" Height="160"
                           VerticalAlignment="Top"
-                          Margin="-167,-5,0,0" 
+                          Margin="45,0,0,0" 
+                          Visibility="Hidden"
                           SelectedDatesChanged="ChangeReservationDate"
                           />
             </StackPanel>

@@ -226,7 +226,8 @@
 
                 <Calendar x:Name="calendarPostPone" Width="180" Height="160"
                           VerticalAlignment="Top"
-                          Margin="-167,-5,0,0" 
+                          Margin="45,0,0,0" 
+                          Visibility="Hidden"
                           SelectedDatesChanged="ChangeReservationDate"
                           />
             </StackPanel>

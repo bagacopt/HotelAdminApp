@@ -39,6 +39,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         // VARIABLES
         string data, clientName, checkin, checkout;
         int idRoom, lastIDRoom;
+        string[] checkin_temp, checkout_temp, clientName_temp;
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
         {
@@ -90,10 +91,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 // DIVIDES THE reservationComboBox VALUES
-                string[] temp_str = reservationComboBox.SelectedValue.ToString().Split('-');
+                clientName_temp = reservationComboBox.SelectedValue.ToString().Split('-');
 
                 // GET CLIENT NAME OF THE reservationComboBox VALUE
-                clientName = temp_str[1].Trim();
+                clientName = clientName_temp[1].Trim();
 
                 cmd.Parameters.AddWithValue("@user", clientName);
 
@@ -126,8 +127,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             }
 
             // SELECT check-in AND check-out OF TABLE Reservations
-            data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | HH:mm') AS 'check-in'," +
-                "FORMAT(Reservations.[check-out], 'dd/MM/yy | HH:mm') AS 'check-out'" +
+            data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yyyy | HH:mm') AS 'check-in'," +
+                "FORMAT(Reservations.[check-out], 'dd/MM/yyyy | HH:mm') AS 'check-out'" +
                 "FROM Reservations INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation " +
                 "WHERE username = @user";
 
@@ -148,27 +149,14 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // CLOSE CONNECTION
             con.Close();
 
+            checkin_temp = checkinTxtBox.Text.ToString().Split('/', '|');
+            checkout_temp = checkoutTxtBox.Text.ToString().Split('/', '|');
 
-            DateTime checkin = Convert.ToDateTime(checkinTxtBox.Text);
-            DateTime checkout = Convert.ToDateTime(checkoutTxtBox.Text);
+            DateTime checkin = new DateTime(Convert.ToInt32(checkin_temp[2].Trim()), Convert.ToInt32(checkin_temp[1].Trim()), Convert.ToInt32(checkin_temp[0].Trim()));
+            DateTime checkout = new DateTime(Convert.ToInt32(checkout_temp[2].Trim()), Convert.ToInt32(checkout_temp[1].Trim()), Convert.ToInt32(checkout_temp[0].Trim()), 14, 0, 0);
 
-            List<DateTime> dateStart = new List<DateTime>();
-
-
-
-
-            /*
-            string[] temp_date = checkinTxtBox.Text.ToString().Split('/');
-            checkin = temp_date[0].Trim();
-
-            temp_date = checkoutTxtBox.Text.ToString().Split('/');
-            checkout = temp_date[0].Trim();
-
-            for (int i = Convert.ToInt32(checkin); i <= Convert.ToInt32(checkout); i++)
-            {
-                calendarPostPone.BlackoutDates.Add(calendarPostPone(i));
-            }
-            */
+            calendarPostPone.BlackoutDates.Add(new CalendarDateRange(checkin.Date, checkout.Date));
+            
         }
 
         private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)
@@ -297,7 +285,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void PostPoneStayButton_Click(object sender, RoutedEventArgs e)
         {
-            changeDateDatePicker.Visibility = Visibility.Visible;
+            calendarPostPone.Visibility = Visibility.Visible;
         }
 
         private void ChangeReservationDate(object sender, SelectionChangedEventArgs e)

@@ -39,8 +39,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         // VARIABLES
         string data, clientName;
         int idRoom, lastIDRoom;
-        string[] checkin_temp, checkout_temp, clientName_temp;
-        DateTime checkin, checkout;
+        string[] checkin_temp, checkout_temp, clientName_temp, changeDate_temp;
+        DateTime checkin, checkout, showDate;
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
         {
@@ -154,13 +154,15 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             checkout_temp = checkoutTxtBox.Text.ToString().Split('/', '|');
 
             checkin = new DateTime(Convert.ToInt32(checkin_temp[2].Trim()), 
-                Convert.ToInt32(checkin_temp[1].Trim()), Convert.ToInt32(checkin_temp[0].Trim()));
+                Convert.ToInt32(checkin_temp[1].Trim()), 
+                Convert.ToInt32(checkin_temp[0].Trim()),
+                14, 0, 0);
             checkout = new DateTime(Convert.ToInt32(checkout_temp[2].Trim()), 
-                Convert.ToInt32(checkout_temp[1].Trim()), Convert.ToInt32(checkout_temp[0].Trim()), 
+                Convert.ToInt32(checkout_temp[1].Trim()), 
+                Convert.ToInt32(checkout_temp[0].Trim()), 
                 12, 0, 0);
 
             calendarPostPone.BlackoutDates.Add(new CalendarDateRange(checkin.Date, checkout.Date));
-            Console.WriteLine(checkout);
         }
 
         private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)
@@ -305,9 +307,45 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 cmd.ExecuteNonQuery();
             }
 
+            changeDate_temp = calendarPostPone.SelectedDate.Value.ToString("dd/MM/yyyy").Split(' ');
+
+            showDate = new DateTime(Convert.ToInt32(changeDate_temp[2].Trim()), 
+                Convert.ToInt32(changeDate_temp[1].Trim()), 
+                Convert.ToInt32(changeDate_temp[0].Trim()),
+                12, 0, 0);
+
+            Console.WriteLine(showDate.ToString("dd/MM/yyyy | HH:mm"));
+
+
+
+
+
+            /*changeDate_temp = calendarPostPone.SelectedDate.ToString().Split(' ', ',');
+
+            string x = changeDate_temp[3].Trim() + changeDate_temp[0].Trim() + changeDate_temp[1].Trim();
+
+            showDate = Convert.ToDateTime(x);
+
+
+            //showDate = DateTime.ParseExact(x, "f", null);
+
+            Console.WriteLine(showDate);
+
+            /*showDate = new DateTime(Convert.ToInt32(changeDate_temp[3].Trim()), 
+                Convert.ToInt32(changeDate_temp[0].Trim()), 
+                Convert.ToInt32(changeDate_temp[1].Trim()), 
+                12, 0, 0); 
+
+
+            Console.WriteLine(changeDate_temp[3].Trim());
+            Console.WriteLine(changeDate_temp[0].Trim());
+            Console.WriteLine(changeDate_temp[1].Trim()); 
+
+            // checkoutTxtBox.Text = showDate.ToString(); */
+
             con.Close();
 
-            checkoutTxtBox.Text = checkout.ToString();
+            calendarPostPone.Visibility= Visibility.Hidden;
         }
     }
 }

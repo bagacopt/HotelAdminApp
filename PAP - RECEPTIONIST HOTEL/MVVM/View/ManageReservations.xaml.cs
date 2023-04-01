@@ -37,9 +37,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         // VARIABLES
-        string data, clientName, checkin, checkout;
+        string data, clientName;
         int idRoom, lastIDRoom;
         string[] checkin_temp, checkout_temp, clientName_temp;
+        DateTime checkin, checkout;
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
         {
@@ -152,11 +153,14 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             checkin_temp = checkinTxtBox.Text.ToString().Split('/', '|');
             checkout_temp = checkoutTxtBox.Text.ToString().Split('/', '|');
 
-            DateTime checkin = new DateTime(Convert.ToInt32(checkin_temp[2].Trim()), Convert.ToInt32(checkin_temp[1].Trim()), Convert.ToInt32(checkin_temp[0].Trim()));
-            DateTime checkout = new DateTime(Convert.ToInt32(checkout_temp[2].Trim()), Convert.ToInt32(checkout_temp[1].Trim()), Convert.ToInt32(checkout_temp[0].Trim()), 14, 0, 0);
+            checkin = new DateTime(Convert.ToInt32(checkin_temp[2].Trim()), 
+                Convert.ToInt32(checkin_temp[1].Trim()), Convert.ToInt32(checkin_temp[0].Trim()));
+            checkout = new DateTime(Convert.ToInt32(checkout_temp[2].Trim()), 
+                Convert.ToInt32(checkout_temp[1].Trim()), Convert.ToInt32(checkout_temp[0].Trim()), 
+                12, 0, 0);
 
             calendarPostPone.BlackoutDates.Add(new CalendarDateRange(checkin.Date, checkout.Date));
-            
+            Console.WriteLine(checkout);
         }
 
         private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)
@@ -290,7 +294,20 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void ChangeReservationDate(object sender, SelectionChangedEventArgs e)
         {
+            con.Open();
+
+            data = "UPDATE Reservations SET [check-out] = @checkout FROM Reservations WHERE id_reservation = @idReservation ";
             
+            using(SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@checkout", calendarPostPone.SelectedDate);
+                cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
+                cmd.ExecuteNonQuery();
+            }
+
+            con.Close();
+
+            checkoutTxtBox.Text = checkout.ToString();
         }
     }
 }

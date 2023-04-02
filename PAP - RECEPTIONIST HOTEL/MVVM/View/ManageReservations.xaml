@@ -48,7 +48,6 @@
                    Margin="0,20,0,-5"
                    Foreground="White"
                    HorizontalAlignment="Center" />
-
             <TextBox x:Name="idReservaTxtBox"
                  FontSize="18"
                  FontWeight="Medium"
@@ -63,13 +62,15 @@
                  Margin="20,2,20,0"
                  IsReadOnly="True"
                  IsTabStop="False" />
-
+            
+            <!-- Escolher reserva -->
             <Label Content="Reserva a gerir:"
-                   Margin="0,20,0,-10"
                    Foreground="White"
+                   Margin="0,20,0,-10"
                    HorizontalAlignment="Center" />
-
-            <ComboBox Margin="0,20,0,0" x:Name="reservationComboBox" SelectionChanged="ComboBoxSelectClient"/>
+            <ComboBox x:Name="reservationComboBox"
+                      Margin="0,20,0,0"
+                      SelectionChanged="ComboBoxSelectClient" />
         </StackPanel>
 
         <!-- Divisão das informações com os dados da reserva -->
@@ -94,13 +95,13 @@
                    Width="507" Height="4" />
 
             <StackPanel Orientation="Horizontal">
+                
                 <!-- Nome do cliente -->
                 <Label Content="Nome do cliente:"
                        Margin="0,20,0,-5"
                        Foreground="White"
                        FontSize="18"
                        FontFamily="Montserrat" />
-
                 <TextBox x:Name="nClienteTxtBox"
                          FontSize="18"
                          Width="340"
@@ -120,14 +121,13 @@
                          IsEnabled="False" />
             </StackPanel>
 
-            <!-- Serviços selecionados pelos utilizadores -->
+            <!-- ID da reserva dos utilizadores -->
             <StackPanel Orientation="Horizontal" Margin="0,-20,0,0" >
                 <Label Content="ID da reserva:"
                        Margin="0,30,0,0"
                        Foreground="White"
                        FontSize="18"
                        FontFamily="Montserrat" />
-
                 <TextBox x:Name="idReservationTxtBox"
                          Width="40" Height="20"
                          FontSize="18"
@@ -137,9 +137,10 @@
                          IsEnabled="False"
                          Background="Transparent"
                          BorderThickness="0,0,0,1"
-                         Margin="0,25,0,0"/>
+                         Margin="0,25,0,0" />
             </StackPanel>
 
+            <!-- Número do quarto da reserva -->
             <StackPanel Orientation="Horizontal" Margin="0,-20,0,0" >
                 <Label Content="Número do quarto:"
                    Margin="0,30,0,0"
@@ -155,9 +156,10 @@
                          Background="Transparent"
                          BorderThickness="0,0,0,1"
                          IsEnabled="False"
-                         Margin="0,25,0,0"/>
+                         Margin="0,25,0,0" />
             </StackPanel>
 
+            <!-- Data do check-in da reserva -->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Check-in:"
                        Margin="0,10,0,0"
@@ -183,12 +185,13 @@
                          IsEnabled="False" />
             </StackPanel>
 
+            <!-- Data do check-out da reserva -->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Check-out:"
-                   Margin="0,10,0,0"
-                   Foreground="White"
-                   FontSize="18"
-                   FontFamily="Montserrat" />
+                       Margin="0,10,0,0"
+                       Foreground="White"
+                       FontSize="18"
+                       FontFamily="Montserrat" />
                 <TextBox x:Name="checkoutTxtBox"
                          Width="150"
                          FontSize="18"
@@ -208,12 +211,13 @@
                          IsEnabled="False" />
             </StackPanel>
             
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <!-- Butões de eventos de gestão da reserva -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                 <Button x:Name="ChangeRoomButton" 
                         Width="130" Height="60" 
                         Margin="-30,30,0,0"
                         IsEnabled="False"
-                        Click="ChangeNumberRoom_Click">
+                        Click="ChangeNumberRoom_Click" >
                     <TextBlock Text="Mudar número &#xa;do quarto" TextAlignment="Center" />
                 </Button>
                 <Button x:Name="PostPoneButton"
@@ -221,31 +225,39 @@
                         Margin="60,30,0,0"
                         Content="Adiar estadia"
                         IsEnabled="False"
-                        Click="PostPoneStayButton_Click"/>
-                <Button x:Name="AntecipateCheckoutButton"
+                        Visibility="Visible"
+                        Click="PostPoneStayButton_Click" />
+
+                <Button x:Name="returnDateButton" 
                         Width="130" Height="60"
                         Margin="60,30,0,0"
+                        Visibility="Collapsed"
+                        Content="Retornar data" 
+                        Click="ReturnDateButton_Click" />
+
+                <Button x:Name="AntecipateCheckoutButton"
+                        Width="130" Height="60"
+                        Margin="60,30,-20,0"
                         Content="Antecipar check-out"
                         IsEnabled="False"
-                        Click="AntecipateCheckout_Click"/>
+                        Click="AntecipateCheckout_Click" />
             </StackPanel>
 
+            <!-- Dependendo do evento pressionado mostra diferentes objetos -->
             <StackPanel Width="510" Height="200" Margin="0,10,0,0" Orientation="Horizontal">
                 <ComboBox HorizontalAlignment="Left" Width="100" Height="20" VerticalAlignment="Top"
                           Margin="0,10,0,0"
                           x:Name="changeRoomComboBox"
                           Visibility="Hidden"
-                          SelectionChanged="ChangeRoomSelectionChanged" DropDownClosed="ClosedDropDownChangeNRoom">
-                </ComboBox>
+                          SelectionChanged="ChangeRoomSelectionChanged" 
+                          DropDownClosed="ClosedDropDownChangeNRoom" />
 
                 <Calendar x:Name="calendarPostPone" Width="180" Height="160"
                           VerticalAlignment="Top"
                           Margin="45,0,0,0" 
                           Visibility="Hidden"
-                          SelectedDatesChanged="ChangeReservationDate"
-                          />
+                          SelectedDatesChanged="ChangeReservationDate" />
             </StackPanel>
-            
         </StackPanel>
     </Grid>
 </UserControl>

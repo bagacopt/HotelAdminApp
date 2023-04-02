@@ -40,7 +40,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         string data, clientName;
         int idRoom, lastIDRoom;
         string[] checkin_temp, checkout_temp, clientName_temp, changeDate_temp;
-        DateTime checkin, checkout, showDate; 
+        DateTime checkin, checkout, showDate, lastDate;
 
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
         {
@@ -162,6 +162,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 Convert.ToInt32(checkout_temp[0].Trim()), 
                 12, 0, 0);
 
+            lastDate = checkout;
             calendarPostPone.BlackoutDates.Add(new CalendarDateRange(checkin.Date, checkout.Date));
             ChangeRoomButton.IsEnabled = true;
             PostPoneButton.IsEnabled = true;
@@ -290,8 +291,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
 
         // POSTPONE BUTTON AND EVENTS IT DOES
-
-
         private void PostPoneStayButton_Click(object sender, RoutedEventArgs e)
         {
             calendarPostPone.Visibility = Visibility.Visible;
@@ -299,13 +298,24 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void ChangeReservationDate(object sender, SelectionChangedEventArgs e)
         {
+            changeDate_temp = calendarPostPone.SelectedDate.Value.ToString("dd\\/MM\\/yyyy").Split('/');
+
+            showDate = new DateTime(Convert.ToInt32(changeDate_temp[2].Trim()),
+                Convert.ToInt32(changeDate_temp[1].Trim()),
+                Convert.ToInt32(changeDate_temp[0].Trim()),
+                12, 0, 0);
+
+            checkoutTxtBox.Text = showDate.ToString("dd\\/MM\\/yyyy | HH:mm");
+            calendarPostPone.Visibility = Visibility.Hidden;
+
+            // OPEN CONNECTION
             con.Open();
 
             data = "UPDATE Reservations SET [check-out] = @checkout FROM Reservations WHERE id_reservation = @idReservation";
             
             using(SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@checkout", calendarPostPone.SelectedDate);
+                cmd.Parameters.AddWithValue("@checkout", showDate);
                 cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
                 cmd.ExecuteNonQuery();
             }
@@ -313,18 +323,32 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // CLOSE CONNECTION
             con.Close();
 
-
-            changeDate_temp = calendarPostPone.SelectedDate.Value.ToString("dd\\/MM\\/yyyy").Split('/');
-
-            showDate = new DateTime(Convert.ToInt32(changeDate_temp[2].Trim()), 
-                Convert.ToInt32(changeDate_temp[1].Trim()), 
-                Convert.ToInt32(changeDate_temp[0].Trim()),
-                12, 0, 0);
-
-            checkoutTxtBox.Text = showDate.ToString("dd\\/MM\\/yyyy | HH:mm");
-            calendarPostPone.Visibility= Visibility.Hidden;
+            PostPoneButton.Visibility = Visibility.Collapsed;
+            returnDateButton.Visibility = Visibility.Visible;
         }
 
+        // RETURN THE DATES OF THE CHECK-OUT
+        private void ReturnDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            // OPEN CONNECTION
+            con.Open();
+
+            data = "UPDATE Reservations SET [check-out] = @checkout FROM Reservations WHERE id_reservation = @idReservation";
+
+            using (SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@checkout", lastDate);
+                cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
+                cmd.ExecuteNonQuery();
+            }
+
+            checkoutTxtBox.Text = lastDate.ToString("dd\\/MM\\/yyyy | HH:mm");
+            PostPoneButton.Visibility = Visibility.Visible;
+            returnDateButton.Visibility = Visibility.Collapsed;
+        }
+
+
+        // ANTECIPATE CHECKOUT BUTTON CLICK EVENT
         private void AntecipateCheckout_Click(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
@@ -337,6 +361,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
                 cmd.ExecuteNonQuery();
             }
-        }
+        }    
     }
 }

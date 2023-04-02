@@ -65,7 +65,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             }
 
             // // INSERT username CONTENT IN reservationComboBox COMBO BOX
-            SqlDataAdapter da = new SqlDataAdapter("SELECT username FROM Users WHERE type_user = 1", con);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT Users.username FROM Users " +
+                "INNER JOIN Reservations ON Users.id_reservation = Reservations.id_reservation " +
+                "WHERE Users.type_user = 1 AND Reservations.active = 1;", con);
 
             DataTable dt = new DataTable();
 
@@ -167,6 +169,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             ChangeRoomButton.IsEnabled = true;
             PostPoneButton.IsEnabled = true;
             AntecipateCheckoutButton.IsEnabled = true;
+            reservationComboBox.SelectionChanged -= ComboBoxSelectClient;
         }
 
         private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)
@@ -197,6 +200,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
             }
 
+            PostPoneButton.IsEnabled = false;
+            AntecipateCheckoutButton.IsEnabled= false;
             // CLOSE CONNECTION
             con.Close();
         }
@@ -276,6 +281,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             catch (SqlException)
             {
                 System.Windows.MessageBox.Show("Não clicou em qualquer valor da combo box... Insira novamente", "Aviso");
+                // REVER
+                changeRoomComboBox.SelectionChanged -= ClosedDropDownChangeNRoom;
             }
 
             // CLOSE CONNECTION
@@ -294,6 +301,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         private void PostPoneStayButton_Click(object sender, RoutedEventArgs e)
         {
             calendarPostPone.Visibility = Visibility.Visible;
+
+            ChangeRoomButton.IsEnabled = false;
+            AntecipateCheckoutButton.IsEnabled = false;
         }
 
         private void ChangeReservationDate(object sender, SelectionChangedEventArgs e)
@@ -342,6 +352,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 cmd.ExecuteNonQuery();
             }
 
+            // CLOSE CONNECTION
+            con.Close();
+
             checkoutTxtBox.Text = lastDate.ToString("dd\\/MM\\/yyyy | HH:mm");
             PostPoneButton.Visibility = Visibility.Visible;
             returnDateButton.Visibility = Visibility.Collapsed;
@@ -361,6 +374,35 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
                 cmd.ExecuteNonQuery();
             }
+
+            reservationComboBox.Items.Clear();
+
+            // // INSERT username CONTENT IN reservationComboBox COMBO BOX
+            SqlDataAdapter da = new SqlDataAdapter("SELECT Users.username FROM Users " +
+                "INNER JOIN Reservations ON Users.id_reservation = Reservations.id_reservation " +
+                "WHERE Users.type_user = 1 AND Reservations.active = 1;", con);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                reservationComboBox.Items.Add(i + 1 + " - " + dt.Rows[i]["username"]);
+            }
+
+            // CLOSE CONNECTION
+            con.Close();
+
+            // CLEAR FORM AND BIND ON THE COMBO BOX
+            reservationComboBox.SelectedItem = null;
+            nClienteTxtBox.Text = null;
+            idReservationTxtBox.Text = null;
+            nRoomTxtBox.Text = null;
+            checkinTxtBox.Text = null;
+            checkoutTxtBox.Text = null;
+
+            reservationComboBox.SelectionChanged += ComboBoxSelectClient;
         }    
     }
 }

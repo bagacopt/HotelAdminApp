@@ -247,6 +247,19 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     }
                 }
 
+                // UPDATE id_room OF TABLE Reservations
+                data = "UPDATE Reservations SET id_room = @idRoom FROM Reservations WHERE id_reservation = @idReservation";
+
+                using (SqlCommand cmd = new SqlCommand(data, con))
+                {
+                    cmd.Parameters.AddWithValue("@idRoom", idRoom);
+                    cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
+                    cmd.ExecuteNonQuery();
+                }
+
+                // UPDATE VALUE OF nRoomTxtBox 
+                nRoomTxtBox.Text = changeRoomComboBox.SelectedValue.ToString();
+
                 // UPDATE AVAILABLE OF Rooms TO 0
                 data = "UPDATE Rooms SET available = 0 WHERE n_room = @nRoom";
 
@@ -264,19 +277,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     cmd.Parameters.AddWithValue("@room", lastIDRoom);
                     cmd.ExecuteNonQuery();
                 }
-
-                // UPDATE id_room OF TABLE Reservations
-                data = "UPDATE Reservations SET id_room = @idRoom FROM Reservations WHERE id_reservation = @idReservation";
-
-                using (SqlCommand cmd = new SqlCommand(data, con))
-                {
-                    cmd.Parameters.AddWithValue("@idRoom", idRoom);
-                    cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
-                    cmd.ExecuteNonQuery();
-                }
-
-                // UPDATE VALUE OF nRoomTxtBox 
-                nRoomTxtBox.Text = changeRoomComboBox.SelectedValue.ToString();
             }
             catch (SqlException)
             {
@@ -294,6 +294,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // DESIGN AND VISIBILITY CHANGES
             ChangeRoomButton.IsEnabled = true;
             changeRoomComboBox.Visibility = Visibility.Hidden;
+            PostPoneButton.IsEnabled = true;
+            AntecipateCheckoutButton.IsEnabled = true;
         }
 
 
@@ -335,6 +337,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             PostPoneButton.Visibility = Visibility.Collapsed;
             returnDateButton.Visibility = Visibility.Visible;
+            ChangeRoomButton.IsEnabled = true;
+            AntecipateCheckoutButton.IsEnabled = true;
         }
 
         // RETURN THE DATES OF THE CHECK-OUT
@@ -358,6 +362,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             checkoutTxtBox.Text = lastDate.ToString("dd\\/MM\\/yyyy | HH:mm");
             PostPoneButton.Visibility = Visibility.Visible;
             returnDateButton.Visibility = Visibility.Collapsed;
+            ChangeRoomButton.IsEnabled = true;
+            AntecipateCheckoutButton.IsEnabled = true;
         }
 
 
@@ -401,6 +407,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             nRoomTxtBox.Text = null;
             checkinTxtBox.Text = null;
             checkoutTxtBox.Text = null;
+            ChangeRoomButton.IsEnabled = true;
+            PostPoneButton.IsEnabled = true;
 
             reservationComboBox.SelectionChanged += ComboBoxSelectClient;
         }    

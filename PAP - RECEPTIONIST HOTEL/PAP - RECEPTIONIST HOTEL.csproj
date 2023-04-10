@@ -80,6 +80,9 @@
     </Compile>
     <Compile Include="MVVM\ViewModel\ControlPanelViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\View\SubView\ServicesRequest.xaml.cs">
+      <DependentUpon>ServicesRequest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -118,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\PrimaryView\Requests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SubView\ServicesRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,7 +183,6 @@
   <ItemGroup>
     <Folder Include="Fonts\" />
     <Folder Include="MVVM\Model\" />
-    <Folder Include="MVVM\View\SubView\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Forms\Images\key-icon.png" />

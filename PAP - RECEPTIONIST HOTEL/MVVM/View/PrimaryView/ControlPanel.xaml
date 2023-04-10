@@ -26,7 +26,7 @@
             <!-- Nome de Utilizador | Informação -->
             <Label Content="Nome de utilizador:"
                Margin="0,5,0,-5"
-               Foreground="White"
+               Style="{StaticResource LabelTheme}"
                HorizontalAlignment="Center" />
             <TextBox x:Name="usernameTxtBox"
                  FontSize="18"
@@ -46,7 +46,7 @@
             <!-- ID da Reserva | Informação -->
             <Label Content="ID da reserva:"
                Margin="0,20,0,-5"
-               Foreground="White"
+               Style="{StaticResource LabelTheme}"
                HorizontalAlignment="Center" />
             <TextBox x:Name="idReservaTxtBox"
                  FontSize="18"
@@ -66,7 +66,7 @@
             <!-- Número do Quarto | Informação -->
             <Label Content="Número do quarto:"
                Margin="0,20,0,-5"
-               Foreground="White"
+               Style="{StaticResource LabelTheme}"
                HorizontalAlignment="Center" />
             <TextBox x:Name="nQuartoTxtBox"
                  FontSize="18"
@@ -86,7 +86,7 @@
             <!-- Classificação do hotel em estrelas -->
             <Label Content="Classifique-nos:"
                Margin="0,20,0,-10"
-               Foreground="White"
+               Style="{StaticResource LabelTheme}"
                HorizontalAlignment="Center" />
 
             <StackPanel Height="50" Orientation="Horizontal">
@@ -112,9 +112,8 @@
             
             <!-- Título dos dados da reserva -->
             <Label Content="Dados da Reserva:"
-                   Foreground="White"
                    FontSize="24"
-                   FontFamily="Montserrat"
+                   Style="{StaticResource LabelTheme}"
                    HorizontalAlignment="Center" />
 
             <!-- Divisão do título com os dados da reserva -->
@@ -125,9 +124,7 @@
             <StackPanel Orientation="Horizontal">
                 <Label Content="Nome do cliente:"
                        Margin="0,20,0,-5"
-                       Foreground="White"
-                       FontSize="18"
-                       FontFamily="Montserrat" />
+                       Style="{StaticResource LabelTheme}" />
                 <TextBox x:Name="nClienteTxtBox"
                          Width="250"
                          FontSize="18"
@@ -151,9 +148,7 @@
             <StackPanel Orientation="Horizontal">
                 <Label Content="Check-in:"
                    Margin="0,10,0,0"
-                   Foreground="White"
-                   FontSize="18"
-                   FontFamily="Montserrat" />
+                   Style="{StaticResource LabelTheme}" />
                 <TextBox x:Name="checkinTxtBox"
                          Width="140"
                          FontSize="18"
@@ -177,9 +172,7 @@
             <StackPanel Orientation="Horizontal">
                 <Label Content="Check-out:"
                    Margin="0,10,0,0"
-                   Foreground="White"
-                   FontSize="18"
-                   FontFamily="Montserrat" />
+                   Style="{StaticResource LabelTheme}" />
                 <TextBox x:Name="checkoutTxtBox"
                          Width="140"
                          FontSize="18"
@@ -203,17 +196,13 @@
             <StackPanel Orientation="Horizontal">
                 <Label Content="Valor ao check-out da reserva:"
                        Margin="0,5,0,0"
-                       Foreground="White"
-                       FontSize="18"
-                       FontFamily="Montserrat" />
+                       Style="{StaticResource LabelTheme}" />
                 <Label x:Name="labelPagamentoTxt"
                        Content=""
                        Width="150"
                        Height="29"
                        Margin="0,4,0,0"
-                       Foreground="White"
-                       FontSize="18"
-                       FontFamily="Montserrat" />
+                       Style="{StaticResource LabelTheme}" />
             </StackPanel>
         </StackPanel>
     </Grid>

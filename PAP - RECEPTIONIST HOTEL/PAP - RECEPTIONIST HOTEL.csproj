@@ -89,11 +89,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\AdminControlPanel.xaml">
+    <Page Include="MVVM\View\PrimaryView\AdminControlPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\ControlPanel.xaml">
+    <Page Include="MVVM\View\PrimaryView\ControlPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,19 +105,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\ManageReservations.xaml">
+    <Page Include="MVVM\View\PrimaryView\ManageReservations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\ManageRequests.xaml">
+    <Page Include="MVVM\View\PrimaryView\ManageRequests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\ManageUsers.xaml">
+    <Page Include="MVVM\View\PrimaryView\ManageUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\Requests.xaml">
+    <Page Include="MVVM\View\PrimaryView\Requests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\LabelsTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,24 +129,28 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Theme\TabControlTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MVVM\View\AdminControlPanel.xaml.cs">
+    <Compile Include="MVVM\View\PrimaryView\AdminControlPanel.xaml.cs">
       <DependentUpon>AdminControlPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\ControlPanel.xaml.cs">
+    <Compile Include="MVVM\View\PrimaryView\ControlPanel.xaml.cs">
       <DependentUpon>ControlPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\ManageReservations.xaml.cs">
+    <Compile Include="MVVM\View\PrimaryView\ManageReservations.xaml.cs">
       <DependentUpon>ManageReservations.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\ManageRequests.xaml.cs">
+    <Compile Include="MVVM\View\PrimaryView\ManageRequests.xaml.cs">
       <DependentUpon>ManageRequests.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\ManageUsers.xaml.cs">
+    <Compile Include="MVVM\View\PrimaryView\ManageUsers.xaml.cs">
       <DependentUpon>ManageUsers.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\Requests.xaml.cs">
+    <Compile Include="MVVM\View\PrimaryView\Requests.xaml.cs">
       <DependentUpon>Requests.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -168,6 +176,7 @@
   <ItemGroup>
     <Folder Include="Fonts\" />
     <Folder Include="MVVM\Model\" />
+    <Folder Include="MVVM\View\SubView\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Forms\Images\key-icon.png" />

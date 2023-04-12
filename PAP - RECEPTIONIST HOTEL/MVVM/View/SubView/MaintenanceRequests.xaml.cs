@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
 {
     /// <summary>
-    /// Interaction logic for ServicesRequest.xaml
+    /// Interaction logic for MaintenanceRequests.xaml
     /// </summary>
-    public partial class ServicesRequest : UserControl
+    public partial class MaintenanceRequests : Window
     {
-        public ServicesRequest()
+        public MaintenanceRequests()
         {
             InitializeComponent();
         }

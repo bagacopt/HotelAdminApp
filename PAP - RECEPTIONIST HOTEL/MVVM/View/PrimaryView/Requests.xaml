@@ -16,7 +16,7 @@
                     <Setter Property="HorizontalAlignment" Value="Center"/>
                 </Style>
             </TabControl.Resources>
-            
+
             <TabItem Width="500" 
                      Margin="0,0,0,0"
                      Header="Serviço de quartos" >
@@ -43,7 +43,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,5,0,0"/>
-                                <Button Height="35">
+                                <Button Height="35" Click="OrderButton_Click">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
@@ -59,7 +59,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,5,0,0"/>
-                                <Button Height="35">
+                                <Button Height="35" Click="OrderButton_Click">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
@@ -75,7 +75,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                <Button Height="35">
+                                <Button Height="35" Click="OrderButton_Click">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
@@ -91,7 +91,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                <Button Height="35">
+                                <Button Height="35" Click="OrderButton_Click">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
@@ -104,7 +104,7 @@
                                 </Button>
                             </StackPanel>
                         </TabItem>
-                        
+
                         <!-- EXTRAS -->
                         <TabItem Header="Extras" Width="495" Margin="0,0,0,0">
                             <Grid>
@@ -113,7 +113,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,5,0,0"/>
-                                    <Button Height="35">
+                                    <Button Height="35" Click="OrderButton_Click">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
@@ -129,7 +129,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                    <Button Height="35">
+                                    <Button Height="35" Click="OrderButton_Click">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
@@ -145,7 +145,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                    <Button Height="35">
+                                    <Button Height="35" Click="OrderButton_Click">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
@@ -161,7 +161,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                    <Button Height="35">
+                                    <Button Height="35" Click="OrderButton_Click">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
@@ -177,7 +177,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                    <Button Height="35">
+                                    <Button Height="35" Click="OrderButton_Click">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
@@ -192,7 +192,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                    <Button Height="35">
+                                    <Button Height="35" Click="OrderButton_Click">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
@@ -209,7 +209,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            
+
             <!-- MANUNTENÇÃO -->
             <TabItem Header="Manutenção" Width="490">
                 <StackPanel>
@@ -217,7 +217,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35">
+                    <Button Height="35" Click="MaintenanceButton_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -233,7 +233,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35">
+                    <Button Height="35" Click="MaintenanceButton_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -249,7 +249,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35">
+                    <Button Height="35" Click="MaintenanceButton_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -265,7 +265,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35">
+                    <Button Height="35" Click="MaintenanceButton_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -281,7 +281,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35">
+                    <Button Height="35" Click="MaintenanceButton_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -297,7 +297,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35">
+                    <Button Height="35" Click="MaintenanceButton_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>

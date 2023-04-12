@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,22 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         public Requests()
         {
             InitializeComponent();
+        }
+
+        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            ServicesRequests servicesRequest = new ServicesRequests();
+
+            Application.Current.MainWindow.Hide();
+            servicesRequest.Show();
+        }
+
+        private void MaintenanceButton_Click(object sender, RoutedEventArgs e)
+        {
+            MaintenanceRequests maintenanceRequests = new MaintenanceRequests();
+            
+            Application.Current.MainWindow.Hide();
+            maintenanceRequests.Show();
         }
     }
 }

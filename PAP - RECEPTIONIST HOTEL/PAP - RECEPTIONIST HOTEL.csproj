@@ -80,8 +80,11 @@
     </Compile>
     <Compile Include="MVVM\ViewModel\ControlPanelViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
-    <Compile Include="MVVM\View\SubView\ServicesRequest.xaml.cs">
-      <DependentUpon>ServicesRequest.xaml</DependentUpon>
+    <Compile Include="MVVM\View\SubView\MaintenanceRequests.xaml.cs">
+      <DependentUpon>MaintenanceRequests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SubView\ServicesRequests.xaml.cs">
+      <DependentUpon>ServicesRequests.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <DependentUpon>Settings.settings</DependentUpon>
@@ -124,7 +127,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\SubView\ServicesRequest.xaml">
+    <Page Include="MVVM\View\SubView\MaintenanceRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SubView\ServicesRequests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

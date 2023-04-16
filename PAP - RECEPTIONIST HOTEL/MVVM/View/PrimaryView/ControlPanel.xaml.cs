@@ -25,6 +25,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         // VARIABLES
         int nStars;
         string data;
+        public static string n_Quarto;
 
         // 1 STAR RATE
         private void ClassificationStars1_Click(object sender, RoutedEventArgs e)
@@ -118,6 +119,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                         string nQuarto = reader["n_room"].ToString();
 
                         nQuartoTxtBox.Text = nQuarto;
+                        n_Quarto = nQuarto;
                     }
                 }
             }

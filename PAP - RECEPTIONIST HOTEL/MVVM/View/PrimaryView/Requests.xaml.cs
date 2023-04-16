@@ -1,18 +1,6 @@
 ﻿using PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
@@ -26,20 +14,72 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             InitializeComponent();
         }
 
+        // VARIABLES
+        public static string serviceName;
+        public static string maintainName;
+
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
-            testWindow open = new testWindow();
+            switch (((Button)e.Source).Name)
+            {
+                case "OrderButton1":
+                    serviceName = "Serviço de limpeza de quartos diário";
+                    break;
+                case "OrderButton2":
+                    serviceName = "Serviço extra de limpeza de quarto";
+                    break;
+                case "OrderButton3":
+                    serviceName = "Kit de limpeza para uso dos hóspedes";
+                    break;
+                case "OrderButton4":
+                    serviceName = "Serviço de abertura da cama";
+                    break;
+                case "OrderButton5":
+                    serviceName = "Shampoo e gel de banho";
+                    break;
+                case "OrderButton6":
+                    serviceName = "Condicionador";
+                    break;
+                case "OrderButton7":
+                    serviceName = "Sabão";
+                    break;
+                case "OrderButton8":
+                    serviceName = "Kit de pasta de dentes";
+                    break;
+            }
 
             Application.Current.MainWindow.Hide();
-            open.Show();
+            Application.Current.MainWindow = new ServicesRequests();
+            Application.Current.MainWindow.Show();
         }
 
         private void MaintenanceButton_Click(object sender, RoutedEventArgs e)
         {
-            MaintenanceRequests maintenanceRequests = new MaintenanceRequests();
-            
+            switch (((Button)e.Source).Name)
+            {
+                case "MaintainButton1":
+                    maintainName = "Ar condicionado (A/C)";
+                    break;
+                case "MaintainButton2":
+                    maintainName = "Cama";
+                    break;
+                case "MaintainButton3":
+                    maintainName = "Máquina de café";
+                    break;
+                case "MaintainButton4":
+                    maintainName = "Pilhas do comando";
+                    break;
+                case "MaintainButton5":
+                    maintainName = "Minibar";
+                    break;
+                case "MaintainButton6":
+                    maintainName = "Secador";
+                    break;
+            }
+
             Application.Current.MainWindow.Hide();
-            this.Content = maintenanceRequests;
+            Application.Current.MainWindow = new MaintenanceRequests();
+            Application.Current.MainWindow.Show();
         }
     }
 }

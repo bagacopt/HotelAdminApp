@@ -43,7 +43,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,5,0,0"/>
-                                <Button Height="35" Click="OrderButton_Click">
+                                <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton1">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
@@ -59,7 +59,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,5,0,0"/>
-                                <Button Height="35" Click="OrderButton_Click">
+                                <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton2">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
@@ -75,7 +75,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                <Button Height="35" Click="OrderButton_Click">
+                                <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton3">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
@@ -91,7 +91,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                <Button Height="35" Click="OrderButton_Click">
+                                <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton4">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
@@ -113,7 +113,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,5,0,0"/>
-                                    <Button Height="35" Click="OrderButton_Click">
+                                    <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton5">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
@@ -129,7 +129,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                    <Button Height="35" Click="OrderButton_Click">
+                                    <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton6">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
@@ -145,7 +145,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                    <Button Height="35" Click="OrderButton_Click">
+                                    <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton7">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
@@ -161,7 +161,7 @@
                                        Style="{StaticResource LabelTheme}"
                                        HorizontalAlignment="Left"
                                        Margin="0,15,0,0"/>
-                                    <Button Height="35" Click="OrderButton_Click">
+                                    <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton8">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
@@ -217,7 +217,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35" Click="MaintenanceButton_Click">
+                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton1">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -233,7 +233,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35" Click="MaintenanceButton_Click">
+                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton2">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -249,7 +249,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35" Click="MaintenanceButton_Click">
+                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton3">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -265,7 +265,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35" Click="MaintenanceButton_Click">
+                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton4">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -281,7 +281,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35" Click="MaintenanceButton_Click">
+                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton5">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -297,7 +297,7 @@
                            Style="{StaticResource LabelTheme}"
                            HorizontalAlignment="Left"
                            Margin="0,15,0,0"/>
-                    <Button Height="35" Click="MaintenanceButton_Click">
+                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton6">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>

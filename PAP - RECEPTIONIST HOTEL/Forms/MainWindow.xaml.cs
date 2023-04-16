@@ -110,6 +110,8 @@ namespace PAP___RECEPTIONIST_HOTEL
                 RequestsRadioButton.Visibility = Visibility.Collapsed;
                 LogoutRadioButton.Margin = new Thickness(0, 350, 0, 0);
             }
+
+            Application.Current.MainWindow = this;
         }
     }
 }

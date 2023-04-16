@@ -1,25 +1,26 @@
-﻿<Page x:Class="PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView.ServicesRequests"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView" 
-      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="300"
-      Background="#FC191819"
-      Title="ServicesRequests">
-
+﻿<Window x:Class="PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView.ServicesRequests"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView" 
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="ServicesRequests" 
+        Height="450" Width="300"
+        Background="#FC191819"
+        WindowStyle="None"
+        Loaded="ServicesRequests_Loaded">
     <Grid>
         <StackPanel Background="White" Height="60" VerticalAlignment="Top">
-            <Button
-                    BorderThickness="0"
+            <Button BorderThickness="0"
                     Content="«"
                     Foreground="White"
                     FontSize="16"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Margin="0,10,260,0">
+                    Margin="0,10,260,0"
+                    Click="BackButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#28AEED"/>
@@ -49,20 +50,22 @@
                    FontWeight="Bold"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Center"
-                   Content="Nome do serviço"
+                   Content=""
+                   x:Name="titleLabel"
                    Margin="-10,-21,0,0"/>
+            
             <StackPanel Orientation="Horizontal">
                 <Label Style="{StaticResource LabelTheme}" 
                    Content="Nº do quarto:"
                    Foreground="Black"
                    FontSize="8"
                    Margin="0,10,-7,0"/>
-                <Label Content=""
+                <Label x:Name="nRoomLabel"
+                       Content=""
                        Style="{StaticResource LabelTheme}"
                        Foreground="Black"
                        FontSize="8"
                        Margin="0,10,0,0">
-
                 </Label>
             </StackPanel>
         </StackPanel>
@@ -74,7 +77,8 @@
                            Style="{StaticResource LabelTheme}" 
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
-                    <TextBox Margin="10,0,10,0"/>
+                    <TextBox Margin="10,0,10,0"
+                             x:Name="mobileTxtBox"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
@@ -82,7 +86,8 @@
                            Style="{StaticResource LabelTheme}" 
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
-                    <TextBox Margin="10,0,10,0"/>
+                    <TextBox Margin="10,0,10,0"
+                             x:Name="emailTxtBox"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
@@ -90,7 +95,8 @@
                            Style="{StaticResource LabelTheme}" 
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
-                    <syncfusion:UpDown Margin="10,0,150,0"/>
+                    <syncfusion:UpDown Margin="10,0,150,0"
+                                       x:Name="quantityUpDown"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
@@ -98,12 +104,14 @@
                            Style="{StaticResource LabelTheme}" 
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
-                    <TextBlock Margin="10,0,10,0" Height="50" Background="gray"/>
+                    <TextBlock Margin="10,0,10,0" Height="50" 
+                               Background="gray"
+                               x:Name="descriptionTxtBox"/>
                 </StackPanel>
 
                 <Button
                         Height="30"
-                        Margin="70,10,70,0">
+                        Margin="70,10,70,0" Click="OrderButton_Click">
                     <TextBlock Text="Requisitar"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
@@ -111,4 +119,4 @@
             </StackPanel>
         </Border>
     </Grid>
-</Page>
+</Window>

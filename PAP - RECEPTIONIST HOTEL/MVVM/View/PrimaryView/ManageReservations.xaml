@@ -161,7 +161,7 @@
                        Margin="0,10,0,0"
                        Style="{StaticResource LabelTheme}" />
                 <TextBox x:Name="checkinTxtBox"
-                         Width="150"
+                         Width="160"
                          FontSize="18"
                          Text=""
                          FontWeight="Medium"
@@ -185,7 +185,7 @@
                        Margin="0,10,0,0"
                        Style="{StaticResource LabelTheme}" />
                 <TextBox x:Name="checkoutTxtBox"
-                         Width="150"
+                         Width="160"
                          FontSize="18"
                          Text=""
                          FontWeight="Medium"

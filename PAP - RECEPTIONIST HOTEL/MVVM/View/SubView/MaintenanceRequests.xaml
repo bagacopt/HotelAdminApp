@@ -1,12 +1,105 @@
-﻿<Window x:Class="PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView.MaintenanceRequests"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView"
-        mc:Ignorable="d"
-        Title="MaintenanceRequests" Height="450" Width="800">
+﻿<Page x:Class="PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView.MaintenanceRequests"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="300"
+      Title="MaintanceRequests"
+      Background="#FC191819">
+
     <Grid>
-        
+        <StackPanel Background="White" Height="60" VerticalAlignment="Top">
+            <Button x:Name="btnMinimize"
+                    BorderThickness="0"
+                    Content="«"
+                    Foreground="White"
+                    FontSize="16"
+                    FontFamily="Montserrat"
+                    Cursor="Hand"
+                    Margin="0,10,260,0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#28AEED"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#278BEF"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Label Style="{StaticResource LabelTheme}"
+                   FontSize="12"
+                   Foreground="Black"
+                   FontWeight="Bold"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   Content="Tipo de manutenção"
+                   Margin="-10,-21,0,0"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Style="{StaticResource LabelTheme}" 
+                   Content="Nº do quarto:"
+                   Foreground="Black"
+                   FontSize="8"
+                   Margin="0,10,-7,0"/>
+                <Label Content=""
+                       Style="{StaticResource LabelTheme}"
+                       Foreground="Black"
+                       FontSize="8"
+                       Margin="0,10,0,0">
+
+                </Label>
+            </StackPanel>
+        </StackPanel>
+
+        <Border CornerRadius="10" BorderThickness="2" Background="White" Height="300" Margin="25,0,25,0">
+            <StackPanel Margin="0,10,0,0">
+                <StackPanel Margin="0,10,0,0">
+                    <Label Content="Número de telefone"
+                           Style="{StaticResource LabelTheme}" 
+                           Foreground="Black" FontSize="10"
+                           Margin="10,0,0,0"/>
+                    <TextBox Margin="10,0,10,0"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,10,0,0">
+                    <Label Content="Email"
+                           Style="{StaticResource LabelTheme}" 
+                           Foreground="Black" FontSize="10"
+                           Margin="10,0,0,0"/>
+                    <TextBox Margin="10,0,10,0"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,10,0,0">
+                    <Label Content="Descrição do pedido"
+                           Style="{StaticResource LabelTheme}" 
+                           Foreground="Black" FontSize="10"
+                           Margin="10,0,0,0"/>
+                    <TextBlock Margin="10,0,10,0" Height="50" Background="gray"/>
+                </StackPanel>
+
+                <Button
+                        Height="30"
+                        Margin="70,30,70,0">
+                    <TextBlock Text="Requisitar"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+        </Border>
     </Grid>
-</Window>
+</Page>

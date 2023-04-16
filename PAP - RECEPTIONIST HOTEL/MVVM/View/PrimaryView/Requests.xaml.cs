@@ -28,10 +28,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
-            ServicesRequests servicesRequest = new ServicesRequests();
+            testWindow open = new testWindow();
 
             Application.Current.MainWindow.Hide();
-            servicesRequest.Show();
+            open.Show();
         }
 
         private void MaintenanceButton_Click(object sender, RoutedEventArgs e)
@@ -39,7 +39,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             MaintenanceRequests maintenanceRequests = new MaintenanceRequests();
             
             Application.Current.MainWindow.Hide();
-            maintenanceRequests.Show();
+            this.Content = maintenanceRequests;
         }
     }
 }

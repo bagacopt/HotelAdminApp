@@ -10,14 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
 {
     /// <summary>
-    /// Interaction logic for ServicesRequests.xaml
+    /// Interaction logic for test.xaml
     /// </summary>
-    public partial class ServicesRequests : Window
+    public partial class ServicesRequests : Page
     {
         public ServicesRequests()
         {

@@ -9,8 +9,16 @@
         Height="450" Width="300"
         Background="#FC191819"
         WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseLeftButtonDown="Window_MouseDown"
         Loaded="MaintenanceRequests_Loaded">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Forms/Images/back-image.jpg"
+                        Stretch="UniformToFill"/>
+        </Grid.Background>
+        
             <StackPanel Background="White" Height="60" VerticalAlignment="Top">
                 <Button BorderThickness="0"
                         Content="«"
@@ -68,14 +76,16 @@
                 </StackPanel>
             </StackPanel>
 
-            <Border CornerRadius="10" BorderThickness="2" Background="White" Height="300" Margin="25,0,25,0">
+            <Border CornerRadius="10" BorderThickness="2" 
+                    Background="White" Height="300" 
+                    Margin="25,0,25,0">
                 <StackPanel Margin="0,10,0,0">
                     <StackPanel Margin="0,10,0,0">
                         <Label Content="Número de telefone"
                            Style="{StaticResource LabelTheme}" 
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
-                        <TextBox Margin="10,0,10,0"/>
+                        <TextBox Margin="10,5,10,0" BorderThickness="0,0,0,1"/>
                     </StackPanel>
 
                     <StackPanel Margin="0,10,0,0">
@@ -83,25 +93,39 @@
                            Style="{StaticResource LabelTheme}" 
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
-                        <TextBox Margin="10,0,10,0"/>
+                        <TextBox Margin="10,5,10,0" BorderThickness="0,0,0,1"/>
                     </StackPanel>
 
-                    <StackPanel Margin="0,10,0,0">
-                        <Label Content="Descrição do pedido"
+                <StackPanel Margin="0,10,0,0">
+                    <Label Content="Descrição do pedido"
                            Style="{StaticResource LabelTheme}" 
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
-                        <TextBlock Margin="10,0,10,0" Height="50" Background="gray"/>
-                    </StackPanel>
-
-                    <Button
-                        Height="30"
-                        Margin="70,30,70,0">
-                        <TextBlock Text="Requisitar"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
-                    </Button>
+                    <TextBox Margin="10,5,10,0" Height="50" 
+                             x:Name="descriptionTxtBox"
+                             BorderThickness="2"
+                             BorderBrush="Gray">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
                 </StackPanel>
+
+                <Button Height="30"
+                        Margin="70,15,70,0" 
+                        Click="OrderButton_Click"
+                        Content="Requisitar"
+                        Background="Transparent"
+                        Foreground="Black">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
             </Border>
         </Grid>
 </Window>

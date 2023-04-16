@@ -67,7 +67,7 @@ namespace PAP___RECEPTIONIST_HOTEL
 
                     if (count > 0)
                     {
-                        // GOES TO FIRST PART OF THE APPLICATION
+                        // GOES TO FIRST SECTION OF THE APPLICATION
                         MainWindow program = new MainWindow();
                         program.Show();
                         this.Close();
@@ -86,7 +86,7 @@ namespace PAP___RECEPTIONIST_HOTEL
 
                     if (count > 0)
                     {
-                        // GOES T5O FIRST PART OF THE APPLICATION
+                        // GOES TO FIRST SECTION OF THE APPLICATION
                         MainWindow program = new MainWindow();
                         program.Show();
                         this.Close();

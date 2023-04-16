@@ -10,8 +10,16 @@
         Height="450" Width="300"
         Background="#FC191819"
         WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseLeftButtonDown="Window_MouseDown"
         Loaded="ServicesRequests_Loaded">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Forms/Images/back-image.jpg"
+                        Stretch="UniformToFill"/>
+        </Grid.Background>
+        
         <StackPanel Background="White" Height="60" VerticalAlignment="Top">
             <Button BorderThickness="0"
                     Content="«"
@@ -78,7 +86,8 @@
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
                     <TextBox Margin="10,0,10,0"
-                             x:Name="mobileTxtBox"/>
+                             x:Name="mobileTxtBox"
+                             BorderThickness="0,0,0,1"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
@@ -87,7 +96,8 @@
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
                     <TextBox Margin="10,0,10,0"
-                             x:Name="emailTxtBox"/>
+                             x:Name="emailTxtBox"
+                             BorderThickness="0,0,0,1"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
@@ -95,8 +105,12 @@
                            Style="{StaticResource LabelTheme}" 
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
-                    <syncfusion:UpDown Margin="10,0,150,0"
-                                       x:Name="quantityUpDown"/>
+                    <syncfusion:UpDown Margin="10,0,170,0"
+                                       x:Name="quantityUpDown"
+                                       NumberDecimalDigits="0"
+                                       ApplyZeroColor="False"
+                                       TextAlignment="Left"
+                                       BorderThickness="0,0,0,1"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
@@ -104,17 +118,29 @@
                            Style="{StaticResource LabelTheme}" 
                            Foreground="Black" FontSize="10"
                            Margin="10,0,0,0"/>
-                    <TextBlock Margin="10,0,10,0" Height="50" 
-                               Background="gray"
-                               x:Name="descriptionTxtBox"/>
+                    <TextBox Margin="10,0,10,0" Height="50" 
+                             x:Name="descriptionTxtBox"
+                             BorderThickness="2"
+                             BorderBrush="Gray">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
                 </StackPanel>
 
-                <Button
-                        Height="30"
-                        Margin="70,10,70,0" Click="OrderButton_Click">
-                    <TextBlock Text="Requisitar"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                <Button Height="30"
+                        Margin="70,10,70,0" 
+                        Click="OrderButton_Click"
+                        Content="Requisitar"
+                        Background="Transparent"
+                        Foreground="Black">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
                 </Button>
             </StackPanel>
         </Border>

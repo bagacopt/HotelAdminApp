@@ -206,10 +206,9 @@
                               x:Name="hidePassword" 
                               HorizontalAlignment="Left" 
                               Margin="390,-50,0,0" 
-                              Height="48" 
-                              Width="45" 
-                              Checked="HidePasswordChecked"
-                              Unchecked="HidePasswordUnchecked" Cursor="Hand" Grid.Column="1" IsTabStop="False"/>
+                              Height="48" Width="45" 
+                              Checked="HidePasswordChecked" Unchecked="HidePasswordUnchecked" 
+                              Cursor="Hand" Grid.Column="1" IsTabStop="False"/>
 
                     <TextBox x:Name="passwordShow"
                              FontSize="18"

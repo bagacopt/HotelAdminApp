@@ -139,7 +139,7 @@
                             Margin="0,35,0,0">
                     <Image Source="Images/logo.png"
                            Width="250" Height="100"/>
-                    
+
                     <TextBlock Text="LOGIN"
                                Foreground="White"
                                FontSize="25"
@@ -231,7 +231,6 @@
                         </TextBox.Background>
                     </TextBox>
 
-
                     <Button x:Name="btnLogin"
                             BorderThickness="0"
                             Content="LOGIN"
@@ -242,6 +241,7 @@
                             Grid.Column="2"
                             Margin="0,50,0,0"
                             Click="BtnLogin_Click">
+                        
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#1E90FF"/>
@@ -277,7 +277,6 @@
                                HorizontalAlignment="Center"
                                Cursor="Hand"
                                MouseLeftButtonDown="Forgot_pass"/>
-                        
                     </StackPanel>
                 </StackPanel>
             </Grid>

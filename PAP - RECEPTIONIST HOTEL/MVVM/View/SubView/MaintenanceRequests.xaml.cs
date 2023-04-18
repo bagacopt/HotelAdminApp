@@ -22,35 +22,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
         string id;
         string data;
 
-        private void MaintenanceRequests_Loaded(object sender, RoutedEventArgs e)
-        {
-            // OPEN CONNECTION
-            con.Open();
-
-            nRoomLabel.Content = ControlPanel.n_Quarto;
-            titleLabel.Content = Requests.maintainName;
-
-            data = "SELECT id_room FROM Rooms WHERE n_room = @nRoom";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
-            {
-                cmd.Parameters.AddWithValue("@nRoom", ControlPanel.n_Quarto);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        id = reader["id_room"].ToString();
-                    }
-                }
-            }
-
-            // CLOSE CONNECTION
-            con.Close();
-        }
-
-
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             // LET THE USER MOVE THE WINDOW FROM WHENEVER HE WANTS
@@ -65,6 +36,20 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
             this.Close();
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+        }
+
+        private void MaintenanceRequests_Loaded(object sender, RoutedEventArgs e)
+        {
+            nRoomLabel.Content = ControlPanel.n_Quarto;
+            titleLabel.Content = Requests.maintainName;
+        }
+
+        private void MaintainButton_Click(object sender, RoutedEventArgs e)
+        {
+            // OPEN CONNECTION
+            con.Open();
+
+
         }
     }
 }

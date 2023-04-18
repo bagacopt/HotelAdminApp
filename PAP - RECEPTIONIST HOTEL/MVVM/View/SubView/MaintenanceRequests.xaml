@@ -115,7 +115,7 @@
 
                 <Button Height="30"
                         Margin="70,15,70,0" 
-                        Click="OrderButton_Click"
+                        Click="MaintainButton_Click"
                         Content="Requisitar"
                         Background="Transparent"
                         Foreground="Black">

@@ -94,7 +94,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 {
                     while (reader.Read())
                     {
-                        idReservaTxtBox.Text = reader["id_reservation"].ToString();
+                        idReservaTxtBox.Text = reader["reservation_id"].ToString();
                         int stars = Convert.ToInt32(reader["stars"]);
                         nClienteTxtBox.Text = reader["fullname"].ToString();
 
@@ -105,8 +105,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             // GET NUMBER OF THE ROOM
             data = "SELECT Rooms.n_room FROM Rooms INNER JOIN Reservations " +
-                "ON Rooms.id_room = Reservations.id_room INNER JOIN Users ON " +
-                "Reservations.id_reservation = Users.id_reservation WHERE username = @user";
+                "ON Rooms.id = Reservations.rooms_id INNER JOIN Users ON " +
+                "Reservations.id = Users.reservation_id WHERE username = @user";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {

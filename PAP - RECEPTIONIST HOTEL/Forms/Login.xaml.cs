@@ -58,8 +58,7 @@ namespace PAP___RECEPTIONIST_HOTEL
                 cmd.Parameters.AddWithValue("@user", txtUser.Text.ToLower());
                 Settings.Default.n_cliente = txtUser.Text.ToLower();
 
-                PasswordBox myPasswordBox = this.FindName("passwordHidden") as PasswordBox;
-                if (myPasswordBox.Name == "passwordHidden")
+                if (passwordHidden.Visibility == Visibility.Visible)
                 {
                     cmd.Parameters.AddWithValue("@pass", passwordHidden.Password.ToLower());
                     cmd.ExecuteNonQuery();

@@ -199,8 +199,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="EnglishApp\" />
     <Folder Include="Fonts\" />
     <Folder Include="MVVM\Model\" />
+    <Folder Include="PortugueseApp\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Forms\Images\key-icon.png" />

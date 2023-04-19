@@ -4,9 +4,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             Background="#FC191819"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal">
+            <Border Width="270" Height="110"
+                    Background="#009FBD"
+                    VerticalAlignment="Top"
+                    CornerRadius="10"
+                    Margin="20,20,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        
+                    </StackPanel>
+
+                    <Border Grid.Column="1" Background="White"
+                            CornerRadius="0,10,10,0"/>
+
+                    <StackPanel Grid.Column="1">
+                        
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </StackPanel>
     </Grid>
 </UserControl>

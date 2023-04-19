@@ -30,7 +30,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
             nRoomLabel.Content = ControlPanel.n_Quarto;
             titleLabel.Content = Requests.serviceName;
 
-            data = "SELECT id_room FROM Rooms WHERE n_room = @nRoom";
+            data = "SELECT id FROM Rooms WHERE n_room = @nRoom";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -40,7 +40,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
                 {
                     while (reader.Read())
                     {
-                        id = reader["id_room"].ToString();
+                        id = reader["id"].ToString();
                     }
                 }
             }

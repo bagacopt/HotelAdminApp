@@ -127,7 +127,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // GET CHECK-IN AND CHECK-OUT OF THE RESERVATION
             data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yy | HH:mm') AS 'check-in', " +
                 "FORMAT(Reservations.[check-out], 'dd/MM/yy | HH:mm') AS 'check-out' FROM Reservations " +
-                "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @user";
+                "INNER JOIN Users ON Reservations.id = Users.reservation_id WHERE username = @user";
             
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -145,7 +145,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             // GET RESERVATION PRICE
             data = "SELECT Reservations.reserva_price FROM Reservations " +
-                "INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation WHERE username = @user";
+                "INNER JOIN Users ON Reservations.id = Users.reservation_id WHERE username = @user";
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
@@ -174,12 +174,21 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             {
                 cmd.Parameters.AddWithValue("@stars", nStars);
                 cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
+                cmd.ExecuteNonQuery();
             }
 
             // CLOSE CONNECTION
             con.Close();
 
-            System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrelas! \nSomos muito agradecidos", "Obrigado!!!");
+            if (nStars == 1)
+            {
+                System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrela! \nSomos muito agradecidos", "Obrigado!!!");
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrelas! \nSomos muito agradecidos", "Obrigado!!!");
+            }
+            
         }
     }
 }

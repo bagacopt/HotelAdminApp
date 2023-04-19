@@ -42,6 +42,21 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         string[] checkin_temp, checkout_temp, clientName_temp, changeDate_temp;
         DateTime checkin, checkout, showDate, lastDate;
 
+        // CLEAR FORM
+        private void ClearForm()
+        {
+            reservationComboBox.SelectedItem = null;
+            nClienteTxtBox.Text = null;
+            idReservationTxtBox.Text = null;
+            nRoomTxtBox.Text = null;
+            checkinTxtBox.Text = null;
+            checkoutTxtBox.Text = null;
+            ChangeRoomButton.IsEnabled = false;
+            PostPoneButton.IsEnabled = false;
+            AntecipateCheckoutButton.IsEnabled = false;
+            reservationComboBox.SelectionChanged += ComboBoxSelectClient;
+        }
+
         private void ManageReservations_Loaded(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
@@ -59,14 +74,14 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     while (reader.Read())
                     {
                         usernameTxtBox.Text = reader["username"].ToString();
-                        idReservaTxtBox.Text = reader["id_user"].ToString();
+                        idReservaTxtBox.Text = reader["id"].ToString();
                     }
                 }
             }
 
             // // INSERT username CONTENT IN reservationComboBox COMBO BOX
             SqlDataAdapter da = new SqlDataAdapter("SELECT Users.username FROM Users " +
-                "INNER JOIN Reservations ON Users.id_reservation = Reservations.id_reservation " +
+                "INNER JOIN Reservations ON Users.reservation_id = Reservations.id " +
                 "WHERE Users.type_user = 1 AND Reservations.active = 1;", con);
 
             DataTable dt = new DataTable();
@@ -84,11 +99,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void ComboBoxSelectClient(object sender, SelectionChangedEventArgs e)
         {
-            // changeDateDatePicker.BlackoutDates.Add(new DateTime());
             // OPEN CONNECTION
             con.Open();
 
-            // SELECT id_reservation AND fullname OF TABLE Users
+            // SELECT reservation_id AND fullname OF TABLE Users
             data = "SELECT * FROM Users WHERE type_user = 1 AND username = @user";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
@@ -105,7 +119,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 {
                     while (reader.Read())
                     {
-                        idReservationTxtBox.Text = reader["id_reservation"].ToString();
+                        idReservationTxtBox.Text = reader["reservation_id"].ToString();
                         nClienteTxtBox.Text = reader["fullname"].ToString();
                     }
                 }
@@ -113,8 +127,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             // SELECT n_room OF TABLE Rooms
             data = "SELECT n_room FROM Rooms INNER JOIN Reservations " +
-                "ON Rooms.id_room = Reservations.id_room INNER JOIN Users ON " +
-                "Reservations.id_reservation = Users.id_reservation WHERE username = @user";
+                "ON Rooms.id = Reservations.rooms_id INNER JOIN Users ON " +
+                "Reservations.id = Users.reservation_id WHERE username = @user";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -132,7 +146,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // SELECT check-in AND check-out OF TABLE Reservations
             data = "SELECT FORMAT(Reservations.[check-in], 'dd/MM/yyyy | HH:mm') AS 'check-in'," +
                 "FORMAT(Reservations.[check-out], 'dd/MM/yyyy | HH:mm') AS 'check-out'" +
-                "FROM Reservations INNER JOIN Users ON Reservations.id_reservation = Users.id_reservation " +
+                "FROM Reservations INNER JOIN Users ON Reservations.id = Users.reservation_id " +
                 "WHERE username = @user";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
@@ -213,8 +227,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             try
             {
-                // SELECT ID ROOM OF Rooms
-                data = "SELECT id_room FROM Rooms WHERE n_room = @nRoom";
+                // SELECT id OF Rooms
+                data = "SELECT id FROM Rooms WHERE n_room = @nRoom";
 
                 using (SqlCommand cmd = new SqlCommand(data, con))
                 {
@@ -224,15 +238,15 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                     {
                         while (reader.Read())
                         {
-                            idRoom = Convert.ToInt32(reader["id_room"]);
+                            idRoom = Convert.ToInt32(reader["id"]);
                         }
                     }
                 }
 
                 // lastIDRoom VALUE
                 data = "SELECT n_room FROM Rooms INNER JOIN Reservations " +
-                    "ON Rooms.id_room = Reservations.id_room INNER JOIN Users " +
-                    "ON Reservations.id_reservation = Users.id_reservation WHERE username = @user";
+                    "ON Rooms.id = Reservations.rooms_id INNER JOIN Users " +
+                    "ON Reservations.id = Users.reservation_id WHERE username = @user";
 
                 using (SqlCommand cmd = new SqlCommand(data, con))
                 {
@@ -248,7 +262,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
 
                 // UPDATE id_room OF TABLE Reservations
-                data = "UPDATE Reservations SET id_room = @idRoom FROM Reservations WHERE id_reservation = @idReservation";
+                data = "UPDATE Reservations SET rooms_id = @idRoom FROM Reservations WHERE id = @idReservation";
 
                 using (SqlCommand cmd = new SqlCommand(data, con))
                 {
@@ -298,8 +312,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             AntecipateCheckoutButton.IsEnabled = true;
         }
 
-
-        // POSTPONE BUTTON AND EVENTS IT DOES
         private void PostPoneStayButton_Click(object sender, RoutedEventArgs e)
         {
             calendarPostPone.Visibility = Visibility.Visible;
@@ -323,7 +335,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // OPEN CONNECTION
             con.Open();
 
-            data = "UPDATE Reservations SET [check-out] = @checkout FROM Reservations WHERE id_reservation = @idReservation";
+            data = "UPDATE Reservations SET [check-out] = @checkout FROM Reservations WHERE id = @idReservation";
             
             using(SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -341,13 +353,12 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             AntecipateCheckoutButton.IsEnabled = true;
         }
 
-        // RETURN THE DATES OF THE CHECK-OUT
         private void ReturnDateButton_Click(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
             con.Open();
 
-            data = "UPDATE Reservations SET [check-out] = @checkout FROM Reservations WHERE id_reservation = @idReservation";
+            data = "UPDATE Reservations SET [check-out] = @checkout FROM Reservations WHERE id = @idReservation";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -366,14 +377,12 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             AntecipateCheckoutButton.IsEnabled = true;
         }
 
-
-        // ANTECIPATE CHECKOUT BUTTON CLICK EVENT
         private void AntecipateCheckout_Click(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
             con.Open();
 
-            data = "UPDATE Reservations SET active = 0 FROM Reservations WHERE id_reservation = @idReservation";
+            data = "UPDATE Reservations SET active = 0 FROM Reservations WHERE id = @idReservation";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -385,7 +394,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             // // INSERT username CONTENT IN reservationComboBox COMBO BOX
             SqlDataAdapter da = new SqlDataAdapter("SELECT Users.username FROM Users " +
-                "INNER JOIN Reservations ON Users.id_reservation = Reservations.id_reservation " +
+                "INNER JOIN Reservations ON Users.reservation_id = Reservations.id " +
                 "WHERE Users.type_user = 1 AND Reservations.active = 1;", con);
 
             DataTable dt = new DataTable();
@@ -400,17 +409,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             // CLOSE CONNECTION
             con.Close();
 
-            // CLEAR FORM AND BIND ON THE COMBO BOX
-            reservationComboBox.SelectedItem = null;
-            nClienteTxtBox.Text = null;
-            idReservationTxtBox.Text = null;
-            nRoomTxtBox.Text = null;
-            checkinTxtBox.Text = null;
-            checkoutTxtBox.Text = null;
-            ChangeRoomButton.IsEnabled = true;
-            PostPoneButton.IsEnabled = true;
-
-            reservationComboBox.SelectionChanged += ComboBoxSelectClient;
+            ClearForm();
         }    
     }
 }

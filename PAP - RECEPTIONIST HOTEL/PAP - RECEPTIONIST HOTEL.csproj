@@ -78,8 +78,8 @@
     <Compile Include="MVVM\ViewModel\ManageRequestsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ManageUsersViewModel.cs" />
     <Compile Include="MVVM\ViewModel\RequestsViewModel.cs" />
-    <Compile Include="Forms\Forgot_pass.xaml.cs">
-      <DependentUpon>Forgot_pass.xaml</DependentUpon>
+    <Compile Include="Forms\ForgotPassword.xaml.cs">
+      <DependentUpon>ForgotPassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -113,7 +113,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\Forgot_pass.xaml">
+    <Page Include="Forms\ForgotPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,10 +199,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EnglishApp\" />
     <Folder Include="Fonts\" />
     <Folder Include="MVVM\Model\" />
-    <Folder Include="PortugueseApp\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Forms\Images\key-icon.png" />

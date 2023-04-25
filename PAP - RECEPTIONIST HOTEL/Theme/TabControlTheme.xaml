@@ -23,7 +23,7 @@
                         <Border 
               Name="Border" 
               Grid.Row="1"
-              Background="#FC191819" 
+              Background="Transparent" 
               BorderBrush="Transparent" 
               BorderThickness="0" 
               CornerRadius="0" 

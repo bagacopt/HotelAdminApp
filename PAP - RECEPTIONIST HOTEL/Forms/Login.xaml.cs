@@ -45,7 +45,23 @@ namespace PAP___RECEPTIONIST_HOTEL
             }
         }
 
-        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        private void PressKey(object sender, KeyEventArgs e)
+        {
+            // PRESSES THE BUTTON OF THE LOGIN
+            if (e.Key == Key.Enter)
+            {
+                LoginButton_Click(sender, e);
+            }
+
+            // PRESSES ESCAPE
+            if (e.Key == Key.Escape)
+            {
+                // CLOSES PROGRAM
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
             con.Open();
@@ -55,8 +71,8 @@ namespace PAP___RECEPTIONIST_HOTEL
 
             using(SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@user", txtUser.Text.ToLower());
-                Settings.Default.n_cliente = txtUser.Text.ToLower();
+                cmd.Parameters.AddWithValue("@user", usernameTxtBox.Text.ToLower());
+                Settings.Default.n_cliente = usernameTxtBox.Text.ToLower();
 
                 if (passwordHidden.Visibility == Visibility.Visible)
                 {
@@ -100,28 +116,12 @@ namespace PAP___RECEPTIONIST_HOTEL
             con.Close();
         }
 
-        private void Forgot_pass(object sender, MouseButtonEventArgs e)
+        private void ForgotPass_Click(object sender, MouseButtonEventArgs e)
         {
             // GOES TO FORGOT PASSWORD
-            Forgot_pass forgot = new Forgot_pass();
+            ForgotPassword forgot = new ForgotPassword();
             forgot.Show();
-            this.Hide();
-        }
-
-        private void PressKey(object sender, KeyEventArgs e)
-        {
-            // PRESSES THE BUTTON OF THE LOGIN
-            if (e.Key == Key.Enter)
-            {
-                BtnLogin_Click(sender, e);
-            }
-
-            // PRESSES ESCAPE
-            if (e.Key == Key.Escape)
-            {
-                // CLOSES PROGRAM
-                Application.Current.Shutdown();
-            }
+            this.Close();
         }
 
         private void HidePasswordChecked(object sender, RoutedEventArgs e)
@@ -142,7 +142,7 @@ namespace PAP___RECEPTIONIST_HOTEL
 
         private void Login_Loaded(object sender, RoutedEventArgs e)
         {
-            txtUser.Focus();
+            usernameTxtBox.Focus();
         }
     }
 }

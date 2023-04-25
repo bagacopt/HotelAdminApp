@@ -2,7 +2,6 @@
 using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
 using System.Data.SqlClient;
-using System.Windows.Input;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 {

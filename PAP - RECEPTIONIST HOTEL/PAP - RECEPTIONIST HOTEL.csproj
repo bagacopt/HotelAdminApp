@@ -73,11 +73,13 @@
     <Compile Include="Forms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\ViewModel\AdminControlPanelViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\ManageReservationsViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\ManageRequestsViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\ManageUsersViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\RequestsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Admin\AdminControlPanelViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Admin\AdminViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Admin\AdminManageRequestsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Primary\ManageReservationsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Primary\ManageRequestsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Primary\ManageUsersViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Primary\RequestsViewModel.cs" />
     <Compile Include="Forms\ForgotPassword.xaml.cs">
       <DependentUpon>ForgotPassword.xaml</DependentUpon>
     </Compile>
@@ -88,10 +90,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MVVM\ViewModel\ControlPanelViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Primary\ControlPanelViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Primary\MainViewModel.cs" />
     <Compile Include="MVVM\View\SubView\MaintenanceRequests.xaml.cs">
       <DependentUpon>MaintenanceRequests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SubView\AdminManageRequests.xaml.cs">
+      <DependentUpon>AdminManageRequests.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\SubView\ServicesRequests.xaml.cs">
       <DependentUpon>ServicesRequests.xaml</DependentUpon>
@@ -138,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\SubView\MaintenanceRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SubView\AdminManageRequests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

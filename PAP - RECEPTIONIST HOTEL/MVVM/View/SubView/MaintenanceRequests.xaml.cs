@@ -55,7 +55,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
             // OPEN CONNECTION
             con.Open();
 
-            data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name) VALUES(@phone, @email, @desc, 2, @name)";
+            data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name, active) VALUES(@phone, @email, @desc, 2, @name, 1)";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {

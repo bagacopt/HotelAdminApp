@@ -1,25 +1,9 @@
-﻿using PAP___RECEPTIONIST_HOTEL.Core;
-using PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel;
-using PAP___RECEPTIONIST_HOTEL.Properties;
+﻿using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Microsoft.VisualBasic;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
@@ -79,7 +63,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                 }
             }
 
-            // // INSERT username CONTENT IN reservationComboBox COMBO BOX
+            // INSERT username CONTENT IN reservationComboBox COMBO BOX
             SqlDataAdapter da = new SqlDataAdapter("SELECT Users.username FROM Users " +
                 "INNER JOIN Reservations ON Users.reservation_id = Reservations.id " +
                 "WHERE Users.type_user = 1 AND Reservations.active = 1;", con);

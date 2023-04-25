@@ -182,13 +182,14 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             if (nStars == 1)
             {
-                System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrela! \nSomos muito agradecidos", "Obrigado!!!");
+                System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrela! " +
+                    "\nSomos muito agradecidos", "Obrigado!!!");
             }
             else
             {
-                System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrelas! \nSomos muito agradecidos", "Obrigado!!!");
+                System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrelas! " +
+                    "\nSomos muito agradecidos", "Obrigado!!!");
             }
-            
         }
     }
 }

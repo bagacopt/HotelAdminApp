@@ -83,6 +83,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
                 }
             }
 
+            // CLOSE CONNECTION
+            con.Close();
+
             if (typeUser == 1)
             {
                 CurrentView = ControlPanelVM;
@@ -91,9 +94,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             {
                 CurrentView = AdminControlPanelVM;
             } 
-
-            // CLOSE CONNECTION
-            con.Close();
 
             // ----------------------------------- ViewCommand ---------------------------------------- //
             ControlPanelViewCommand = new RelayCommand(o => { 

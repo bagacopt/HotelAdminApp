@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="30,0,0,70">
+    <Grid>
         <TabControl Width="1000" Height="550" 
                     Padding="0,0,0,0"
                     

@@ -99,9 +99,7 @@
                 <!-- Nome do cliente -->
                 <Label Content="Nome do cliente:"
                        Margin="0,20,0,-5"
-                       Foreground="White"
-                       FontSize="18"
-                       FontFamily="Montserrat" />
+                       Style="{StaticResource LabelTheme}"/>
                 <TextBox x:Name="nClienteTxtBox"
                          FontSize="18"
                          Width="340"

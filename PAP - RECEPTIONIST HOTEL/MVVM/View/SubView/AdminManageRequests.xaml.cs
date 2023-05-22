@@ -24,7 +24,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
         {
             con.Open();
 
-            data = "SELECT";
+            data = "SELECT id, name FROM Requests";
 
             
 

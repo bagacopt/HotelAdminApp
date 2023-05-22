@@ -16,6 +16,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             InitializeComponent();
         }
 
+        // VARIABLES
+        public static string nClient;
+
+
         // CONNECTION
         SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
@@ -47,8 +51,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         private void selectRequestSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             contentControlContent.Visibility = Visibility.Visible;
-
-
+            nClient = selectRequestComboBox.SelectedValue.ToString();
         }
     }
 }

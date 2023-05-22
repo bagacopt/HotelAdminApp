@@ -31,7 +31,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
             // OPEN CONNECTION
             con.Open();
 
-            data = "SELECT Reservations.id FROM Reservations INNER JOIN Users ON Reservations.id = Users.reservation_id WHERE Users.username = @user AND Reservations.active = 1";
+            data = "SELECT Reservations.id FROM Reservations INNER JOIN Users " +
+                "ON Reservations.id = Users.reservation_id WHERE Users.username = @user AND Reservations.active = 1";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -55,7 +56,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
             // OPEN CONNECTION
             con.Open();
 
-            data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name, active) VALUES(@phone, @email, @desc, 2, @name, 1)";
+            data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name, active)" +
+                "VALUES(@phone, @email, @desc, 3, @name, 1)";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -67,7 +69,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
                 cmd.ExecuteNonQuery();
             }
 
-            data = "SELECT id FROM Requests WHERE phone_number = @phone AND email = @email AND [desc] = @desc AND services_id = 2 AND name = @name";
+            data = "SELECT id FROM Requests WHERE phone_number = @phone AND email = @email AND [desc] = @desc " +
+                "AND services_id = 3 AND name = @name";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -84,6 +87,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
                     }
                 }
             }
+
+            Console.WriteLine(idRequest);
 
             data = "INSERT INTO Reservations_Requests(reservation_id, request_id) VALUES (@idReservation, @idRequest)";
 

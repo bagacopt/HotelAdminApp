@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using PAP___RECEPTIONIST_HOTEL.Properties;
+using System.Data.SqlClient;
+using System.Windows.Controls;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
 {
@@ -12,30 +14,28 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
             InitializeComponent();
         }
 
+        // VARIABLES
+        string data;
+
+        // CONNECTION
+        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
+
         private void AdminManageRequests_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
+            con.Open();
+
+            data = "SELECT";
+
+            
+
+
+
+
             for (int i = 0; i <= 13; i++)
             {
                 Label label = (Label)this.FindName("showDataArray" + i.ToString());
-                label.Visibility = System.Windows.Visibility.Visible;
+                label.Visibility = System.Windows.Visibility.Hidden;
             }
         }
-
-        /* EXTRAS
-         for (int i = 5; i <= 9; i++){
-            Label label = (Label)this.FindName("label" + i.ToString());
-            label.Visibility = Visibility.Hidden; }
-         */
-
-        /* MANUTENÇÕES
-         for (int i = 10; i <= 13; i++){
-            Label label = (Label)this.FindName("label" + i.ToString());
-            label.Visibility = Visibility.Hidden; }
-         */
-
-
-
-
-
     }
 }

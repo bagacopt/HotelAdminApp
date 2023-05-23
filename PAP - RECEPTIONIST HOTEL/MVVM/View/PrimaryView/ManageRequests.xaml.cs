@@ -1,4 +1,6 @@
-﻿using PAP___RECEPTIONIST_HOTEL.Properties;
+﻿using PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView;
+using PAP___RECEPTIONIST_HOTEL.Properties;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
@@ -15,28 +17,28 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         {
             InitializeComponent();
         }
-
         // VARIABLES
-        public static string nClient;
-
+        public static int nClient;
+        string[] tempnClient;
 
         // CONNECTION
         SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         private void ManageRequests_Loaded(object sender, RoutedEventArgs e)
         {
+            selectRequestComboBox.SelectionChanged += selectRequestSelectionChanged;
+
             // OPEN CONNECTION
             con.Open();
 
             // INSERT number of the room CONTENT IN selectRequestComboBox
-            SqlDataAdapter da = new SqlDataAdapter("SELECT Rooms.n_room FROM Rooms INNER JOIN Reservations " +
+            SqlDataAdapter da = new SqlDataAdapter("SELECT DISTINCT Rooms.n_room FROM Rooms INNER JOIN Reservations " +
                 "ON Rooms.id = Reservations.rooms_id INNER JOIN Reservations_Requests " +
                 "ON Reservations.id = Reservations_Requests.reservation_id INNER JOIN Requests " +
                 "ON Reservations_Requests.request_id = Requests.id " +
                 "WHERE Requests.active = 1 AND Reservations.active = 1 AND Rooms.available = 0", con);
 
             DataTable dt = new DataTable();
-
             da.Fill(dt);
 
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -50,8 +52,14 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void selectRequestSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            contentControlContent.Visibility = Visibility.Visible;
-            nClient = selectRequestComboBox.SelectedValue.ToString();
+            tempnClient = selectRequestComboBox.SelectedValue.ToString().Split(':');
+            nClient = Convert.ToInt32(tempnClient[1]);
+
+            if (nClient != 0)
+            {
+                AdminManageRequests adm = new AdminManageRequests();
+                contentControlContent.Content = adm;
+            }
         }
     }
 }

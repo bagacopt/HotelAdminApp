@@ -38,8 +38,7 @@
 
         <ContentControl Grid.Column="1"
                         x:Name="contentControlContent"
-                        Visibility="Hidden"
-                        Margin="10 0 10 85"
-                        Content="{Binding AdminCurrentView}"/>
+                        Visibility="Visible"
+                        Margin="10 0 10 85"/>
     </Grid>
 </UserControl>

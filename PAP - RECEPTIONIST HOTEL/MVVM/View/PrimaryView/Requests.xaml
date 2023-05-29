@@ -7,9 +7,7 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TabControl Width="1000" Height="550" 
-                    Padding="0,0,0,0"
-                    
+        <TabControl Width="1000" Height="550"
                     Style="{StaticResource TabControlTheme}">
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabPanel}">
@@ -17,13 +15,9 @@
                 </Style>
             </TabControl.Resources>
 
-            <TabItem Width="500" 
-                     Margin="0,0,0,0"
-                     Header="Serviço de quartos" >
+            <TabItem Header="Serviço de quartos" Width="500">
                 <Grid>
-                    <TabControl Width="1000" Height="550"
-                                Padding="0,0,0,0" Grid.ColumnSpan="2"
-                                Margin="-2,0,0,0" 
+                    <TabControl Width="1000" Height="550" Grid.ColumnSpan="2" Margin="-2 0 0 0" 
                                 Style="{StaticResource TabControlTheme}">
                         <TabControl.Resources>
                             <Style TargetType="{x:Type TabPanel}">
@@ -32,12 +26,11 @@
                         </TabControl.Resources>
 
                         <!-- SERVIÇOS -->
-                        <TabItem Header="Serviços" Width="500" Margin="0,0,0,0">
+                        <TabItem Header="Serviços" Width="500">
                             <StackPanel>
-                                <Label Content="Serviço de limpeza de quartos diário" 
-                                       Style="{StaticResource LabelTheme}"
+                                <Label Content="Serviço de limpeza de quartos diário" Margin="0 5 0 0"
                                        HorizontalAlignment="Left"
-                                       Margin="0,5,0,0"/>
+                                       Style="{StaticResource LabelTheme}"/>
                                 <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton1">
                                     <Button.Resources>
                                         <Style TargetType="Border">
@@ -45,15 +38,13 @@
                                         </Style>
                                     </Button.Resources>
 
-                                    <Label Content="Requisitar"
-                                           Foreground="Black"
+                                    <Label Content="Requisitar" Foreground="Black"
                                            Style="{StaticResource LabelTheme}"/>
                                 </Button>
 
-                                <Label Content="Serviço extra de limpeza de quarto" 
-                                       Style="{StaticResource LabelTheme}"
+                                <Label Content="Serviço extra de limpeza de quarto" Margin="0 15 0 0"
                                        HorizontalAlignment="Left"
-                                       Margin="0,15,0,0"/>
+                                       Style="{StaticResource LabelTheme}"/>
                                 <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton2">
                                     <Button.Resources>
                                         <Style TargetType="Border">
@@ -61,15 +52,13 @@
                                         </Style>
                                     </Button.Resources>
 
-                                    <Label Content="Requisitar"
-                                           Foreground="Black"
+                                    <Label Content="Requisitar" Foreground="Black"
                                            Style="{StaticResource LabelTheme}"/>
                                 </Button>
 
-                                <Label Content="Kit de limpeza para uso dos hóspedes" 
-                                       Style="{StaticResource LabelTheme}"
+                                <Label Content="Kit de limpeza para uso dos hóspedes" Margin="0 15 0 0"
                                        HorizontalAlignment="Left"
-                                       Margin="0,15,0,0"/>
+                                       Style="{StaticResource LabelTheme}"/>
                                 <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton3">
                                     <Button.Resources>
                                         <Style TargetType="Border">
@@ -77,15 +66,13 @@
                                         </Style>
                                     </Button.Resources>
 
-                                    <Label Content="Requisitar"
-                                           Foreground="Black"
+                                    <Label Content="Requisitar" Foreground="Black"
                                            Style="{StaticResource LabelTheme}"/>
                                 </Button>
 
-                                <Label Content="Serviço de abertura da cama" 
-                                       Style="{StaticResource LabelTheme}"
+                                <Label Content="Serviço de abertura da cama" Margin="0 15 0 0"
                                        HorizontalAlignment="Left"
-                                       Margin="0,15,0,0"/>
+                                       Style="{StaticResource LabelTheme}"/>
                                 <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton4">
                                     <Button.Resources>
                                         <Style TargetType="Border">
@@ -93,37 +80,33 @@
                                         </Style>
                                     </Button.Resources>
 
-                                    <Label Content="Requisitar"
-                                           Foreground="Black"
+                                    <Label Content="Requisitar" Foreground="Black"
                                            Style="{StaticResource LabelTheme}"/>
                                 </Button>
                             </StackPanel>
                         </TabItem>
 
                         <!-- EXTRAS -->
-                        <TabItem Header="Extras" Width="495" Margin="0,0,5,0">
+                        <TabItem Header="Extras" Width="495" Margin="0 0 5 0">
                             <Grid>
                                 <StackPanel>
-                                    <Label Content="Shampoo e gel de banho" 
-                                       Style="{StaticResource LabelTheme}"
-                                       HorizontalAlignment="Left"
-                                       Margin="0,5,0,0"/>
+                                    <Label Content="Shampoo e gel de banho" Margin="0 5 0 0"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource LabelTheme}"/>
                                     <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton5">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
                                             </Style>
                                         </Button.Resources>
-
-                                        <Label Content="Requisitar"
-                                           Foreground="Black"
-                                           Style="{StaticResource LabelTheme}"/>
+                                        
+                                        <Label Content="Requisitar" Foreground="Black"
+                                               Style="{StaticResource LabelTheme}"/>
                                     </Button>
 
-                                    <Label Content="Condicionador" 
-                                       Style="{StaticResource LabelTheme}"
-                                       HorizontalAlignment="Left"
-                                       Margin="0,15,0,0"/>
+                                    <Label Content="Condicionador" Margin="0 15 0 0"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource LabelTheme}"/>
                                     <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton6">
                                         <Button.Resources>
                                             <Style TargetType="Border">
@@ -131,15 +114,13 @@
                                             </Style>
                                         </Button.Resources>
 
-                                        <Label Content="Requisitar"
-                                           Foreground="Black"
-                                           Style="{StaticResource LabelTheme}"/>
+                                        <Label Content="Requisitar" Foreground="Black"
+                                               Style="{StaticResource LabelTheme}"/>
                                     </Button>
 
-                                    <Label Content="Sabão" 
-                                       Style="{StaticResource LabelTheme}"
-                                       HorizontalAlignment="Left"
-                                       Margin="0,15,0,0"/>
+                                    <Label Content="Sabão" Margin="0 15 0 0"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource LabelTheme}"/>
                                     <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton7">
                                         <Button.Resources>
                                             <Style TargetType="Border">
@@ -147,15 +128,13 @@
                                             </Style>
                                         </Button.Resources>
 
-                                        <Label Content="Requisitar"
-                                           Foreground="Black"
-                                           Style="{StaticResource LabelTheme}"/>
+                                        <Label Content="Requisitar" Foreground="Black"
+                                               Style="{StaticResource LabelTheme}"/>
                                     </Button>
 
-                                    <Label Content="Kit de pasta de dentes" 
-                                       Style="{StaticResource LabelTheme}"
-                                       HorizontalAlignment="Left"
-                                       Margin="0,15,0,0"/>
+                                    <Label Content="Kit de pasta de dentes" Margin="0 15 0 0"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource LabelTheme}"/>
                                     <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton8">
                                         <Button.Resources>
                                             <Style TargetType="Border">
@@ -163,15 +142,13 @@
                                             </Style>
                                         </Button.Resources>
 
-                                        <Label Content="Requisitar"
-                                           Foreground="Black"
-                                           Style="{StaticResource LabelTheme}"/>
+                                        <Label Content="Requisitar" Foreground="Black"
+                                               Style="{StaticResource LabelTheme}"/>
                                     </Button>
 
-                                    <Label Content="Kit de barbear" 
-                                       Style="{StaticResource LabelTheme}"
-                                       HorizontalAlignment="Left"
-                                       Margin="0,15,0,0"/>
+                                    <Label Content="Kit de barbear" Margin="0 15 0 0"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource LabelTheme}"/>
                                     <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton9">
                                         <Button.Resources>
                                             <Style TargetType="Border">
@@ -179,14 +156,12 @@
                                             </Style>
                                         </Button.Resources>
 
-                                        <Label Content="Requisitar"
-                                           Foreground="Black"
-                                           Style="{StaticResource LabelTheme}"/>
+                                        <Label Content="Requisitar" Foreground="Black"
+                                               Style="{StaticResource LabelTheme}"/>
                                     </Button>
-                                    <Label Content="Kit de costura" 
-                                       Style="{StaticResource LabelTheme}"
-                                       HorizontalAlignment="Left"
-                                       Margin="0,15,0,0"/>
+                                    <Label Content="Kit de costura" Margin="0 15 0 0"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource LabelTheme}"/>
                                     <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton10">
                                         <Button.Resources>
                                             <Style TargetType="Border">
@@ -194,9 +169,8 @@
                                             </Style>
                                         </Button.Resources>
 
-                                        <Label Content="Requisitar"
-                                           Foreground="Black"
-                                           Style="{StaticResource LabelTheme}"/>
+                                        <Label Content="Requisitar" Foreground="Black"
+                                               Style="{StaticResource LabelTheme}"/>
                                     </Button>
                                 </StackPanel>
                             </Grid>
@@ -208,10 +182,9 @@
             <!-- MANUNTENÇÃO -->
             <TabItem Header="Manutenção" Width="490">
                 <StackPanel>
-                    <Label Content="Ar condicionado (A/C)" 
-                           Style="{StaticResource LabelTheme}"
+                    <Label Content="Ar condicionado (A/C)" Margin="0 5 0 0"
                            HorizontalAlignment="Left"
-                           Margin="0,5,0,0"/>
+                           Style="{StaticResource LabelTheme}"/>
                     <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton1">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -219,15 +192,13 @@
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar"
-                               Foreground="Black"
+                        <Label Content="Requisitar" Foreground="Black"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
 
-                    <Label Content="Cama" 
-                           Style="{StaticResource LabelTheme}"
+                    <Label Content="Cama" Margin="0 15 0 0"
                            HorizontalAlignment="Left"
-                           Margin="0,15,0,0"/>
+                           Style="{StaticResource LabelTheme}"/>
                     <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton2">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -235,15 +206,13 @@
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar"
-                               Foreground="Black"
+                        <Label Content="Requisitar" Foreground="Black"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
 
-                    <Label Content="Máquina do café"
-                           Style="{StaticResource LabelTheme}"
+                    <Label Content="Máquina do café" Margin="0 15 0 0"
                            HorizontalAlignment="Left"
-                           Margin="0,15,0,0"/>
+                           Style="{StaticResource LabelTheme}"/>
                     <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton3">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -251,15 +220,13 @@
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar"
-                               Foreground="Black"
+                        <Label Content="Requisitar" Foreground="Black"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
 
-                    <Label Content="Pilhas do comando da televisão" 
-                           Style="{StaticResource LabelTheme}"
+                    <Label Content="Pilhas do comando da televisão" Margin="0 15 0 0" 
                            HorizontalAlignment="Left"
-                           Margin="0,15,0,0"/>
+                           Style="{StaticResource LabelTheme}"/>
                     <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton4">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -267,15 +234,13 @@
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar"
-                               Foreground="Black"
+                        <Label Content="Requisitar" Foreground="Black"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
 
-                    <Label Content="Minibar" 
-                           Style="{StaticResource LabelTheme}"
+                    <Label Content="Minibar" Margin="0 15 0 0"
                            HorizontalAlignment="Left"
-                           Margin="0,15,0,0"/>
+                           Style="{StaticResource LabelTheme}"/>
                     <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton5">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -283,15 +248,13 @@
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar"
-                               Foreground="Black"
+                        <Label Content="Requisitar" Foreground="Black"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
 
-                    <Label Content="Secador" 
-                           Style="{StaticResource LabelTheme}"
+                    <Label Content="Secador" Margin="0 15 0 0"
                            HorizontalAlignment="Left"
-                           Margin="0,15,0,0"/>
+                           Style="{StaticResource LabelTheme}"/>
                     <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton6">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -299,8 +262,7 @@
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar"
-                               Foreground="Black"
+                        <Label Content="Requisitar" Foreground="Black"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
                 </StackPanel>

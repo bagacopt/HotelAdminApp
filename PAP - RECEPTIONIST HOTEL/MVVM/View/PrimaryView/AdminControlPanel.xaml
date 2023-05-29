@@ -9,15 +9,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <Border Width="270" Height="110"
-                    Background="#009FBD"
-                    VerticalAlignment="Top"
-                    CornerRadius="10"
-                    Margin="20,20,0,0">
+            <Border Width="270" Height="110" Margin="20,20,0,0"
+                    Background="#009FBD" CornerRadius="10"
+                    VerticalAlignment="Top">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0">

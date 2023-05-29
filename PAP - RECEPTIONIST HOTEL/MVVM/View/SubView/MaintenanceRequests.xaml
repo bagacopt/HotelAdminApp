@@ -5,28 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView"
         mc:Ignorable="d"
-        Title="MaintenanceRequests" 
-        Height="500" Width="350"
-        Background="#FC191819"
-        WindowStyle="None"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
-        MouseLeftButtonDown="Window_MouseDown"
-        Loaded="MaintenanceRequests_Loaded">
+        Title="MaintenanceRequests"
+        Width="350" Height="500"
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        MouseLeftButtonDown="Window_MouseDown" Loaded="MaintenanceRequests_Loaded">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Forms/Images/back-image.jpg"
-                        Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="/Forms/Images/back-image.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
 
         <StackPanel Background="White" Height="60" VerticalAlignment="Top">
-            <Button BorderThickness="0"
-                    Content="«"
-                    Foreground="White"
-                    FontSize="16"
-                    FontFamily="Montserrat"
-                    Cursor="Hand"
-                    Margin="0,10,310,0"
+            <Button Content="«" Margin="0,10,310,0"
+                    Foreground="White" FontSize="16" FontFamily="Montserrat"
+                    BorderThickness="0" Cursor="Hand"
                     Click="BackButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
@@ -42,37 +33,25 @@
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
-                                              HorizontalAlignment="Center"/>
+                                CornerRadius="9" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
 
-            <Label Style="{StaticResource LabelTheme}"
-                   FontSize="15"
-                   Foreground="Black"
-                   FontWeight="Bold"
-                   VerticalAlignment="Top"
-                   HorizontalAlignment="Center"
-                   Content=""
-                   x:Name="titleLabel"
-                   Margin="-10,-21,0,0"/>
+            <Label x:Name="titleLabel" Margin="-10,-21,0,0"
+                   FontSize="15" Foreground="Black" FontWeight="Bold"
+                   HorizontalAlignment="Center" VerticalAlignment="Top"
+                   Style="{StaticResource LabelTheme}"/>
 
             <StackPanel Orientation="Horizontal" Height="25">
-                <Label Style="{StaticResource LabelTheme}" 
-                       Content="Nº do quarto:"
-                       Foreground="Black"
-                       FontSize="14"
-                       Margin="0,0,-10,0"/>
-                <Label x:Name="nRoomLabel"
-                       Content=""
-                       Style="{StaticResource LabelTheme}"
-                       Foreground="Black"
-                       FontSize="12"
-                       Margin="5,2,0,0">
+                <Label Content="Nº do quarto:" Margin="0,0,-10,0"
+                       FontSize="14" Foreground="Black"
+                       Style="{StaticResource LabelTheme}" />
+                <Label x:Name="nRoomLabel" Margin="5,2,0,0"
+                       FontSize="12" Foreground="Black"
+                       Style="{StaticResource LabelTheme}">
                 </Label>
             </StackPanel>
         </StackPanel>
@@ -80,37 +59,31 @@
         <Border CornerRadius="10" BorderThickness="2" Background="White" Height="350" Margin="25,25,25,0">
             <StackPanel Margin="0,10,0,0">
                 <StackPanel Margin="0,10,0,0">
-                    <Label Content="Número de telefone"
-                           Style="{StaticResource LabelTheme}" 
-                           Foreground="Black" FontSize="14"
-                           Margin="10,0,0,0"/>
-                    <TextBox Margin="10,0,10,0"
-                             x:Name="mobileTxtBox"
+                    <Label Content="Número de telefone" Margin="10,0,0,0"
+                           FontSize="14" Foreground="Black" 
+                           Style="{StaticResource LabelTheme}"/>
+                    <TextBox x:Name="mobileTxtBox" Margin="10,0,10,0"
                              FontSize="12"
                              BorderThickness="0,0,0,1"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
-                    <Label Content="Email"
-                           Style="{StaticResource LabelTheme}" 
-                           Foreground="Black" FontSize="14"
-                           Margin="10,0,0,0"/>
-                    <TextBox Margin="10,0,10,0"
-                             x:Name="emailTxtBox"
+                    <Label Content="Email" Margin="10 0 0 0"
+                           FontSize="14" Foreground="Black"
+                           Style="{StaticResource LabelTheme}"/>
+                    <TextBox x:Name="emailTxtBox" Margin="10,0,10,0"
                              FontSize="12"
                              BorderThickness="0,0,0,1"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
-                    <Label Content="Descrição do pedido"
-                           Style="{StaticResource LabelTheme}" 
-                           Foreground="Black" FontSize="14"
-                           Margin="10,0,0,0"/>
-                    <TextBox Margin="10,0,10,0" Height="70" 
-                             x:Name="descriptionTxtBox"
+                    <Label Content="Descrição do pedido" Margin="10,0,0,0"
+                           FontSize="14" Foreground="Black" 
+                           Style="{StaticResource LabelTheme}"/>
+                    <TextBox x:Name="descriptionTxtBox" Margin="10,0,10,0"
+                             Height="70" 
                              FontSize="12"
-                             BorderThickness="2"
-                             BorderBrush="Gray">
+                             BorderThickness="2" BorderBrush="Gray">
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -119,12 +92,9 @@
                     </TextBox>
                 </StackPanel>
 
-                <Button Height="30"
-                        Margin="80,25,80,0" 
-                        Click="MaintainButton_Click"
-                        Content="Requisitar"
-                        Background="Transparent"
-                        Foreground="Black">
+                <Button Content="Requisitar" Margin="80,25,80,0" Height="30"
+                        Background="Transparent" Foreground="Black"
+                        Click="MaintainButton_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>

@@ -5,24 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="AdminManageRequests_Loaded">
+             d:DesignHeight="450" d:DesignWidth="800" 
+             Loaded="AdminManageRequests_Loaded">
     <Grid>
-        <TabControl Style="{StaticResource TabControlTheme}"
-                    Width="1000" Height="460" Padding="0,0,0,0"
-                    x:Name="PrimaryTabControl">
+        <TabControl x:Name="PrimaryTabControl"
+                    Width="1000" Height="460"
+                    Style="{StaticResource TabControlTheme}">
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabPanel}">
                     <Setter Property="HorizontalAlignment" Value="Center"/>
                 </Style>
             </TabControl.Resources>
 
-            <TabItem Width="250" Margin="-120 0 0 0"
-                     Header="Serviço de quartos">
+            <TabItem Header="Serviço de quartos" Width="250" Margin="-120 0 0 0">
                 <Grid>
-                    <TabControl Style="{StaticResource TabControlTheme}"
+                    <TabControl x:Name="SubTabControl" Margin="-2,0,0,0"
                                 Width="1000" Height="550" 
-                                Padding="0,0,0,0" Grid.ColumnSpan="2" Margin="-2,0,0,0"
-                                x:Name="SubTabControl">
+                                Grid.ColumnSpan="2" 
+                                Style="{StaticResource TabControlTheme}">
                         <TabControl.Resources>
                             <Style TargetType="{x:Type TabPanel}">
                                 <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -39,45 +39,45 @@
                                 </StackPanel>
 
                                 <Border BorderThickness="1" BorderBrush="White" CornerRadius="10" Margin="0 40 0 40"/>
-
+                                
                                 <StackPanel Orientation="Horizontal" Margin="0 50 0 327">
-                                    <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                                           Content="Nome do pedido:"/>
-                                    <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                                           x:Name="showDataArray0"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                                    <Label Content="Nome do pedido:" Margin="10 0 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray0"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Margin="0 90 0 287">
-                                    <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                                           Content="Número de telefone:"/>
-                                    <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                                           x:Name="showDataArray1"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                                    <Label Content="Número de telefone:" Margin="10 0 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray1"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Margin="0 130 0 247">
-                                    <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0" 
-                                           Content="Email:"/>
-                                    <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                                           x:Name="showDataArray2"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                                    <Label Content="Email:" Margin="10 0 0 0" 
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray2"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Margin="0 170 0 207">
-                                    <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                                           Content="Quantidade:"/>
-                                    <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                                           x:Name="showDataArray3"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                                    <Label Content="Quantidade:" Margin="10 0 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray3"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Margin="0 210 0 164">
-                                    <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                                           Content="Descrição:"/>
-                                    <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                                           x:Name="showDataArray4"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                                    <Label Content="Descrição:" Margin="10 0 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray4"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
                             </Grid>
                         </TabItem>
@@ -94,44 +94,43 @@
                                 <Border BorderThickness="1" BorderBrush="White" CornerRadius="10" Margin="0 40 0 40"/>
 
                                 <StackPanel Orientation="Horizontal" Margin="0 50 0 327">
-                                    <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0" 
-                                           Content="Nome do pedido:"/>
-                                    <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                                           x:Name="showDataArray5"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                                    <Label Content="Nome do pedido:" Margin="10 0 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray5"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Margin="0 90 0 287">
-                                    <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                                           Content="Número de telefone:"/>
-                                    <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                                           x:Name="showDataArray6"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                                    <Label Content="Número de telefone:" Margin="10 0 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray6"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Horizontal" 
-                                            Margin="0 130 0 247">
-                                    <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                                           Content="Email:"/>
-                                    <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                                           x:Name="showDataArray7"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                                <StackPanel Orientation="Horizontal" Margin="0 130 0 247">
+                                    <Label Content="Email:" Margin="10 0 0 0" 
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray7"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Margin="0 170 0 207">
-                                    <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                                           Content="Quantidade:"/>
-                                    <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                                           x:Name="showDataArray8"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                                    <Label Content="Quantidade:" Margin="10 0 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray8"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Margin="0 210 0 164">
-                                    <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                                           Content="Descrição:"/>
-                                    <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                                           x:Name="showDataArray9"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                                    <Label Content="Descrição:" Margin="10 0 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray9"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
                             </Grid>
                         </TabItem>
@@ -152,35 +151,35 @@
                     <Border BorderThickness="1" BorderBrush="White" CornerRadius="10" Margin="0 40 0 40"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0 50 0 235">
-                        <Label Style="{StaticResource LabelTheme}" 
-                               Margin="10 0 0 0" Content="Nome do pedido:"/>
-                        <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                               x:Name="showDataArray10"
-                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                        <Label Content="Nome do pedido:" Margin="10 0 0 0" 
+                               Style="{StaticResource LabelTheme}"/>
+                        <Label x:Name="showDataArray10" Margin="0 0 0 3" Padding="1 2 0 0"
+                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                               Style="{StaticResource LabelTheme}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 90 0 195">
-                        <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                               Content="Número de telefone:"/>
-                        <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                               x:Name="showDataArray11"
-                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                        <Label Content="Número de telefone:" Margin="10 0 0 0"
+                               Style="{StaticResource LabelTheme}"/>
+                        <Label x:Name="showDataArray11" Margin="0 0 0 3" Padding="1 2 0 0"
+                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                               Style="{StaticResource LabelTheme}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 130 0 155">
-                        <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                               Content="Email:"/>
-                        <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                               x:Name="showDataArray12"
-                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                        <Label  Margin="10 0 0 0" Content="Email:" 
+                                Style="{StaticResource LabelTheme}"/>
+                        <Label x:Name="showDataArray12" Margin="0 0 0 3" Padding="1 2 0 0"
+                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                               Style="{StaticResource LabelTheme}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 170 0 115">
-                        <Label Style="{StaticResource LabelTheme}" Margin="10 0 0 0"
-                               Content="Descrição:"/>
-                        <Label Style="{StaticResource LabelTheme}" Margin="0 0 0 3" Padding="1 2 0 0"
-                               x:Name="showDataArray13"
-                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"/>
+                        <Label Content="Descrição:" Margin="10 0 0 0"
+                               Style="{StaticResource LabelTheme}"/>
+                        <Label x:Name="showDataArray13" Margin="0 0 0 3" Padding="1 2 0 0"
+                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                               Style="{StaticResource LabelTheme}"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

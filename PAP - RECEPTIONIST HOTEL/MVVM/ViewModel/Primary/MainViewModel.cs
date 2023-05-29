@@ -95,7 +95,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             } 
 
             // ----------------------------------- ViewCommand ---------------------------------------- //
-            ControlPanelViewCommand = new RelayCommand(o => { 
+            ControlPanelViewCommand = new RelayCommand(o => {
                 if (typeUser == 1)
                 {
                     CurrentView = ControlPanelVM;

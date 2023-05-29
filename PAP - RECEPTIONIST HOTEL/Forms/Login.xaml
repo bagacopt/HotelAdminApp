@@ -6,14 +6,9 @@
         xmlns:local="clr-namespace:PAP___RECEPTIONIST_HOTEL"
         mc:Ignorable="d"
         Height="800" Width="1280"
-        WindowStyle="None"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
-        Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        MouseLeftButtonDown="Window_MouseDown"
-        KeyDown="PressKey"
-        Loaded="Login_Loaded">
+        MouseLeftButtonDown="Window_MouseDown" KeyDown="PressKey" Loaded="Login_Loaded">
     <Window.Resources>
         <Style TargetType="{x:Type CheckBox}" x:Key="hidePassCheckBox">
             <Setter Property="Template">
@@ -37,14 +32,10 @@
 
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush ImageSource="Images/back-image.jpg"
-                        Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="Images/back-image.jpg" Stretch="UniformToFill"/>
         </Border.Background>
 
-        <Border CornerRadius="10"
-            BorderThickness="2"
-            Opacity="0.95">
-
+        <Border CornerRadius="10" BorderThickness="2" Opacity="0.95">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
                     <GradientStop Color="#0000" Offset="0"/>
@@ -58,7 +49,6 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -68,13 +58,8 @@
                     </Grid.ColumnDefinitions>
 
                     <Button x:Name="btnMinimize"
-                            BorderThickness="0"
-                            Content="-"
-                            Foreground="White"
-                            FontSize="16"
-                            FontFamily="Montserrat"
-                            Cursor="Hand"
-                            Grid.Column="1"
+                            BorderThickness="0" Grid.Column="1" Content="-"
+                            FontSize="16" FontFamily="Montserrat" Foreground="White" Cursor="Hand"
                             Click="BtnMinimize_Click">
                         <Button.Style>
                             <Style TargetType="Button">
@@ -90,25 +75,17 @@
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
+                                        CornerRadius="9" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
 
                     <Button x:Name="btnClose"
-                            BorderThickness="0"
-                            Content="X"
-                            Foreground="White"
-                            FontSize="12"
-                            FontFamily="Montserrat"
-                            Cursor="Hand"
-                            Grid.Column="2"
+                            BorderThickness="0" Content="X" Grid.Column="2"
+                            Foreground="White" FontSize="12" FontFamily="Montserrat" Cursor="Hand"
                             Click="BtnClose_Click">
-
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#DA34AE"/>
@@ -123,123 +100,70 @@
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
+                                        CornerRadius="9" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
                 </Grid>
 
-                <StackPanel Width="450"
-                            Grid.Row="2"
-                            Orientation="Vertical"
-                            Margin="0,35,0,0">
+                <StackPanel Width="450" Orientation="Vertical" Margin="0,35,0,0" Grid.Row="2">
                     <Image Source="Images/logo.png"
                            Width="250" Height="100"/>
 
-                    <TextBlock Text="Início de sessão"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"
-                               HorizontalAlignment="Center"
-                               Margin="0,30,0,0"/>
+                    <TextBlock Text="Início de sessão" Margin="0,30,0,0"
+                               Foreground="White" FontSize="25" FontWeight="Medium" FontFamily="Montserrat"
+                               HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="Nome de utilizador"
-                               Foreground="White"
-                               FontSize="18"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"
-                               Margin="0,35,0,0"/>
+                    <TextBlock Text="Nome de utilizador" Margin="0,35,0,0"
+                               Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat"/>
 
-                    <TextBox x:Name="usernameTxtBox"
-                             FontSize="18"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="white"
-                             BorderThickness="0,0,0,1"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,75,0"
-                             Padding="20,0,0,0">
+                    <TextBox x:Name="usernameTxtBox" Margin="0,5,75,0" Padding="20,0,0,0" Height="28"
+                             FontSize="18" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"
+                             BorderBrush="white" BorderThickness="0,0,0,1" CaretBrush="LightGray"
+                             VerticalContentAlignment="Center">
 
                         <TextBox.Background>
-                            <ImageBrush ImageSource="Images/user-icon.png"
-                                        Stretch="None"
-                                        AlignmentX="Left"/>
+                            <ImageBrush ImageSource="Images/user-icon.png" Stretch="None" AlignmentX="Left"/>
                         </TextBox.Background>
 
                     </TextBox>
 
-                    <TextBlock Text="Palavra-passe"
-                               Foreground="White"
-                               FontSize="18"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"
-                               Margin="0,15,0,0"/>
+                    <TextBlock Text="Palavra-passe" Margin="0,15,0,0"
+                               Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat"/>
 
-                    <PasswordBox x:Name="passwordHidden"
-                             FontSize="18"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="white"
-                             BorderThickness="0,0,0,1"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,75,0"
-                             Padding="20,0,0,0">
+                    <PasswordBox x:Name="passwordHidden" Height="28" Margin="0,5,75,0" Padding="20,0,0,0"
+                             FontSize="18" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"
+                             BorderBrush="white" BorderThickness="0,0,0,1" CaretBrush="LightGray"
+                             VerticalContentAlignment="Center">
 
                         <PasswordBox.Background>
-                            <ImageBrush ImageSource="Images/key-icon.png"
-                                        Stretch="None"
-                                        AlignmentX="Left"/>
+                            <ImageBrush ImageSource="Images/key-icon.png" Stretch="None" AlignmentX="Left"/>
                         </PasswordBox.Background>
                     </PasswordBox>
-                    <CheckBox Style="{DynamicResource hidePassCheckBox}"
-                              x:Name="hidePassword" 
-                              HorizontalAlignment="Left" 
-                              Margin="390,-50,0,0" 
-                              Height="48" Width="45" 
+                    <CheckBox x:Name="hidePassword" Margin="390,-50,0,0" 
+                              Width="45" Height="48" 
+                              HorizontalAlignment="Left"
                               Checked="HidePasswordChecked" Unchecked="HidePasswordUnchecked" 
-                              Cursor="Hand" Grid.Column="1" IsTabStop="False"/>
+                              Cursor="Hand" Grid.Column="1" IsTabStop="False"
+                              Style="{DynamicResource hidePassCheckBox}"/>
 
-                    <TextBox x:Name="passwordShow"
-                             FontSize="18"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="white"
-                             BorderThickness="0,0,0,1"
+                    <TextBox x:Name="passwordShow" Height="28" Margin="0,-28,75,0" Padding="20,0,0,0"
+                             FontSize="18" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"
+                             BorderBrush="white" BorderThickness="0,0,0,1" CaretBrush="LightGray"
                              Visibility="Hidden"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="0,-28,75,0"
-                             Padding="20,0,0,0">
+                             VerticalContentAlignment="Center">
 
                         <TextBox.Background>
-                            <ImageBrush ImageSource="Images/key-icon.png"
-                                        Stretch="None"
-                                        AlignmentX="Left"/>
+                            <ImageBrush ImageSource="Images/key-icon.png" Stretch="None" AlignmentX="Left"/>
                         </TextBox.Background>
                     </TextBox>
 
-                    <Button x:Name="loginButton"
-                            BorderThickness="0"
+                    <Button x:Name="loginButton" Margin="0,50,0,0"
                             Content="Iniciar sessão"
-                            Foreground="White"
-                            FontSize="12"
-                            FontFamily="Montserrat"
-                            Cursor="Hand"
-                            Grid.Column="2"
-                            Margin="0,50,0,0"
+                            Foreground="White" FontSize="12" FontFamily="Montserrat"
+                            BorderThickness="0" Grid.Column="2" Cursor="Hand"
                             Click="LoginButton_Click">
 
                         <Button.Style>
@@ -256,25 +180,17 @@
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Width="200" Height="45"
-                                        CornerRadius="20"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
+                                        CornerRadius="20" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
                     
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Center"
-                                Margin="0,15,0,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
                         <TextBlock Text="Esqueci-me da palavra-passe"
-                               Foreground="White"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"
-                               HorizontalAlignment="Center"
-                               Cursor="Hand"
+                               Foreground="White" FontSize="12" FontWeight="Medium" FontFamily="Montserrat"
+                               HorizontalAlignment="Center" Cursor="Hand"
                                MouseLeftButtonDown="ForgotPass_Click"/>
                     </StackPanel>
                 </StackPanel>

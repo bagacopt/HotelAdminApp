@@ -5,15 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel"
         mc:Ignorable="d"
-        Height="750" Width="1280"
-        WindowStyle="None"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
-        Background="#FC191819"
+        Height="750" Width="1280" Background="#FC191819"
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        MouseLeftButtonDown="Window_MouseDown"
-        Loaded="MainWindow_Loaded"
-        KeyDown="GoBack">
+        MouseLeftButtonDown="Window_MouseDown" Loaded="MainWindow_Loaded" KeyDown="GoBack">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
@@ -32,16 +27,9 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="btnMinimize"
-                    BorderThickness="0"
-                    Content="-"
-                    Foreground="White"
-                    FontSize="16"
-                    FontFamily="Montserrat"
-                    Cursor="Hand"
-                    Grid.Column="1"
-                    Click="BtnMinimize_Click"
-                    HorizontalAlignment="Right"
-                    Margin="0,0,35,30">
+                    BorderThickness="0" HorizontalAlignment="Right" Margin="0,0,35,30" Grid.Column="1" 
+                    Foreground="White" FontSize="16" FontFamily="Montserrat" Cursor="Hand" Content="-"
+                    Click="BtnMinimize_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#28AEED"/>
@@ -56,27 +44,17 @@
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
-                                              HorizontalAlignment="Center"/>
+                                CornerRadius="9" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
 
             <Button x:Name="btnClose"
-                    BorderThickness="0"
-                    Content="X"
-                    Foreground="White"
-                    FontSize="12"
-                    FontFamily="Montserrat"
-                    Cursor="Hand"
-                    Grid.Column="2"
-                    Click="BtnClose_Click"
-                    HorizontalAlignment="Right"
-                    Margin="0,0,10,30">
-
+                    BorderThickness="0" HorizontalAlignment="Right" Margin="0,0,10,30" Grid.Column="2"
+                    Foreground="White" FontSize="12" FontFamily="Montserrat" Cursor="Hand" Content="X"
+                    Click="BtnClose_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#DA34AE"/>
@@ -91,71 +69,56 @@
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
+                                CornerRadius="9" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
 
             <Image Source="Images/logo-painel.png" 
-                   Height="50" 
-                   Margin="0,6,5,9"/>
+                   Height="50" Margin="0,6,5,9"/>
 
             <StackPanel Grid.Row="1" Margin="0,0,0,50">
-                <RadioButton Content="Painel de Controlo"
-                             Height="50"
-                             Foreground="White"
-                             Margin="0,20,0,0"
+                <RadioButton x:Name="ControlPanelRadioButton" 
+                             Content="Painel de Controlo"
+                             Height="50" Margin="0,20,0,0"
+                             Foreground="White" IsChecked="True"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ControlPanelViewCommand}"
-                             x:Name="ControlPanelRadioButton"
-                             IsChecked="True"/>
+                             Command="{Binding ControlPanelViewCommand}"/>
 
-                <RadioButton Content="Gerir Reservas"
-                             Height="50"
-                             Foreground="White"
-                             Margin="0,20,0,0"
+                <RadioButton x:Name="ManageReservationsRadionButton" 
+                             Content="Gerir Reservas" Foreground="White"
+                             Height="50" Margin="0,20,0,0"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ManageReservationsViewCommand}"
-                             x:Name="ManageReservationsRadionButton"/>
+                             Command="{Binding ManageReservationsViewCommand}"/>
 
-                <RadioButton Content="Pedidos"
-                             Height="50"
-                             Foreground="White"
-                             Margin="0,20,0,0"
+                <RadioButton x:Name="RequestsRadioButton" 
+                             Content="Pedidos" Foreground="White"
+                             Height="50" Margin="0,20,0,0"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding RequestsViewCommand}"
-                             x:Name="RequestsRadioButton"/>
+                             Command="{Binding RequestsViewCommand}"/>
 
-                <RadioButton Content="Gerir Pedidos"
-                             Height="50"
-                             Foreground="White"
-                             Margin="0,20,0,0"
+                <RadioButton x:Name="ManageRequestsRadioButton" 
+                             Content="Gerir Pedidos" Foreground="White"
+                             Height="50" Margin="0,20,0,0"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ManageRequestsViewCommand}"
-                             x:Name="ManageRequestsRadioButton"/>
+                             Command="{Binding ManageRequestsViewCommand}"/>
 
-                <RadioButton Content="Gerir Utilizadores"
-                             Height="50"
-                             Foreground="White"
-                             Margin="0,20,0,0"
+                <RadioButton x:Name="ManageUsersRadionButton" 
+                             Content="Gerir Utilizadores" Foreground="White"
+                             Height="50" Margin="0,20,0,0"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ManageUsersViewCommand}"
-                             x:Name="ManageUsersRadionButton"/>
+                             Command="{Binding ManageUsersViewCommand}"/>
 
                 <RadioButton x:Name="LogoutRadioButton"
-                             Content="Terminar sessão"
+                             Content="Terminar sessão" Foreground="White"
                              Height="50"
-                             Foreground="White"
                              Checked="Logout_Checked"
                              Style="{StaticResource MenuButtonTheme}"/>
             </StackPanel>
             
-            <ContentControl Grid.Row="1" Grid.Column="1"
-                            Margin="0 0 0 50"
+            <ContentControl Grid.Row="1" Grid.Column="1" Margin="0 0 0 50"
                             Content="{Binding CurrentView}"/>
         </Grid>
     </Border>

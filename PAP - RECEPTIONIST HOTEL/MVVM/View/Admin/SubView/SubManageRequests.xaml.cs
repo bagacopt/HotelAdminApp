@@ -1,22 +1,14 @@
 ﻿using PAP___RECEPTIONIST_HOTEL.Properties;
-using Syncfusion.SfSkinManager;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Windows;
 using System.Windows.Controls;
 
-namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
+namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
 {
-    /// <summary>
-    /// Interaction logic for ManageRequestsAdmin.xaml
-    /// </summary>
-    public partial class AdminManageRequests : UserControl
+    public partial class SubManageRequests : UserControl
     {
-        public AdminManageRequests()
+        public SubManageRequests()
         {
             InitializeComponent();
         }
@@ -58,7 +50,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
                     serviceSelected = 3;
                 }
 
-                cmd.Parameters.AddWithValue("@nRoom", ManageRequests.nClient);
+                cmd.Parameters.AddWithValue("@nRoom", AdminManageRequests.nClient);
                 cmd.Parameters.AddWithValue("@serviceID", serviceSelected);
                 cmd.ExecuteNonQuery();
             }
@@ -68,7 +60,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
                 "ON Requests.id = Reservations_Requests.request_id INNER JOIN Reservations " +
                 "ON Reservations_Requests.reservation_id = Reservations.id INNER JOIN Rooms " +
                 "ON Reservations.rooms_id = Rooms.id " +
-                "WHERE Rooms.n_room = " + ManageRequests.nClient, con);
+                "WHERE Rooms.n_room = " + AdminManageRequests.nClient, con);
             
             DataTable dt = new DataTable();
             da.Fill(dt);

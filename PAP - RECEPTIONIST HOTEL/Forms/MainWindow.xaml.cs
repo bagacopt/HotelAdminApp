@@ -26,6 +26,48 @@ namespace PAP___RECEPTIONIST_HOTEL
         string data;
         int typeUser;
 
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            // OPEN CONNECTION
+            con.Open();
+
+            // SQL QUERY
+            data = "SELECT type_user FROM Users WHERE username = @user";
+
+            using (SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        typeUser = Convert.ToInt32(reader["type_user"]);
+                    }
+                }
+            }
+
+            // CLOSE CONNECTION
+            con.Close();
+
+            // "PRIVILEGES" OF EACH TYPE OF USER
+            switch (typeUser)
+            {
+                case 1:
+                case 2:
+                    ManageReservationsRadionButton.Visibility = Visibility.Collapsed;
+                    ManageUsersRadionButton.Visibility = Visibility.Collapsed;
+                    LogoutRadioButton.Margin = new Thickness(0, 490, 0, 0);
+                    break;
+                default:
+                    RequestsRadioButton.Visibility = Visibility.Collapsed;
+                    LogoutRadioButton.Margin = new Thickness(0, 350, 0, 0);
+                    break;
+            }
+
+            Application.Current.MainWindow = this;
+        }
+
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             // CLOSES APPLICATION
@@ -57,61 +99,13 @@ namespace PAP___RECEPTIONIST_HOTEL
 
         private void GoBack(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
+            if (e.Key == Key.Escape || e.Key == Key.Delete)
             {
                 // OPENS LOGIN FORM
                 Login login = new Login();
                 this.Close();
                 login.Show();
             }
-        }
-
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            // OPEN CONNECTION
-            con.Open();
-
-            // SQL QUERY
-            data = "SELECT type_user FROM Users WHERE username = @user";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
-            {
-                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        typeUser = Convert.ToInt32(reader["type_user"]);
-                    }
-                }
-            }
-
-            // CLOSE CONNECTION
-            con.Close();
-
-            // "PRIVILEGES" OF EACH TYPE OF USER
-            if (typeUser == 1)
-            {         
-                ManageReservationsRadionButton.Visibility = Visibility.Collapsed;
-                ManageRequestsRadioButton.Visibility = Visibility.Collapsed;
-                ManageUsersRadionButton.Visibility = Visibility.Collapsed;
-                LogoutRadioButton.Margin = new Thickness(0, 490, 0, 0);
-            }
-            else if (typeUser == 2)
-            {
-
-                ManageUsersRadionButton.Visibility = Visibility.Collapsed;
-                RequestsRadioButton.Visibility = Visibility.Collapsed;
-                LogoutRadioButton.Margin = new Thickness(0, 420, 0, 0);
-            }
-            else
-            {
-                RequestsRadioButton.Visibility = Visibility.Collapsed;
-                LogoutRadioButton.Margin = new Thickness(0, 350, 0, 0);
-            }
-
-            Application.Current.MainWindow = this;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 {
-    class MainViewModel : ObservableObject
+    class ClientViewModel : ObservableObject
     {
         // CONNECTION
         readonly SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
@@ -37,7 +37,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 
         public ManageReservationsViewModel ManageReservationsVM { get; set; }
 
-        public ManageRequestsViewModel ManageRequestsVM { get; set; }
+        public AdminManageRequestsViewModel ManageRequestsVM { get; set; }
 
         public ManageUsersViewModel ManageUsersVM { get; set; }
 
@@ -53,14 +53,14 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             }
         }
 
-        public MainViewModel()
+        public ClientViewModel()
         {
             // CALLS OF THE VIEWMODELS
             ControlPanelVM = new ControlPanelViewModel();
             AdminControlPanelVM = new AdminControlPanelViewModel();
             RequestsVM = new RequestsViewModel();
             ManageReservationsVM = new ManageReservationsViewModel();
-            ManageRequestsVM = new ManageRequestsViewModel();
+            ManageRequestsVM = new AdminManageRequestsViewModel();
             ManageUsersVM = new ManageUsersViewModel();
 
             // OPEN CONNECTION

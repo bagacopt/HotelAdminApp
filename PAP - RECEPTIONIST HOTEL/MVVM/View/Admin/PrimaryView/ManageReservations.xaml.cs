@@ -7,9 +7,6 @@ using System.Windows.Controls;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
-    /// <summary> 
-    /// Interaction logic for Reservas.xaml
-    /// </summary>
     public partial class ManageReservations : System.Windows.Controls.UserControl
     {
         public ManageReservations()

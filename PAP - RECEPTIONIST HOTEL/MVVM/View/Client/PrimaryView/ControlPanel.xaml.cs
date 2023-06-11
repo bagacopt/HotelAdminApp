@@ -9,9 +9,6 @@ using System.Windows.Media.Imaging;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
-    /// <summary>
-    /// Interaction logic for ControlPanel.xaml
-    /// </summary>
     public partial class ControlPanel : System.Windows.Controls.UserControl
     {
         public ControlPanel()

@@ -11,7 +11,7 @@
         MouseLeftButtonDown="Window_MouseDown" Loaded="MainWindow_Loaded" KeyDown="GoBack">
 
     <Window.DataContext>
-        <viewModel:MainViewModel/>
+        <viewModel:ClientViewModel/>
     </Window.DataContext>
 
     <Border CornerRadius="20">

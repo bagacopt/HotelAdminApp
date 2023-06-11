@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
-    /// <summary>
-    /// Interaction logic for ManageUsers.xaml
-    /// </summary>
     public partial class ManageUsers : UserControl
     {
         public ManageUsers()

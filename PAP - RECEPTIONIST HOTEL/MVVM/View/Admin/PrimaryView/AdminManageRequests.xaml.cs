@@ -1,4 +1,4 @@
-﻿using PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView;
+﻿using PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView;
 using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
 using System.Data;
@@ -8,15 +8,13 @@ using System.Windows.Controls;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
-    /// <summary>
-    /// Interaction logic for Manage_Requests.xaml
-    /// </summary>
-    public partial class ManageRequests : UserControl
+    public partial class AdminManageRequests : UserControl
     {
-        public ManageRequests()
+        public AdminManageRequests()
         {
             InitializeComponent();
         }
+
         // VARIABLES
         public static int nClient;
         string[] tempnClient;
@@ -57,7 +55,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             if (nClient != 0)
             {
-                AdminManageRequests adm = new AdminManageRequests();
+                SubManageRequests adm = new SubManageRequests();
                 contentControlContent.Content = adm;
             }
         }

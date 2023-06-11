@@ -4,9 +4,6 @@ using System.Windows.Controls;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 {
-    /// <summary>
-    /// Interaction logic for Requests.xaml
-    /// </summary>
     public partial class Requests : UserControl
     {
         public Requests()

@@ -49,7 +49,7 @@
             <Label Content="Número do quarto:" Margin="0,20,0,-5"
                    HorizontalAlignment="Center"
                    Style="{StaticResource LabelTheme}"/>
-            <TextBox x:Name="nQuartoTxtBox" Height="23" Margin="20,2,20,0"
+            <TextBox x:Name="nRoomTxtBox" Height="23" Margin="20,2,20,0"
                      FontSize="18" FontWeight="Medium" FontFamily="Montserrat" Foreground="White" Background="Transparent"
                      TextAlignment="Center"
                      BorderBrush="White" BorderThickness="0,0,0,1"
@@ -93,7 +93,7 @@
                 <Label Content="Nome do cliente:" Margin="0,20,0,-5"
                        Style="{StaticResource LabelTheme}" />
                 <TextBox x:Name="nClienteTxtBox" Margin="0,20,0,0"
-                         Width="250" Height="20"
+                         Width="200"  Height="21"
                          FontSize="18" FontWeight="Medium" FontFamily="Montserrat" Foreground="White" Background="Transparent"
                          TextAlignment="Left"                       
                          BorderBrush="White" BorderThickness="0,0,0,1"
@@ -129,7 +129,7 @@
 
             <!-- Pagamento -->
             <StackPanel Orientation="Horizontal">
-                <Label Content="Valor ao check-out da reserva" Margin="0,5,0,0"
+                <Label Content="Valor ao check-out da reserva:" Margin="0,5,0,0"
                        Style="{StaticResource LabelTheme}" />
                 <Label x:Name="labelPagamentoTxt" Margin="0,4,0,0"
                        Width="150" Height="29"

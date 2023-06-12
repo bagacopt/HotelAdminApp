@@ -57,7 +57,7 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
                 case 2:
                     ManageReservationsRadionButton.Visibility = Visibility.Collapsed;
                     ManageUsersRadionButton.Visibility = Visibility.Collapsed;
-                    LogoutRadioButton.Margin = new Thickness(0, 490, 0, 0);
+                    LogoutRadioButton.Margin = new Thickness(0, 420, 0, 0);
                     break;
                 default:
                     RequestsRadioButton.Visibility = Visibility.Collapsed;

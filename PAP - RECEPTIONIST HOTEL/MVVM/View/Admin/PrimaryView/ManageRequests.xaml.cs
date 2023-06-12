@@ -15,12 +15,12 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
             InitializeComponent();
         }
 
+        // CONNECTION
+        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
+
         // VARIABLES
         public static int nClient;
         string[] tempnClient;
-
-        // CONNECTION
-        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         private void ManageRequests_Loaded(object sender, RoutedEventArgs e)
         {
@@ -56,7 +56,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
             if (nClient != 0)
             {
                 SubManageRequests adm = new SubManageRequests();
-                contentControlContent.Content = adm;
+                ContentControlContent.Content = adm;
             }
         }
     }

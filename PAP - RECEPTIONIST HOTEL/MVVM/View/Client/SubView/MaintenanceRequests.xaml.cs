@@ -25,7 +25,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
 
         private void MaintenanceRequests_Loaded(object sender, RoutedEventArgs e)
         {
-            nRoomLabel.Content = PrimaryView.ControlPanel.n_Quarto;
+            nRoomLabel.Content = PrimaryView.ControlPanel.nRoom;
             titleLabel.Content = PrimaryView.Requests.maintainName;
 
             // OPEN CONNECTION

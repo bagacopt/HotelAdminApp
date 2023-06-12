@@ -19,6 +19,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
 
         // VARIABLES
         string data, clientName;
+        public string nRoom;
         int idRoom, lastIDRoom;
         string[] checkin_temp, checkout_temp, clientName_temp, changeDate_temp;
         DateTime checkin, checkout, showDate, lastDate;
@@ -120,6 +121,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
                     while (reader.Read())
                     {
                         nRoomTxtBox.Text = reader["n_room"].ToString();
+                        nRoom = nRoomTxtBox.Text;
                     }
                 }
             }

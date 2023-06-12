@@ -44,12 +44,13 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
 
         private void ReplacePasswordButton_Click(object sender, RoutedEventArgs e)
         {
-            MailMessage mail = new MailMessage();
-
-            mail.From = new MailAddress("a30360@aemtg.pt"); // EMAIL COMES FROM ME
-            mail.To.Add(emailTxtBox.Text); // EMAIL GOES TO EMAIL WROTE
-            mail.Subject = "Reposição da palavra-passe"; // SUBJECT OF THE EMAIL
-            mail.Body = "test123"; // BODY OF THE EMAIL
+            MailMessage mail = new MailMessage
+            {
+                From = new MailAddress("a30360@aemtg.pt"), // EMAIL COMES FROM ME
+                Subject = "Reposição da palavra-passe", // SUBJECT OF THE EMAIL
+                Body = "test123", // BODY OF THE EMAIL
+                To = { emailTxtBox.Text } // EMAIL GOES TO EMAIL WROTE   
+            };
 
             using (var smtp = new SmtpClient("smtp.gmail.com", 587))
             {

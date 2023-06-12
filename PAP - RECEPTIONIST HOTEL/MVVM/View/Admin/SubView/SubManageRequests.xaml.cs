@@ -21,7 +21,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
         // CONNECTION
         SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
-        public void AdminManageRequests_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        public void SubManageRequests_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             // OPEN CONNECTION
             con.Open();

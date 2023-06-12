@@ -22,7 +22,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
         // VARIABLES
         int nStars;
         string data;
-        public static string n_Quarto;
+        public static int nRoom;
 
         // 1 STAR RATE
         private void ClassificationStars1_Click(object sender, RoutedEventArgs e)
@@ -63,12 +63,13 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
             {
                 if (i <= rating)
                 {
-                    starList[i - 1].Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", UriKind.RelativeOrAbsolute));
+                    starList[i - 1].Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", 
+                        UriKind.RelativeOrAbsolute));
                     continue;
                 }
 
-                starList[i -1].Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", UriKind.RelativeOrAbsolute));
-
+                starList[i -1].Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", 
+                    UriKind.RelativeOrAbsolute));
             }
         }
 
@@ -92,10 +93,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                     while (reader.Read())
                     {
                         idReservaTxtBox.Text = reader["reservation_id"].ToString();
-                        int stars = Convert.ToInt32(reader["stars"]);
                         nClienteTxtBox.Text = reader["fullname"].ToString();
-
-                        SetStars(stars);
+                        SetStars(Convert.ToInt32(reader["stars"]));
                     }
                 }
             }
@@ -113,10 +112,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                 {
                     while (reader.Read())
                     {
-                        string nQuarto = reader["n_room"].ToString();
-
-                        nQuartoTxtBox.Text = nQuarto;
-                        n_Quarto = nQuarto;
+                        nRoomTxtBox.Text = reader["n_room"].ToString();
+                        nRoom = Convert.ToInt32(nRoomTxtBox.Text);
                     }
                 }
             }
@@ -179,13 +176,13 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
 
             if (nStars == 1)
             {
-                System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrela! " +
-                    "\nSomos muito agradecidos", "Obrigado!!!");
+                System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + 
+                    " estrela! \nSomos muito agradecidos", "Obrigado!!!");
             }
             else
             {
-                System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + " estrelas! " +
-                    "\nSomos muito agradecidos", "Obrigado!!!");
+                System.Windows.MessageBox.Show("Obrigado por ter classificado o nosso hotel com " + nStars + 
+                    " estrelas! \nSomos muito agradecidos", "Obrigado!!!");
             }
         }
     }

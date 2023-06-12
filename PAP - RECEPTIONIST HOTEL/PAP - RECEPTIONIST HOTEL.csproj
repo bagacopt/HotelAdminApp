@@ -103,6 +103,9 @@
     <Compile Include="MVVM\View\Client\SubView\ServicesRequests.xaml.cs">
       <DependentUpon>ServicesRequests.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\View\Client\SubView\SubManageRequests.xaml.cs">
+      <DependentUpon>SubManageRequests.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -159,6 +162,10 @@
     <Page Include="MVVM\View\Client\SubView\ServicesRequests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Client\SubView\SubManageRequests.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Theme\LabelsTheme.xaml">
       <SubType>Designer</SubType>

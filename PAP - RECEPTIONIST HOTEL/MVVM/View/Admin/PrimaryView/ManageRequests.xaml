@@ -34,7 +34,7 @@
                       SelectionChanged="SelectRequestSelectionChanged"/>
         </StackPanel>
 
-        <ContentControl x:Name="contentControlContent" Margin="10 0 0 0" Grid.Column="1"
+        <ContentControl x:Name="ContentControlContent" Margin="10 0 0 0" Grid.Column="1"
                         Visibility="Visible"/>
     </Grid>
 </UserControl>

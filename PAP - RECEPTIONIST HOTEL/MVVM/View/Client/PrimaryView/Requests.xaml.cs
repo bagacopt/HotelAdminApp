@@ -1,8 +1,7 @@
-﻿using PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
+namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
 {
     public partial class Requests : UserControl
     {
@@ -63,7 +62,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             }
 
             Application.Current.MainWindow.Hide();
-            Application.Current.MainWindow = new ServicesRequests();
+            Application.Current.MainWindow = new SubView.ServicesRequests();
             Application.Current.MainWindow.Show();
         }
 
@@ -92,7 +91,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
             }
 
             Application.Current.MainWindow.Hide();
-            Application.Current.MainWindow = new MaintenanceRequests();
+            Application.Current.MainWindow = new SubView.MaintenanceRequests();
             Application.Current.MainWindow.Show();
         }
     }

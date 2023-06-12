@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
-namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
+namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
 {
     public partial class ControlPanel : System.Windows.Controls.UserControl
     {
@@ -27,34 +27,34 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
         // 1 STAR RATE
         private void ClassificationStars1_Click(object sender, RoutedEventArgs e)
         {
-            setStars(1);
+            SetStars(1);
         }
 
         // 2 STAR RATE
         private void ClassificationStars2_Click(object sender, RoutedEventArgs e)
         {
-            setStars(2);
+            SetStars(2);
         }
 
         // 3 STAR RATE
         private void ClassificationStars3_Click(object sender, RoutedEventArgs e)
         {
-            setStars(3);
+            SetStars(3);
         }
 
         // 4 STAR RATE
         private void ClassificationStars4_Click(object sender, RoutedEventArgs e)
         {
-            setStars(4);
+            SetStars(4);
         }
 
         // 5 STAR RATE
         private void ClassificationStars5_Click(object sender, RoutedEventArgs e)
         {
-            setStars(5);
+            SetStars(5);
         }
 
-        private void setStars(int rating) // 1 - 5
+        private void SetStars(int rating) // 1 - 5
         {
             List<Image> starList = new List<Image>() { star_1, star_2, star_3, star_4, star_5 };
             nStars = rating;
@@ -95,7 +95,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
                         int stars = Convert.ToInt32(reader["stars"]);
                         nClienteTxtBox.Text = reader["fullname"].ToString();
 
-                        setStars(stars);
+                        SetStars(stars);
                     }
                 }
             }

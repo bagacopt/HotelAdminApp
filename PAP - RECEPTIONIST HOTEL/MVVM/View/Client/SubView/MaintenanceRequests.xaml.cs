@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
 
-namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
+namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
 {
     /// <summary>
     /// Interaction logic for MaintenanceRequests.xaml
@@ -25,8 +25,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
 
         private void MaintenanceRequests_Loaded(object sender, RoutedEventArgs e)
         {
-            nRoomLabel.Content = ControlPanel.n_Quarto;
-            titleLabel.Content = Requests.maintainName;
+            nRoomLabel.Content = PrimaryView.ControlPanel.n_Quarto;
+            titleLabel.Content = PrimaryView.Requests.maintainName;
 
             // OPEN CONNECTION
             con.Open();
@@ -105,14 +105,14 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.SubView
 
             // CLOSE THE FORM
             this.Close();
-            MainWindow mainWindow = new MainWindow();
+            Forms.MainWindow mainWindow = new Forms.MainWindow();
             mainWindow.Show();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            MainWindow mainWindow = new MainWindow();
+            Forms.MainWindow mainWindow = new Forms.MainWindow();
             mainWindow.Show();
         }
 

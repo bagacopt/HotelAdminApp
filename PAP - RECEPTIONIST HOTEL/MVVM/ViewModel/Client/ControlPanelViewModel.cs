@@ -1,4 +1,4 @@
-﻿namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
+﻿namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel.Client
 {
     class ControlPanelViewModel
     {

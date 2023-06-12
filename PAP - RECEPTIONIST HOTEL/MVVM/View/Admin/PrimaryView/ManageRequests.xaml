@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PAP___RECEPTIONIST_HOTEL.MVVM.View.AdminManageRequests"
+﻿<UserControl x:Class="PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView.ManageRequests"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,7 +9,7 @@
              Loaded="ManageRequests_Loaded">
 
     <UserControl.DataContext>
-        <viewModel:AdminViewModel />
+        <viewModel:MainViewModel />
     </UserControl.DataContext>
     
     <Grid>
@@ -28,10 +28,10 @@
                    HorizontalAlignment="Center"
                    Style="{StaticResource LabelTheme}"/>
 
-            <ComboBox x:Name="selectRequestComboBox" Margin="0 20 0 0"
+            <ComboBox x:Name="SelectRequestComboBox" Margin="0 20 0 0"
                       Width="150"
                       HorizontalAlignment="Center"
-                      SelectionChanged="selectRequestSelectionChanged"/>
+                      SelectionChanged="SelectRequestSelectionChanged"/>
         </StackPanel>
 
         <ContentControl x:Name="contentControlContent" Margin="10 0 0 0" Grid.Column="1"

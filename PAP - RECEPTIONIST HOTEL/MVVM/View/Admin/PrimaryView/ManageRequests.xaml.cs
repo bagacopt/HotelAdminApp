@@ -6,11 +6,11 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
+namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
 {
-    public partial class AdminManageRequests : UserControl
+    public partial class ManageRequests : UserControl
     {
-        public AdminManageRequests()
+        public ManageRequests()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
         private void ManageRequests_Loaded(object sender, RoutedEventArgs e)
         {
-            selectRequestComboBox.SelectionChanged += selectRequestSelectionChanged;
+            SelectRequestComboBox.SelectionChanged += SelectRequestSelectionChanged;
 
             // OPEN CONNECTION
             con.Open();
@@ -41,16 +41,16 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                selectRequestComboBox.Items.Add("Pedido no quarto: " + dt.Rows[i]["n_room"]);
+                SelectRequestComboBox.Items.Add("Pedido no quarto: " + dt.Rows[i]["n_room"]);
             }
 
             // CLOSE CONNECTION
             con.Close();
         }
 
-        private void selectRequestSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SelectRequestSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            tempnClient = selectRequestComboBox.SelectedValue.ToString().Split(':');
+            tempnClient = SelectRequestComboBox.SelectedValue.ToString().Split(':');
             nClient = Convert.ToInt32(tempnClient[1]);
 
             if (nClient != 0)

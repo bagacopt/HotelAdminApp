@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
+namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
 {
-    public partial class ManageReservations : System.Windows.Controls.UserControl
+    public partial class ManageReservations : UserControl
     {
         public ManageReservations()
         {

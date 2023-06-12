@@ -4,7 +4,7 @@ using System.Net.Mail;
 using System.Windows;
 using System.Windows.Input;
 
-namespace PAP___RECEPTIONIST_HOTEL
+namespace PAP___RECEPTIONIST_HOTEL.Forms
 {
     /// <summary>
     /// Interaction logic for ForgotPassword.xaml

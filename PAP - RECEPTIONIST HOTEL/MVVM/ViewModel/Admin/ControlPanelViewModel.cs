@@ -1,6 +1,6 @@
 ﻿namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel.Admin
 {
-    class ManageReservationsViewModel
+    class ControlPanelViewModel
     {
 
     }

@@ -1,4 +1,4 @@
-﻿<Window x:Class="PAP___RECEPTIONIST_HOTEL.MainWindow"
+﻿<Window x:Class="PAP___RECEPTIONIST_HOTEL.Forms.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,7 +11,7 @@
         MouseLeftButtonDown="Window_MouseDown" Loaded="MainWindow_Loaded" KeyDown="GoBack">
 
     <Window.DataContext>
-        <viewModel:ClientViewModel/>
+        <viewModel:MainViewModel/>
     </Window.DataContext>
 
     <Border CornerRadius="20">

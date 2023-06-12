@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
 
-namespace PAP___RECEPTIONIST_HOTEL
+namespace PAP___RECEPTIONIST_HOTEL.Forms
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

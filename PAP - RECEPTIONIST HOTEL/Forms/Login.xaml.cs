@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using PAP___RECEPTIONIST_HOTEL.Properties;
 using System.Windows.Input;
 
-namespace PAP___RECEPTIONIST_HOTEL
+namespace PAP___RECEPTIONIST_HOTEL.Forms
 {
     /// <summary>   
     /// Interaction logic for Login.xaml

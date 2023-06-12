@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PAP___RECEPTIONIST_HOTEL.MVVM.View
+namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
 {
     /// <summary>
     /// Interaction logic for AdminControlPanel.xaml

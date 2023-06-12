@@ -50,7 +50,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                     serviceSelected = 3;
                 }
 
-                cmd.Parameters.AddWithValue("@nRoom", AdminManageRequests.nClient);
+                cmd.Parameters.AddWithValue("@nRoom", PrimaryView.ManageRequests.nClient);
                 cmd.Parameters.AddWithValue("@serviceID", serviceSelected);
                 cmd.ExecuteNonQuery();
             }
@@ -60,7 +60,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                 "ON Requests.id = Reservations_Requests.request_id INNER JOIN Reservations " +
                 "ON Reservations_Requests.reservation_id = Reservations.id INNER JOIN Rooms " +
                 "ON Reservations.rooms_id = Rooms.id " +
-                "WHERE Rooms.n_room = " + AdminManageRequests.nClient, con);
+                "WHERE Rooms.n_room = " + PrimaryView.ManageRequests.nClient, con);
             
             DataTable dt = new DataTable();
             da.Fill(dt);

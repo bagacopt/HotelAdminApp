@@ -1,8 +1,10 @@
 ﻿<Application x:Class="PAP___RECEPTIONIST_HOTEL.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:viewModel="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel"
-             xmlns:view="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View" 
+             xmlns:clientViewModel="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel.Client"
+             xmlns:adminViewModel="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel.Admin"
+             xmlns:clientView="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView"
+             xmlns:adminView="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView"
              StartupUri="Forms/Login.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -12,28 +14,34 @@
                 <ResourceDictionary Source="Theme/TabControlTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <DataTemplate DataType="{x:Type viewModel:ControlPanelViewModel}">
-                <view:ControlPanel />
+            <!-- Client Views -->
+            <DataTemplate DataType="{x:Type clientViewModel:ControlPanelViewModel}">
+                <clientView:ControlPanel />
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:RequestsViewModel}">
-                <view:Requests />
+            <DataTemplate DataType="{x:Type clientViewModel:RequestsViewModel}">
+                <clientView:Requests />
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:AdminControlPanelViewModel}">
-                <view:AdminControlPanel />
+            <DataTemplate DataType="{x:Type clientViewModel:ManageRequestsViewModel}">
+                <clientView:ManageRequests />
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:ManageReservationsViewModel}">
-                <view:ManageReservations />
+            <!-- Admin Views -->
+            <DataTemplate DataType="{x:Type adminViewModel:ControlPanelViewModel}">
+                <adminView:AdminControlPanel />
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:AdminManageRequestsViewModel}">
-                <view:AdminManageRequests />
+            <DataTemplate DataType="{x:Type adminViewModel:ManageReservationsViewModel}">
+                <adminView:ManageReservations />
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:ManageUsersViewModel}">
-                <view:ManageUsers />
+            <DataTemplate DataType="{x:Type adminViewModel:ManageRequestsViewModel}">
+                <adminView:ManageRequests />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type adminViewModel:ManageUsersViewModel}">
+                <adminView:ManageUsers />
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

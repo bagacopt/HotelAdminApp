@@ -19,7 +19,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
 
         // VARIABLES
         public static string serviceName;
-        public static string maintainName;
         public static int serviceID;
         string data;
         int count;
@@ -69,27 +68,27 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                     serviceID = 2;
                     break;
                 case "MaintainButton1":
-                    maintainName = "Ar condicionado (A/C)";
+                    serviceName = "Ar condicionado (A/C)";
                     serviceID = 3;
                     break;
                 case "MaintainButton2":
-                    maintainName = "Cama";
+                    serviceName = "Cama";
                     serviceID = 3;
                     break;
                 case "MaintainButton3":
-                    maintainName = "Máquina de café";
+                    serviceName = "Máquina de café";
                     serviceID = 3;
                     break;
                 case "MaintainButton4":
-                    maintainName = "Pilhas do comando";
+                    serviceName = "Pilhas do comando";
                     serviceID = 3;
                     break;
                 case "MaintainButton5":
-                    maintainName = "Minibar";
+                    serviceName = "Minibar";
                     serviceID = 3;
                     break;
                 case "MaintainButton6":
-                    maintainName = "Secador";
+                    serviceName = "Secador";
                     serviceID = 3;
                     break;
             }
@@ -108,9 +107,82 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                 if (count > 0)
                 {
                     MessageBox.Show("Já existe um pedido pendente desta secção, " +
-                        "Por favor espere que o pedido seja realizado ou apague o pedido anterior e refaça o seu pedido","Erro!");
-                    MainWindow win = new MainWindow();
-                    win.ManageRequestsRadioButton.IsChecked = true;
+                        "Por favor espere que o pedido seja realizado ou apague o pedido anterior e refaça o seu pedido", "Erro!");
+
+                    SubView.SubManageRequests manageRequests = new SubView.SubManageRequests();
+
+                    if (serviceID == 1)
+                    {
+                        switch (serviceName)
+                        {
+                            case "Serviço de limpeza de quartos diário":
+                                manageRequests.RequestData1.SelectedIndex = 0;
+                                MessageBox.Show(manageRequests.RequestData1.SelectedIndex.ToString());
+                                break;
+                            case "Serviço extra de limpeza de quarto":
+                                manageRequests.RequestData1.SelectedIndex = 1;
+                                break;
+                            case "Kit de limpeza para uso dos hóspedes":
+                                manageRequests.RequestData1.SelectedIndex = 2;
+                                break;
+                            case "Serviço de abertura da cama":
+                                manageRequests.RequestData1.SelectedIndex = 3;
+                                break;
+                        }
+                    }
+                    else if (serviceID == 2)
+                    {
+                        switch (serviceName)
+                        {
+                            case "Shampoo e gel de banho":
+                                manageRequests.RequestData2.SelectedIndex = 0;
+                                break;
+                            case "Condicionador":
+                                manageRequests.RequestData2.SelectedIndex = 1;
+                                break;
+                            case "Sabão":
+                                manageRequests.RequestData2.SelectedIndex = 2;
+                                break;
+                            case "Kit de pasta de dentes":
+                                manageRequests.RequestData2.SelectedIndex = 3;
+                                break;
+                            case "Kit de barbear":
+                                manageRequests.RequestData2.SelectedIndex = 4;
+                                break;
+                            case "Kit de costura":
+                                manageRequests.RequestData2.SelectedIndex = 5;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (serviceName)
+                        {
+                            case "Ar condicionado (A/C)":
+                                manageRequests.RequestData3.SelectedIndex = 0;
+                                break;
+                            case "Cama":
+                                manageRequests.RequestData3.SelectedIndex = 1;
+                                break;
+                            case "Máquina de café":
+                                manageRequests.RequestData3.SelectedIndex = 2;
+                                break;
+                            case "Pilhas do comando":
+                                manageRequests.RequestData3.SelectedIndex = 3;
+                                break;
+                            case "Minibar":
+                                manageRequests.RequestData3.SelectedIndex = 4;
+                                break;
+                            case "Secador":
+                                manageRequests.RequestData3.SelectedIndex = 5;
+                                break;
+                        }
+                    }
+
+                    MessageBox.Show(manageRequests.RequestData1.SelectedIndex.ToString());
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.ManageRequestsRadioButton.IsChecked = true;
+                    mainWindow.ManageRequestsRadioButton.Command.Execute(null);
                 }
                 else
                 {
@@ -122,6 +194,11 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
 
             // CLOSE CONNECTION
             con.Close();
+        }
+
+        private void ManageRequests_Loaded(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

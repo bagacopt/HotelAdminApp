@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿using PAP___RECEPTIONIST_HOTEL.Forms;
+using PAP___RECEPTIONIST_HOTEL.Properties;
+using System;
+using System.Data.SqlClient;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
@@ -10,10 +14,15 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
             InitializeComponent();
         }
 
+        // CONNECTION
+        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
+
         // VARIABLES
         public static string serviceName;
         public static string maintainName;
         public static int serviceID;
+        string data;
+        int count;
 
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
@@ -59,40 +68,60 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                     serviceName = "Kit de costura";
                     serviceID = 2;
                     break;
-            }
-
-            Application.Current.MainWindow.Hide();
-            Application.Current.MainWindow = new SubView.ServicesRequests();
-            Application.Current.MainWindow.Show();
-        }
-
-        private void MaintenanceButton_Click(object sender, RoutedEventArgs e)
-        {
-            switch (((Button)e.Source).Name)
-            {
                 case "MaintainButton1":
                     maintainName = "Ar condicionado (A/C)";
+                    serviceID = 3;
                     break;
                 case "MaintainButton2":
                     maintainName = "Cama";
+                    serviceID = 3;
                     break;
                 case "MaintainButton3":
                     maintainName = "Máquina de café";
+                    serviceID = 3;
                     break;
                 case "MaintainButton4":
                     maintainName = "Pilhas do comando";
+                    serviceID = 3;
                     break;
                 case "MaintainButton5":
                     maintainName = "Minibar";
+                    serviceID = 3;
                     break;
                 case "MaintainButton6":
                     maintainName = "Secador";
+                    serviceID = 3;
                     break;
             }
 
-            Application.Current.MainWindow.Hide();
-            Application.Current.MainWindow = new SubView.MaintenanceRequests();
-            Application.Current.MainWindow.Show();
+            // OPEN CONNECTION
+            con.Open();
+
+            data = "SELECT * FROM Requests WHERE name = @name AND services_id = @serviceID";
+            using (SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@name", serviceName);
+                cmd.Parameters.AddWithValue("@serviceID", serviceID);
+                cmd.ExecuteNonQuery();
+                count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    MessageBox.Show("Já existe um pedido pendente desta secção, " +
+                        "Por favor espere que o pedido seja realizado ou apague o pedido anterior e refaça o seu pedido","Erro!");
+                    MainWindow win = new MainWindow();
+                    win.ManageRequestsRadioButton.IsChecked = true;
+                }
+                else
+                {
+                    Application.Current.MainWindow.Hide();
+                    Application.Current.MainWindow = new SubView.ServicesRequests();
+                    Application.Current.MainWindow.Show();
+                }
+            }
+
+            // CLOSE CONNECTION
+            con.Close();
         }
     }
 }

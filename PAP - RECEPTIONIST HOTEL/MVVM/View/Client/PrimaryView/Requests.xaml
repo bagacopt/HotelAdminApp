@@ -184,7 +184,7 @@
                     <Label Content="Ar condicionado (A/C)" Margin="0 5 0 0"
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton1">
+                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton1">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -198,7 +198,7 @@
                     <Label Content="Cama" Margin="0 15 0 0"
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton2">
+                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton2">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -212,7 +212,7 @@
                     <Label Content="Máquina do café" Margin="0 15 0 0"
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton3">
+                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton3">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -226,7 +226,7 @@
                     <Label Content="Pilhas do comando da televisão" Margin="0 15 0 0" 
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton4">
+                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton4">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -240,7 +240,7 @@
                     <Label Content="Minibar" Margin="0 15 0 0"
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton5">
+                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton5">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -254,7 +254,7 @@
                     <Label Content="Secador" Margin="0 15 0 0"
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="MaintenanceButton_Click" x:Name="MaintainButton6">
+                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton6">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>

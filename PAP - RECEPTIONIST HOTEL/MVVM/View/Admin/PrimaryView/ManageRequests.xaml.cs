@@ -55,8 +55,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
 
             if (nClient != 0)
             {
-                SubManageRequests adm = new SubManageRequests();
-                ContentControlContent.Content = adm;
+                ContentControlContent.Content = new SubManageRequests();
             }
         }
     }

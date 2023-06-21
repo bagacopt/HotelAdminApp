@@ -13,11 +13,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
             InitializeComponent();
         }
 
-        // VARIABLES
-
-        // CONNECTION
-        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
-
         private void ManageRequests_Loaded(object sender, RoutedEventArgs e)
         {
             ClientRequestName.Content = ControlPanel.nRoom;

@@ -6,9 +6,6 @@ using System.Windows.Input;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
 {
-    /// <summary>
-    /// Interaction logic for MaintenanceRequests.xaml
-    /// </summary>
     public partial class MaintenanceRequests : Window
     {
         public MaintenanceRequests()

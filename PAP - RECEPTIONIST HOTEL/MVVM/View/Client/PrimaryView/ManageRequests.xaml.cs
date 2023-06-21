@@ -6,9 +6,6 @@ using System.Windows.Controls;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
 {
-    /// <summary>
-    /// Interaction logic for ManageRequests.xaml
-    /// </summary>
     public partial class ManageRequests : UserControl
     {
         public ManageRequests()
@@ -25,7 +22,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
         {
             ClientRequestName.Content = ControlPanel.nRoom;
 
-            ContentControlContent.Content = new SubView.SubManageRequests();
+            ContentControlContent.Content = new SubManageRequests();
         }
     }
 }

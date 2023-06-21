@@ -1,5 +1,4 @@
-﻿using PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView;
-using PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView;
+﻿using PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView;
 using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
 using System.Data;

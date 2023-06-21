@@ -28,11 +28,11 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
         private void ClearForm()
         {
             reservationComboBox.SelectedItem = null;
-            nClienteTxtBox.Text = null;
-            idReservationTxtBox.Text = null;
-            nRoomTxtBox.Text = null;
-            checkinTxtBox.Text = null;
-            checkoutTxtBox.Text = null;
+            nClientLabel.Content = null;
+            idReservationLabel2.Content = null;
+            nRoomLabel.Content = null;
+            checkinLabel.Content = null;
+            checkoutLabel.Content = null;
             ChangeRoomButton.IsEnabled = false;
             PostPoneButton.IsEnabled = false;
             AntecipateCheckoutButton.IsEnabled = false;
@@ -101,8 +101,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
                 {
                     while (reader.Read())
                     {
-                        idReservationTxtBox.Text = reader["reservation_id"].ToString();
-                        nClienteTxtBox.Text = reader["fullname"].ToString();
+                        idReservationLabel2.Content = reader["reservation_id"].ToString();
+                        nClientLabel.Content = reader["fullname"].ToString();
                     }
                 }
             }
@@ -120,8 +120,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
                 {
                     while (reader.Read())
                     {
-                        nRoomTxtBox.Text = reader["n_room"].ToString();
-                        nRoom = nRoomTxtBox.Text;
+                        nRoomLabel.Content = reader["n_room"].ToString();
+                        nRoom = nRoomLabel.Content.ToString();
                     }
                 }
             }
@@ -140,8 +140,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
                 {
                     while (reader.Read())
                     {
-                        checkinTxtBox.Text = reader["check-in"].ToString();
-                        checkoutTxtBox.Text = reader["check-out"].ToString();
+                        checkinLabel.Content = reader["check-in"].ToString();
+                        checkoutLabel.Content = reader["check-out"].ToString();
                     }
                 }
             }
@@ -149,8 +149,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
             // CLOSE CONNECTION
             con.Close();
 
-            checkin_temp = checkinTxtBox.Text.ToString().Split('/', '|');
-            checkout_temp = checkoutTxtBox.Text.ToString().Split('/', '|');
+            checkin_temp = checkinLabel.Content.ToString().Split('/', '|');
+            checkout_temp = checkoutLabel.Content.ToString().Split('/', '|');
 
             checkin = new DateTime(Convert.ToInt32(checkin_temp[2].Trim()), 
                 Convert.ToInt32(checkin_temp[1].Trim()), 
@@ -250,12 +250,12 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
                 using (SqlCommand cmd = new SqlCommand(data, con))
                 {
                     cmd.Parameters.AddWithValue("@idRoom", idRoom);
-                    cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
+                    cmd.Parameters.AddWithValue("@idReservation", idReservationLabel2.Content);
                     cmd.ExecuteNonQuery();
                 }
 
                 // UPDATE VALUE OF nRoomTxtBox 
-                nRoomTxtBox.Text = changeRoomComboBox.SelectedValue.ToString();
+                nRoomLabel.Content = changeRoomComboBox.SelectedValue.ToString();
 
                 // UPDATE AVAILABLE OF Rooms TO 0
                 data = "UPDATE Rooms SET available = 0 WHERE n_room = @nRoom";
@@ -312,7 +312,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
                 Convert.ToInt32(changeDate_temp[0].Trim()),
                 12, 0, 0);
 
-            checkoutTxtBox.Text = showDate.ToString("dd\\/MM\\/yyyy | HH:mm");
+            checkoutLabel.Content = showDate.ToString("dd\\/MM\\/yyyy | HH:mm");
             calendarPostPone.Visibility = Visibility.Hidden;
 
             // OPEN CONNECTION
@@ -323,7 +323,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
             using(SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@checkout", showDate);
-                cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
+                cmd.Parameters.AddWithValue("@idReservation", idReservationLabel2.Content);
                 cmd.ExecuteNonQuery();
             }
 
@@ -346,14 +346,14 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
                 cmd.Parameters.AddWithValue("@checkout", lastDate);
-                cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
+                cmd.Parameters.AddWithValue("@idReservation", idReservationLabel2.Content);
                 cmd.ExecuteNonQuery();
             }
 
             // CLOSE CONNECTION
             con.Close();
 
-            checkoutTxtBox.Text = lastDate.ToString("dd\\/MM\\/yyyy | HH:mm");
+            checkoutLabel.Content = lastDate.ToString("dd\\/MM\\/yyyy | HH:mm");
             PostPoneButton.Visibility = Visibility.Visible;
             returnDateButton.Visibility = Visibility.Collapsed;
             ChangeRoomButton.IsEnabled = true;
@@ -369,13 +369,13 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
-                cmd.Parameters.AddWithValue("@idReservation", idReservationTxtBox.Text);
+                cmd.Parameters.AddWithValue("@idReservation", idReservationLabel2.Content);
                 cmd.ExecuteNonQuery();
             }
 
             reservationComboBox.Items.Clear();
 
-            // // INSERT username CONTENT IN reservationComboBox COMBO BOX
+            // INSERT username CONTENT IN reservationComboBox COMBO BOX
             SqlDataAdapter da = new SqlDataAdapter("SELECT Users.username FROM Users " +
                 "INNER JOIN Reservations ON Users.reservation_id = Reservations.id " +
                 "WHERE Users.type_user = 1 AND Reservations.active = 1;", con);

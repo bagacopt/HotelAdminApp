@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
@@ -79,7 +78,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
             con.Open();
 
             // TEXT OF USERNAME
-            usernameTxtBox.Text = Settings.Default.n_cliente;
+            usernameLabel.Content = Settings.Default.n_cliente;
 
             // GET CLIENT
             data = "SELECT * FROM Users WHERE username = @user";
@@ -92,8 +91,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                 {
                     while (reader.Read())
                     {
-                        idReservaTxtBox.Text = reader["reservation_id"].ToString();
-                        nClienteTxtBox.Text = reader["fullname"].ToString();
+                        idReservationLabel.Content = reader["reservation_id"].ToString();
+                        nClienteLabel.Content = reader["fullname"].ToString();
                         SetStars(Convert.ToInt32(reader["stars"]));
                     }
                 }
@@ -112,8 +111,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                 {
                     while (reader.Read())
                     {
-                        nRoomTxtBox.Text = reader["n_room"].ToString();
-                        nRoom = Convert.ToInt32(nRoomTxtBox.Text);
+                        nRoomLabel.Content = reader["n_room"].ToString();
+                        nRoom = Convert.ToInt32(nRoomLabel.Content);
                     }
                 }
             }
@@ -131,8 +130,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                 {
                     while (reader.Read())
                     {
-                        checkinTxtBox.Text = reader["check-in"].ToString();
-                        checkoutTxtBox.Text = reader["check-out"].ToString();
+                        checkinLabel.Content = reader["check-in"].ToString();
+                        checkoutLabel.Content = reader["check-out"].ToString();
                     }
                 }
             }
@@ -148,7 +147,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                 {
                     while (reader.Read())
                     {
-                        labelPagamentoTxt.Content = reader["reserva_price"].ToString() + "€";
+                        paymentLabel.Content = reader["reserva_price"].ToString() + "€";
                     }
                 }
             }

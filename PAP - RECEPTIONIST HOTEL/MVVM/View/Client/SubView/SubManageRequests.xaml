@@ -7,7 +7,7 @@
              d:DesignHeight="450" d:DesignWidth="800" 
              Loaded="SubManageRequests_Loaded">
     <Grid>
-        <TabControl x:Name="PrimaryTabControl"
+        <TabControl x:Name="PrimaryTabControl" 
                     Width="1000" Height="460"
                     Style="{StaticResource TabControlTheme}">
             <TabControl.Resources>
@@ -16,7 +16,7 @@
                 </Style>
             </TabControl.Resources>
 
-            <TabItem Header="Serviço de quartos" Width="250" Margin="-120 0 0 0">
+            <TabItem Header="Serviço de quartos" Width="250" Margin="-120 0 0 0" x:Name="TabItem1">
                 <Grid>
                     <TabControl x:Name="SubTabControl" Margin="-2,0,0,0"
                                 Width="1000" Height="550" 
@@ -29,7 +29,7 @@
                         </TabControl.Resources>
 
                         <!-- SERVIÇOS -->
-                        <TabItem Header="Serviços" Width="250" Margin="-124 0 0 0">
+                        <TabItem Header="Serviços" Width="250" Margin="-124 0 0 0" x:Name="SubTabItem1">
                             <Grid Margin="0 0 199 119">
                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 360">
                                     <Label Content="Dados do Pedido:" Style="{StaticResource LabelTheme}" Margin="0 10 0 0"/>
@@ -43,7 +43,7 @@
                                     <Label Content="Nome do pedido:" Margin="10 0 0 0"
                                            Style="{StaticResource LabelTheme}"/>
                                     <Label x:Name="showDataArray0"  Margin="0 0 0 3" Padding="1 2 0 0"
-                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Visibility="Visible" BorderBrush="White" BorderThickness="0 0 0 1"
                                            Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
@@ -82,7 +82,7 @@
                         </TabItem>
 
                         <!-- EXTRAS -->
-                        <TabItem Header="Extras" Width="250" Margin="-124 0 0 0">
+                        <TabItem Header="Extras" Width="250" Margin="-124 0 0 0" x:Name="SubTabItem2">
                             <Grid Margin="0 0 199 119">
                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 360">
                                     <Label Content="Dados do Pedido:" Style="{StaticResource LabelTheme}" Margin="0 10 0 0"/>
@@ -138,7 +138,7 @@
             </TabItem>
 
             <!-- MANUNTENÇÃO -->
-            <TabItem Header="Manutenção" Width="250" Margin="-120 0 0 0">
+            <TabItem Header="Manutenção" Width="250" Margin="-120 0 0 0" x:Name="TabItem2">
                 <Grid Margin="0 0 199 119">
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 270">
                         <Label Content="Dados do Pedido:" 

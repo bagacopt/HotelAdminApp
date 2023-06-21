@@ -55,8 +55,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
                 {
                     while (reader.Read())
                     {
-                        usernameTxtBox.Text = reader["username"].ToString();
-                        idReservaTxtBox.Text = reader["id"].ToString();
+                        usernameLabel.Content = reader["username"].ToString();
+                        idReservationLabel.Content = reader["id"].ToString();
                     }
                 }
             }

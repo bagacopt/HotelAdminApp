@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Data.SqlClient;
 using PAP___RECEPTIONIST_HOTEL.Properties;
 using System.Windows.Input;
 
 namespace PAP___RECEPTIONIST_HOTEL.Forms
 {
-    /// <summary>   
-    /// Interaction logic for Login.xaml
-    /// </summary>
     public partial class Login : Window
     {
         public Login()

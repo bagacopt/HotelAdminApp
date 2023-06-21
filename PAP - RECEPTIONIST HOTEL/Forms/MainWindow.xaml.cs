@@ -1,7 +1,4 @@
-﻿using PAP___RECEPTIONIST_HOTEL.Core;
-using PAP___RECEPTIONIST_HOTEL.MVVM.View;
-using PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel;
-using PAP___RECEPTIONIST_HOTEL.Properties;
+﻿using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
 using System.Data.SqlClient;
 using System.Windows;
@@ -9,9 +6,6 @@ using System.Windows.Input;
 
 namespace PAP___RECEPTIONIST_HOTEL.Forms
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()

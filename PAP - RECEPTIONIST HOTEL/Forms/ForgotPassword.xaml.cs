@@ -6,9 +6,6 @@ using System.Windows.Input;
 
 namespace PAP___RECEPTIONIST_HOTEL.Forms
 {
-    /// <summary>
-    /// Interaction logic for ForgotPassword.xaml
-    /// </summary>
     public partial class ForgotPassword : Window
     {
         public ForgotPassword()

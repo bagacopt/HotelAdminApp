@@ -8,5 +8,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
         {
             InitializeComponent();
         }
+
+        private void PieChart_DataClick(object sender, LiveCharts.ChartPoint chartPoint)
+        {
+
+        }
     }
 }

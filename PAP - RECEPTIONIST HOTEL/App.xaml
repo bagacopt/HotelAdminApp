@@ -29,7 +29,7 @@
 
             <!-- Admin Views -->
             <DataTemplate DataType="{x:Type adminViewModel:ControlPanelViewModel}">
-                <adminView:AdminControlPanel />
+                <adminView:ControlPanel />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type adminViewModel:ManageReservationsViewModel}">

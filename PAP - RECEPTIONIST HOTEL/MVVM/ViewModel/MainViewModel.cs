@@ -1,19 +1,26 @@
-﻿using PAP___RECEPTIONIST_HOTEL.Core;
+﻿using LiveCharts.Defaults;
+using LiveCharts;
+using PAP___RECEPTIONIST_HOTEL.Core;
 using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Collections.ObjectModel;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 {
     class MainViewModel : ObservableObject
     {
         // CONNECTION
-        readonly SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
+        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         // VARIABLES
-        readonly string data;
-        readonly int typeUser;
+        string data;
+        int typeUser;
         private object _currentView;
+        private SeriesCollection _seriesCollection;
+        private List<string> _labels;
+        private ChartValues<ObservableValue> _series1Values, _series2Values;
 
         // ------------------------------------ RelayCommand ---------------------------------------- //
 
@@ -73,6 +80,46 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             }
         }
 
+        public SeriesCollection SeriesCollection
+        {
+            get { return _seriesCollection; }
+            set
+            {
+                _seriesCollection = value;
+                OnPropertyChanged("SeriesCollection");
+            }
+        }
+
+        public List<string> Labels
+        {
+            get { return _labels; }
+            set
+            {
+                _labels = value;
+                OnPropertyChanged("Labels");
+            }
+        }
+
+        public ChartValues<ObservableValue> Series1Values
+        {
+            get { return _series1Values; }
+            set
+            {
+                _series1Values = value;
+                OnPropertyChanged("Series1Values");
+            }
+        }
+
+        public ChartValues<ObservableValue> Series2Values
+        {
+            get { return _series2Values; }
+            set
+            {
+                _series2Values = value;
+                OnPropertyChanged("Series2Values");
+            }
+        }
+
         public MainViewModel()
         {
             // CALLS OF THE VIEWMODELS
@@ -116,7 +163,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             else
             {
                 CurrentView = AdminControlPanelVM;
-            } 
+            }
 
             // ----------------------------------- ViewCommand ---------------------------------------- //
             ControlPanelViewCommand = new RelayCommand(o => {

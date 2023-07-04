@@ -69,7 +69,7 @@
 
             <!-- Título dos dados da reserva -->
             <Label Content="Gestão da Reserva:"
-                   FontSize="24"
+                   FontSize="24" FontWeight="Bold"
                    Style="{StaticResource LabelTheme}"
                    HorizontalAlignment="Center" />
 

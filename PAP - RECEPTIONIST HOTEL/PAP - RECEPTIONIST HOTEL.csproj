@@ -86,6 +86,7 @@
     <Compile Include="MVVM\ViewModel\Admin\ManageRequestsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Admin\ManageReservationsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Admin\ManageUsersViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ChartViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Client\ManageRequestsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Client\RequestsViewModel.cs" />
     <Compile Include="Forms\ForgotPassword.xaml.cs">

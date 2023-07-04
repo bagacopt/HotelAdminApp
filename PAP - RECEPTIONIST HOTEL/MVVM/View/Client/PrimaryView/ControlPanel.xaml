@@ -77,7 +77,7 @@
         <StackPanel Grid.Column="2">
             <!-- Título dos dados da reserva -->
             <Label Content="Dados da Reserva:"
-                   FontSize="24"
+                   FontSize="24" FontWeight="Bold"
                    HorizontalAlignment="Center"
                    Style="{StaticResource LabelTheme}"/>
 

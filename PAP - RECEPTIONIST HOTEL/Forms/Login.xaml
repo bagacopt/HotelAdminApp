@@ -113,7 +113,7 @@
                            Width="250" Height="100"/>
 
                     <TextBlock Text="Início de sessão" Margin="0,30,0,0"
-                               Foreground="White" FontSize="25" FontWeight="Medium" FontFamily="Montserrat"
+                               Foreground="White" FontSize="25" FontWeight="Bold" FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
 
                     <TextBlock Text="Nome de utilizador" Margin="0,35,0,0"

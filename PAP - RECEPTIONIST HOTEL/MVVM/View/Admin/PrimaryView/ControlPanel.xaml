@@ -1,94 +1,106 @@
-﻿<UserControl x:Class="PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView.AdminControlPanel"
+﻿<UserControl x:Class="PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView.ControlPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" 
+             xmlns:viewmodel="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel" 
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" d:DataContext="{d:DesignInstance Type=viewmodel:ChartViewModel}"
+             Loaded="ControlPanel_Loaded">
     <Grid>
+        <Grid.Resources>
+            <LinearGradientBrush x:Key="VerticalGradient" StartPoint="0 0" EndPoint="0 1">
+                <GradientStop Color="#55B0FF" Offset="0" />
+                <GradientStop Color="#BE55FF" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Resources>
+        
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="367"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Center">
+
+        <Label Content="Dashboard" Margin="60 60 0 0" 
+               FontSize="28" FontWeight="Bold" Style="{StaticResource LabelTheme}"/>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="top" HorizontalAlignment="Center" 
+                    Width="270" Height="500" Margin="25 0 0 0">
             <StackPanel Orientation="Horizontal">
-                <Border Width="270" Height="110" Margin="20 0 0 0"
-                    Background="#009FBD" CornerRadius="10"
-                    VerticalAlignment="Top">
+                <Border Width="270" Height="110" Margin="0 110 0 0" 
+                    Background="#55B0FF" CornerRadius="10" VerticalAlignment="Top">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0">
+                        <StackPanel Grid.Column="0" />
 
-                        </StackPanel>
+                        <Border Grid.Column="1" Background="White" CornerRadius="0,10,10,0"/>
 
-                        <Border Grid.Column="1" Background="White"
-                            CornerRadius="0,10,10,0"/>
-
-                        <StackPanel Grid.Column="1">
-
-                        </StackPanel>
+                        <StackPanel Grid.Column="1" />
                     </Grid>
                 </Border>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Border Width="270" Height="110" Margin="20,20,0,0"
-                    Background="Red" CornerRadius="10"
-                    VerticalAlignment="Top">
+                <Border Width="270" Height="110" Margin="0 20 0 0"
+                    Background="{StaticResource VerticalGradient}" CornerRadius="10" VerticalAlignment="Top">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0">
+                        <StackPanel Grid.Column="0" />
 
-                        </StackPanel>
+                        <Border Grid.Column="1" Background="White" CornerRadius="0,10,10,0"/>
 
-                        <Border Grid.Column="1" Background="White"
-                            CornerRadius="0,10,10,0"/>
-
-                        <StackPanel Grid.Column="1">
-
-                        </StackPanel>
+                        <StackPanel Grid.Column="1" />
                     </Grid>
                 </Border>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Border Width="270" Height="110" Margin="20,20,0,0"
-                    Background="yellow" CornerRadius="10"
-                    VerticalAlignment="Top">
+                <Border Width="270" Height="110" Margin="0 20 0 0"
+                    Background="#BE55FF" CornerRadius="10" VerticalAlignment="Top">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0">
+                        <StackPanel Grid.Column="0" />
 
-                        </StackPanel>
+                        <Border Grid.Column="1" Background="White" CornerRadius="0,10,10,0"/>
 
-                        <Border Grid.Column="1" Background="White"
-                            CornerRadius="0,10,10,0"/>
-
-                        <StackPanel Grid.Column="1">
-
-                        </StackPanel>
+                        <StackPanel Grid.Column="1" />
                     </Grid>
                 </Border>
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <lvc:PieChart LegendLocation="Right" Series="{Binding Collection}" DataClick="PieChart_DataClick" Hoverable="True">
+        <Image Source="/Forms/Images/line_vertical.png" 
+               Width="3" Height="450" Margin="0,-100,0,0"
+               Stretch="Fill" HorizontalAlignment="Left" Grid.Column="1" />
+
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="380">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Pedidos:" FontSize="28" FontWeight="Bold" Margin="-110 60 0 20" Style="{StaticResource LabelTheme}"/>
                 
-            </lvc:PieChart>
+                <lvc:PieChart LegendLocation="Bottom" Width="349" Height="307" Margin="-50 0 0 0 ">
+                    <lvc:PieChart.Series>
+                        <lvc:PieSeries Title="Pedidos ativos" Values="{Binding ActiveRequests}" DataLabels="True" Fill="#55B0FF" />
+                        <lvc:PieSeries Title="Pedidos não ativos" Values="{Binding FinalizedRequests}" DataLabels="True" Fill="#BE55FF" />
+                    </lvc:PieChart.Series>
+
+                    <lvc:PieChart.ChartLegend>
+                        <lvc:DefaultLegend FontFamily="Montserrat" FontSize="18" Foreground="White" Margin="10"/>
+                    </lvc:PieChart.ChartLegend>
+                </lvc:PieChart>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

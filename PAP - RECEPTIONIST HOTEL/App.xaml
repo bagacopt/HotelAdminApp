@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/LabelsTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TabControlTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ComboBoxTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!-- Client Views -->

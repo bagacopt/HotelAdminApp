@@ -36,8 +36,9 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0">
-                            <Label Content="0" Style="{StaticResource LabelTheme}"
-                                   FontSize="30" HorizontalAlignment="Center" Margin="0 35 0 0"/>
+                            <Label x:Name="nTotalClients" Margin="0 35 0 0" 
+                                   FontSize="30" HorizontalAlignment="Center" 
+                                   Style="{StaticResource LabelTheme}" />
                         </StackPanel>
 
                         <Border Grid.Column="1" Background="White" CornerRadius="0,10,10,0">
@@ -60,8 +61,9 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0">
-                            <Label Content="0" Style="{StaticResource LabelTheme}"
-                                   FontSize="30" HorizontalAlignment="Center" Margin="0 35 0 0"/>
+                            <Label x:Name="nTotalReservations" Margin="0 35 0 0" 
+                                   FontSize="30" HorizontalAlignment="Center" 
+                                   Style="{StaticResource LabelTheme}" />
                         </StackPanel>
 
                         <Border Grid.Column="1" Background="White" CornerRadius="0,10,10,0">
@@ -84,8 +86,9 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0">
-                            <Label Content="0" Style="{StaticResource LabelTheme}"
-                                   FontSize="30" HorizontalAlignment="Center" Margin="0 35 0 0"/>
+                            <Label x:Name="activeReservations" Margin="0 35 0 0" 
+                                   FontSize="30" HorizontalAlignment="Center" 
+                                   Style="{StaticResource LabelTheme}" />
                         </StackPanel>
 
                         <Border Grid.Column="1" Background="White" CornerRadius="0,10,10,0">

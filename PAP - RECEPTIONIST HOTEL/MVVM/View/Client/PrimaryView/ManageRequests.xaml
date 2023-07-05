@@ -28,7 +28,7 @@
             </StackPanel>
         </StackPanel>
 
-        <ContentControl x:Name="ContentControlContent" Margin="10 0 0 0" Grid.Column="1"
+        <ContentControl x:Name="ContentControlContent" Margin="10 -40 0 0" Grid.Column="1"
                         Visibility="Visible"/>
     </Grid>
 </UserControl>

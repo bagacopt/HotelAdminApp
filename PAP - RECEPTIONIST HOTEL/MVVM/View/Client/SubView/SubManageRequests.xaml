@@ -7,18 +7,56 @@
              d:DesignHeight="450" d:DesignWidth="800" 
              Loaded="SubManageRequests_Loaded">
     <Grid>
-        <TabControl x:Name="PrimaryTabControl" 
+        <TabControl x:Name="PrimaryTabControl"
                     Width="1000" Height="460"
                     Style="{StaticResource TabControlTheme}">
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabPanel}">
                     <Setter Property="HorizontalAlignment" Value="Center"/>
                 </Style>
+
+                <Style TargetType="TabItem">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border x:Name="Border"
+                                        BorderBrush="#55B0FF"
+                                        BorderThickness="0 0 0 1"
+                                        Background="Transparent"
+                                        Margin="0,0,-2,0">
+                                    <ContentPresenter x:Name="ContentSite"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"
+                                                      ContentSource="Header"
+                                                      Margin="10,2,10,2"
+                                                      RecognizesAccessKey="True" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                                        <Setter TargetName="Border" Property="BorderThickness" Value="1" />
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
             </TabControl.Resources>
 
-            <TabItem Header="Serviço de quartos" Width="250" Margin="-120 0 0 0" x:Name="TabItem1">
+            <TabItem Header="Serviço de quartos" Width="250" Height="30" Margin="-120 0 0 0" x:Name="TabItem1">
                 <Grid>
-                    <TabControl x:Name="SubTabControl" Margin="-2,0,0,0"
+                    <TabControl x:Name="SubTabControl" Margin="-2,0,0,0" 
                                 Width="1000" Height="550" 
                                 Grid.ColumnSpan="2" 
                                 Style="{StaticResource TabControlTheme}">
@@ -29,107 +67,119 @@
                         </TabControl.Resources>
 
                         <!-- SERVIÇOS -->
-                        <TabItem Header="Serviços" Width="250" Margin="-124 0 0 0" x:Name="SubTabItem1">
+                        <TabItem Header="Serviços" Width="250" Height="30" Margin="-124 0 0 0" x:Name="SubTabItem1">
                             <Grid Margin="0 0 199 119">
-                                <StackPanel Orientation="Horizontal" Margin="0 0 0 360">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 350">
                                     <Label Content="Dados do Pedido:" Style="{StaticResource LabelTheme}" Margin="0 10 0 0"/>
-                                    <ComboBox Width="150" Height="20" Margin="5 0 0 -1" x:Name="RequestData1"
-                                              SelectionChanged="RequestDataSelectionChanged"/>
+                                    <ComboBox Width="150" Height="20" Margin="5 5 0 -1" x:Name="RequestData1"
+                                              SelectionChanged="RequestDataSelectionChanged" Style="{StaticResource ComboBoxTheme}"/>
                                 </StackPanel>
 
-                                <Border BorderThickness="1" BorderBrush="White" CornerRadius="10" Margin="0 40 0 40"/>
-                                
-                                <StackPanel Orientation="Horizontal" Margin="0 50 0 327">
-                                    <Label Content="Nome do pedido:" Margin="10 0 0 0"
-                                           Style="{StaticResource LabelTheme}"/>
-                                    <Label x:Name="showDataArray0"  Margin="0 0 0 3" Padding="1 2 0 0"
-                                           Visibility="Visible" BorderBrush="White" BorderThickness="0 0 0 1"
-                                           Style="{StaticResource LabelTheme}"/>
-                                </StackPanel>
+                                <Border BorderThickness="1" BorderBrush="White" CornerRadius="10" Margin="0 45 0 40"/>
 
-                                <StackPanel Orientation="Horizontal" Margin="0 90 0 287">
-                                    <Label Content="Número de telefone:" Margin="10 0 0 0"
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Nome do pedido:" Margin="10 60 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Label x:Name="showDataArray1"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                    <Label x:Name="showDataArray0"  Margin="0 63 0 0" Padding="1 2 0 0"
                                            Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
                                            Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Horizontal" Margin="0 130 0 247">
-                                    <Label Content="Email:" Margin="10 0 0 0" 
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Número de telefone:" Margin="10 100 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Label x:Name="showDataArray2"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                    <Label x:Name="showDataArray1"  Margin="0 103 0 0" Padding="1 2 0 0"
                                            Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
                                            Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Horizontal" Margin="0 170 0 207">
-                                    <Label Content="Quantidade:" Margin="10 0 0 0"
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Email:" Margin="10 140 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Label x:Name="showDataArray3"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                    <Label x:Name="showDataArray2" Margin="0 143 0 0"  Padding="1 2 0 0"
                                            Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
                                            Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Horizontal" Margin="0 210 0 164">
-                                    <Label Content="Descrição:" Margin="10 0 0 0"
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Quantidade:" Margin="10 180 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Label x:Name="showDataArray4"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                    <Label x:Name="showDataArray3"  Margin="0 183 0 0"  Padding="1 2 0 0"
                                            Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
                                            Style="{StaticResource LabelTheme}"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Descrição do pedido:" Margin="10 220 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                                    <Label x:Name="showDataArray4" Margin="0 223 0 0"  Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Width="150" Height="40" Margin="20 244 0 0" Content="Editar pedido"/>
+                                    <Button Width="150" Height="40" Margin="290 244 0 0" Content="Marcar como concluído"/>
+                                    <Button Width="150" Height="40" Margin="20 244 0 0" Content="Eliminar pedido"/>
                                 </StackPanel>
                             </Grid>
                         </TabItem>
 
                         <!-- EXTRAS -->
-                        <TabItem Header="Extras" Width="250" Margin="-124 0 0 0" x:Name="SubTabItem2">
+                        <TabItem Header="Extras" Width="250" Height="30" Margin="-124 0 0 0" x:Name="SubTabItem2">
                             <Grid Margin="0 0 199 119">
-                                <StackPanel Orientation="Horizontal" Margin="0 0 0 360">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 350">
                                     <Label Content="Dados do Pedido:" Style="{StaticResource LabelTheme}" Margin="0 10 0 0"/>
-                                    <ComboBox Width="150" Height="20" Margin="5 0 0 -1" x:Name="RequestData2"
-                                              SelectionChanged="RequestDataSelectionChanged"/>
+                                    <ComboBox Width="150" Height="20" Margin="5 5 0 -1" x:Name="RequestData2"
+                                              SelectionChanged="RequestDataSelectionChanged" Style="{StaticResource ComboBoxTheme}"/>
                                 </StackPanel>
 
-                                <Border BorderThickness="1" BorderBrush="White" CornerRadius="10" Margin="0 40 0 40"/>
+                                <Border BorderThickness="1" BorderBrush="White" CornerRadius="10" Margin="0 45 0 40"/>
 
-                                <StackPanel Orientation="Horizontal" Margin="0 50 0 327">
-                                    <Label Content="Nome do pedido:" Margin="10 0 0 0"
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Nome do pedido:" Margin="10 60 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Label x:Name="showDataArray5"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                    <Label x:Name="showDataArray5"  Margin="0 63 0 0" Padding="1 2 0 0"
                                            Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
                                            Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Horizontal" Margin="0 90 0 287">
-                                    <Label Content="Número de telefone:" Margin="10 0 0 0"
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Número de telefone:" Margin="10 100 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Label x:Name="showDataArray6"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                    <Label x:Name="showDataArray6"  Margin="0 103 0 0" Padding="1 2 0 0"
                                            Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
                                            Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Horizontal" Margin="0 130 0 247">
-                                    <Label Content="Email:" Margin="10 0 0 0" 
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Email:" Margin="10 140 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Label x:Name="showDataArray7"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                    <Label x:Name="showDataArray7"  Margin="0 143 0 0" Padding="1 2 0 0"
                                            Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
                                            Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Horizontal" Margin="0 170 0 207">
-                                    <Label Content="Quantidade:" Margin="10 0 0 0"
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Quantidade:" Margin="10 180 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Label x:Name="showDataArray8"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                    <Label x:Name="showDataArray8"  Margin="0 183 0 0" Padding="1 2 0 0"
                                            Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
                                            Style="{StaticResource LabelTheme}"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Horizontal" Margin="0 210 0 164">
-                                    <Label Content="Descrição:" Margin="10 0 0 0"
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Descrição do pedido:" Margin="10 220 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Label x:Name="showDataArray9"  Margin="0 0 0 3" Padding="1 2 0 0"
+                                    <Label x:Name="showDataArray9"  Margin="0 223 0 0" Padding="1 2 0 0"
                                            Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
                                            Style="{StaticResource LabelTheme}"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Width="150" Height="40" Margin="20 244 0 0" Content="Editar pedido"/>
+                                    <Button Width="150" Height="40" Margin="290 244 0 0" Content="Marcar como concluído"/>
+                                    <Button Width="150" Height="40" Margin="20 244 0 0" Content="Eliminar pedido"/>
                                 </StackPanel>
                             </Grid>
                         </TabItem>
@@ -138,47 +188,53 @@
             </TabItem>
 
             <!-- MANUNTENÇÃO -->
-            <TabItem Header="Manutenção" Width="250" Margin="-120 0 0 0" x:Name="TabItem2">
+            <TabItem Header="Manutenção" Width="250" Height="30" Margin="-120 0 0 0" x:Name="TabItem2">
                 <Grid Margin="0 0 199 119">
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 270">
                         <Label Content="Dados do Pedido:" 
-                               Style="{StaticResource LabelTheme}" Margin="0 10 0 0"/>
-                        <ComboBox Width="150" Height="20" Margin="5 0 0 -1" x:Name="RequestData3"
-                                  SelectionChanged="RequestDataSelectionChanged"/>
+                               Style="{StaticResource LabelTheme}" Margin="0 10 0 -10"/>
+                        <ComboBox Width="150" Height="20" Margin="5 15 0 -1" x:Name="RequestData3"
+                                  SelectionChanged="RequestDataSelectionChanged" Style="{StaticResource ComboBoxTheme}"/>
                     </StackPanel>
 
-                    <Border BorderThickness="1" BorderBrush="White" CornerRadius="10" Margin="0 40 0 40"/>
+                    <Border BorderThickness="1" BorderBrush="White" CornerRadius="10" Margin="0 45 0 0"/>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 50 0 235">
-                        <Label Content="Nome do pedido:" Margin="10 0 0 0" 
-                               Style="{StaticResource LabelTheme}"/>
-                        <Label x:Name="showDataArray10" Margin="0 0 0 3" Padding="1 2 0 0"
-                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
-                               Style="{StaticResource LabelTheme}" />
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Nome do pedido:" Margin="10 60 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                        <Label x:Name="showDataArray10"  Margin="0 63 0 0" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 90 0 195">
-                        <Label Content="Número de telefone:" Margin="10 0 0 0"
-                               Style="{StaticResource LabelTheme}"/>
-                        <Label x:Name="showDataArray11" Margin="0 0 0 3" Padding="1 2 0 0"
-                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
-                               Style="{StaticResource LabelTheme}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Número de telefone:" Margin="10 100 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                        <Label x:Name="showDataArray11"  Margin="0 103 0 0" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 130 0 155">
-                        <Label  Margin="10 0 0 0" Content="Email:" 
-                                Style="{StaticResource LabelTheme}"/>
-                        <Label x:Name="showDataArray12" Margin="0 0 0 3" Padding="1 2 0 0"
-                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
-                               Style="{StaticResource LabelTheme}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Email:" Margin="10 140 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                        <Label x:Name="showDataArray12"  Margin="0 143 0 0" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 170 0 115">
-                        <Label Content="Descrição:" Margin="10 0 0 0"
-                               Style="{StaticResource LabelTheme}"/>
-                        <Label x:Name="showDataArray13" Margin="0 0 0 3" Padding="1 2 0 0"
-                               Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
-                               Style="{StaticResource LabelTheme}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Descrição do pedido:" Margin="10 180 0 0"
+                                           Style="{StaticResource LabelTheme}"/>
+                        <Label x:Name="showDataArray13"  Margin="0 183 0 0" Padding="1 2 0 0"
+                                           Visibility="Hidden" BorderBrush="White" BorderThickness="0 0 0 1"
+                                           Style="{StaticResource LabelTheme}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="150" Height="40" Margin="20 244 0 0" Content="Editar pedido"/>
+                        <Button Width="150" Height="40" Margin="290 244 0 0" Content="Marcar como concluído"/>
+                        <Button Width="150" Height="40" Margin="20 244 0 0" Content="Eliminar pedido"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

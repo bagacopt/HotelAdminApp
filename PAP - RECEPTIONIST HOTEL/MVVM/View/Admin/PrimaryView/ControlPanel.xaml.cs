@@ -49,6 +49,21 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
                     }
                 }
             }
+
+            data = "SELECT COUNT(*) AS NTotalReservations, (SELECT COUNT(*) FROM Users WHERE type_user = 1) AS NTotalClients, SUM(CASE WHEN active = 1 THEN 1 ELSE 0 END) AS ActiveReservations FROM Reservations;";
+
+            using (SqlCommand cmd = new SqlCommand(data, con))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        nTotalReservations.Content = reader.GetInt32(reader.GetOrdinal("NTotalReservations"));
+                        nTotalClients.Content = reader.GetInt32(reader.GetOrdinal("NTotalClients"));
+                        activeReservations.Content = reader.GetInt32(reader.GetOrdinal("ActiveReservations"));
+                    }
+                }
+            }
             
             // CLOSE CONNECTION
             con.Close();

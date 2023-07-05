@@ -81,6 +81,12 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
 
         private void ComboBoxSelectClient(object sender, SelectionChangedEventArgs e)
         {
+            nClientLabel.Visibility = Visibility.Visible;
+            idReservationLabel2.Visibility = Visibility.Visible;
+            nRoomLabel.Visibility = Visibility.Visible;
+            checkinLabel.Visibility = Visibility.Visible;
+            checkoutLabel.Visibility = Visibility.Visible;
+
             // OPEN CONNECTION
             con.Open();
 

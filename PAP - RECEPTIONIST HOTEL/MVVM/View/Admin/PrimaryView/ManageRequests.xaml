@@ -31,10 +31,11 @@
             <ComboBox x:Name="SelectRequestComboBox" Margin="0 20 0 0"
                       Width="150"
                       HorizontalAlignment="Center"
-                      SelectionChanged="SelectRequestSelectionChanged"/>
+                      SelectionChanged="SelectRequestSelectionChanged"
+                      Style="{StaticResource ComboBoxTheme}"/>
         </StackPanel>
 
-        <ContentControl x:Name="ContentControlContent" Margin="10 0 0 0" Grid.Column="1"
+        <ContentControl x:Name="ContentControlContent" Margin="10 -40 0 0" Grid.Column="1"
                         Visibility="Visible"/>
     </Grid>
 </UserControl>

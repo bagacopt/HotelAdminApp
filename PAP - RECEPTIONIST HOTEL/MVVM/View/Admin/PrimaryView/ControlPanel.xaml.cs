@@ -21,7 +21,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
 
         // VARIABLES
         string data;
-
+        int activeRequests, finalizedRequests;
 
         private void ControlPanel_Loaded(object sender, RoutedEventArgs e)
         {
@@ -37,8 +37,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
                 {
                     if (reader.Read())
                     {
-                        int activeRequests = reader.GetInt32(reader.GetOrdinal("ActiveCount"));
-                        int finalizedRequests = reader.GetInt32(reader.GetOrdinal("FinalizedCount"));
+                        activeRequests = reader.GetInt32(reader.GetOrdinal("ActiveCount"));
+                        finalizedRequests = reader.GetInt32(reader.GetOrdinal("FinalizedCount"));
 
                         ChartViewModel showData = new ChartViewModel
                         {

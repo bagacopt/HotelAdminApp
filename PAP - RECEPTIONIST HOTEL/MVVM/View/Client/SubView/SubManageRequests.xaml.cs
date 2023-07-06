@@ -245,7 +245,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                             {
                                 for (int i = 0; i <= 4; i++)
                                 {
-                                    Label label = (Label)this.FindName("showDataArray" + i.ToString());
+                                    Label label = (Label)FindName("showDataArray" + i.ToString());
                                     label.Visibility = System.Windows.Visibility.Visible;
                                     label.Content = reader[i].ToString();
                                 }
@@ -254,7 +254,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                             {
                                 for (int i = 5; i <= 9; i++)
                                 {
-                                    Label label = (Label)this.FindName("showDataArray" + i.ToString());
+                                    Label label = (Label)FindName("showDataArray" + i.ToString());
                                     label.Visibility = System.Windows.Visibility.Visible;
                                     label.Content = reader[i - 5].ToString();
                                 }
@@ -264,7 +264,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                         {
                             for (int i = 10; i <= 13; i++)
                             {
-                                Label label = (Label)this.FindName("showDataArray" + i.ToString());
+                                Label label = (Label)FindName("showDataArray" + i.ToString());
                                 label.Visibility = System.Windows.Visibility.Visible;
 
                                 if (i - 10 == 3)

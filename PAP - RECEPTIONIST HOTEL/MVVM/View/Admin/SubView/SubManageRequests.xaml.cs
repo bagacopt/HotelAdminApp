@@ -1,7 +1,10 @@
-﻿using PAP___RECEPTIONIST_HOTEL.Properties;
+﻿using PAP___RECEPTIONIST_HOTEL.Forms;
+using PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView;
+using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
@@ -21,8 +24,12 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
         // CONNECTION
         SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
-        public void SubManageRequests_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        public void SubManageRequests_Loaded(object sender, RoutedEventArgs e)
         {
+            Border1.Visibility = Visibility.Hidden;
+            Border2.Visibility = Visibility.Hidden;
+            Border3.Visibility = Visibility.Hidden;
+
             // OPEN CONNECTION
             con.Open();
 
@@ -50,7 +57,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                     serviceSelected = 3;
                 }
 
-                cmd.Parameters.AddWithValue("@nRoom", PrimaryView.ManageRequests.nClient);
+                cmd.Parameters.AddWithValue("@nRoom", ManageRequests.nClient);
                 cmd.Parameters.AddWithValue("@serviceID", serviceSelected);
                 cmd.ExecuteNonQuery();
             }
@@ -60,7 +67,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                 "ON Requests.id = Reservations_Requests.request_id INNER JOIN Reservations " +
                 "ON Reservations_Requests.reservation_id = Reservations.id INNER JOIN Rooms " +
                 "ON Reservations.rooms_id = Rooms.id " +
-                "WHERE Rooms.n_room = " + PrimaryView.ManageRequests.nClient, con);
+                "WHERE Requests.active = 1 AND Requests.state = 'PENDENTE' AND Rooms.n_room = " + ManageRequests.nClient, con);
             
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -96,7 +103,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                     client = tempClient[1].ToString();
                     tempClient = client.Split('-');
                     client = tempClient[0];
-                    Border1.Visibility = System.Windows.Visibility.Visible;
+                    Border1.Visibility = Visibility.Visible;
                 }
                 else
                 {
@@ -104,7 +111,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                     client = tempClient[1].ToString();
                     tempClient = client.Split('-');
                     client = tempClient[0];
-                    Border2.Visibility = System.Windows.Visibility.Visible;
+                    Border2.Visibility = Visibility.Visible;
                 }
             }
             else
@@ -113,7 +120,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                 client = tempClient[1].ToString();
                 tempClient = client.Split('-');
                 client = tempClient[0];
-                Border3.Visibility = System.Windows.Visibility.Visible;
+                Border3.Visibility = Visibility.Visible;
             }
 
             // OPEN CONNECTION
@@ -137,7 +144,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                                 for (int i = 0; i <= 4; i++)
                                 {
                                     Label label = (Label)this.FindName("showDataArray" + i.ToString());
-                                    label.Visibility = System.Windows.Visibility.Visible;
+                                    label.Visibility = Visibility.Visible;
                                     label.Content = reader[i].ToString();
                                 }
                             }
@@ -146,7 +153,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                                 for (int i = 5; i <= 9; i++)
                                 {
                                     Label label = (Label)this.FindName("showDataArray" + i.ToString());
-                                    label.Visibility = System.Windows.Visibility.Visible;
+                                    label.Visibility = Visibility.Visible;
                                     label.Content = reader[i - 5].ToString();
                                 }
                             }
@@ -156,7 +163,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                             for (int i = 10; i <= 13; i++)
                             {
                                 Label label = (Label)this.FindName("showDataArray" + i.ToString());
-                                label.Visibility = System.Windows.Visibility.Visible;
+                                label.Visibility = Visibility.Visible;
 
                                 if (i - 10 == 3)
                                 {
@@ -171,6 +178,98 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
 
             // CLOSE CONNECTION
             con.Close();
+        }
+
+        private void EliminateRequest_Click(object sender, RoutedEventArgs e)
+        {
+            // OPEN CONNECTION
+            con.Open();
+
+            data = "UPDATE Requests SET active = 0, state = 'APAGADO' WHERE id IN (SELECT request_id FROM Reservations_Requests WHERE reservation_id IN " +
+                "(SELECT id FROM Reservations WHERE rooms_id = (SELECT id FROM Rooms WHERE n_room = @NRoom)) AND id = @id)";
+
+            using (SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@NRoom", ManageRequests.nClient);
+                cmd.Parameters.AddWithValue("@id", client);
+
+                cmd.ExecuteNonQuery();
+            }
+
+            // CLOSE CONNECTION
+            con.Close();
+
+            MessageBox.Show("Pedido apagado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Voltando ao menu principal...", "Voltar", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            if (PrimaryTabControl.SelectedIndex == 0)
+            {
+                if (SubTabControl.SelectedIndex == 0)
+                {
+                    RequestData1.SelectionChanged -= RequestDataSelectionChanged;
+                    RequestData1.Items.Clear();
+                }
+                else
+                {
+                    RequestData2.SelectionChanged -= RequestDataSelectionChanged;
+                    RequestData2.Items.Clear();
+                }
+            }
+            else
+            {
+                RequestData3.SelectionChanged -= RequestDataSelectionChanged;
+                RequestData3.Items.Clear();
+            }
+
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.ControlPanelRadioButton.IsChecked = true;
+            mainWindow.ControlPanelRadioButton.Command.Execute(null);
+        }
+
+        private void ConcludedRequest_Click(object sender, RoutedEventArgs e)
+        {
+            // OPEN CONNECTION
+            con.Open();
+
+            data = "UPDATE Requests SET active = 0, state = 'CONCLUÍDO' WHERE id IN (SELECT request_id FROM Reservations_Requests WHERE reservation_id IN " +
+                "(SELECT id FROM Reservations WHERE rooms_id = (SELECT id FROM Rooms WHERE n_room = @NRoom)) AND id = @id)";
+
+            using (SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@NRoom", ManageRequests.nClient);
+                cmd.Parameters.AddWithValue("@id", client);
+
+                cmd.ExecuteNonQuery();
+            }
+
+            // CLOSE CONNECTION
+            con.Close();
+
+            MessageBox.Show("Pedido concluído com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Voltando ao menu principal...", "Voltar", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            if (PrimaryTabControl.SelectedIndex == 0)
+            {
+                if (SubTabControl.SelectedIndex == 0)
+                {
+                    RequestData1.SelectionChanged -= RequestDataSelectionChanged;
+                    RequestData1.Items.Clear();
+                }
+                else
+                {
+                    RequestData2.SelectionChanged -= RequestDataSelectionChanged;
+                    RequestData2.Items.Clear();
+                }
+            }
+            else
+            {
+                RequestData3.SelectionChanged -= RequestDataSelectionChanged;
+                RequestData3.Items.Clear();
+            }
+
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.ControlPanelRadioButton.IsChecked = true;
+            mainWindow.ControlPanelRadioButton.Command.Execute(null);
         }
     }
 }

@@ -21,15 +21,17 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
 
         // VARIABLES
         string data;
-        int activeRequests, finalizedRequests;
+        int pendingRequests, concludedRequests, canceledRequests;
 
         private void ControlPanel_Loaded(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
             con.Open();
 
-            data = "SELECT COUNT(*) AS ActiveCount, (SELECT COUNT(*) FROM Requests WHERE active = 0) AS FinalizedCount " +
-                "FROM Requests WHERE active = 1";
+            data = "SELECT COUNT(*) AS PendingCount, " +
+                "(SELECT COUNT(*) FROM Requests WHERE active = 0 AND state = 'CONCLUÍDO') AS ConcludedCount, " +
+                "(SELECT COUNT(*) FROM Requests WHERE active = 0 AND state = 'APAGADO') AS CanceledCount " +
+                "FROM Requests WHERE active = 1 AND state = 'PENDENTE'";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -37,13 +39,15 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
                 {
                     if (reader.Read())
                     {
-                        activeRequests = reader.GetInt32(reader.GetOrdinal("ActiveCount"));
-                        finalizedRequests = reader.GetInt32(reader.GetOrdinal("FinalizedCount"));
+                        pendingRequests = reader.GetInt32(reader.GetOrdinal("PendingCount"));
+                        concludedRequests = reader.GetInt32(reader.GetOrdinal("ConcludedCount"));
+                        canceledRequests = reader.GetInt32(reader.GetOrdinal("CanceledCount"));
 
                         ChartViewModel showData = new ChartViewModel
                         {
-                            ActiveRequests = new ChartValues<int> { activeRequests },
-                            FinalizedRequests = new ChartValues<int> { finalizedRequests }
+                            PendingRequests = new ChartValues<int> { pendingRequests },
+                            ConcludedRequests = new ChartValues<int> { concludedRequests },
+                            CanceledRequests = new ChartValues<int> { canceledRequests }
                         };
                         DataContext = showData;
                     }

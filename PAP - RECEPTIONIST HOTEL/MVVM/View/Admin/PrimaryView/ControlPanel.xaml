@@ -106,14 +106,15 @@
                Width="3" Height="450" Margin="0,-100,0,0"
                Stretch="Fill" HorizontalAlignment="Left" Grid.Column="1" />
 
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="380">
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="400">
             <StackPanel Orientation="Vertical">
                 <Label Content="Pedidos:" FontSize="28" FontWeight="Bold" Margin="-110 60 0 20" Style="{StaticResource LabelTheme}"/>
                 
-                <lvc:PieChart LegendLocation="Bottom" Width="349" Height="307" Margin="-50 0 0 0 " BorderBrush="Transparent" BorderThickness="0">
+                <lvc:PieChart LegendLocation="Right" Width="450" Height="307" Margin="-50 0 0 0 " BorderBrush="Transparent" BorderThickness="0">
                     <lvc:PieChart.Series>
-                        <lvc:PieSeries Title="Pedidos ativos" Values="{Binding ActiveRequests}" DataLabels="True" Fill="#55B0FF" FontSize="14"/>
-                        <lvc:PieSeries Title="Pedidos não ativos" Values="{Binding FinalizedRequests}" DataLabels="True" Fill="#BE55FF" FontSize="14" />
+                        <lvc:PieSeries Title="Pedidos Pendentes" Values="{Binding PendingRequests}" DataLabels="True" Fill="#55B0FF" FontSize="14"/>
+                        <lvc:PieSeries Title="Pedidos Concluídos" Values="{Binding ConcludedRequests}" DataLabels="True" Fill="#BE55FF" FontSize="14" />
+                        <lvc:PieSeries Title="Pedidos Cancelados" Values="{Binding CanceledRequests}" DataLabels="True" Fill="#093B59" FontSize="14" />
                     </lvc:PieChart.Series>
 
                     <lvc:PieChart.ChartLegend>

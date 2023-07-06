@@ -53,8 +53,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
             // OPEN CONNECTION
             con.Open();
 
-            data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name, quantity, active) " +
-                "VALUES(@phone, @email, @desc, @serviceID, @name, @quantity, 1)";
+            data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name, quantity, active, state) " +
+                "VALUES(@phone, @email, @desc, @serviceID, @name, @quantity, 1, @state)";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -64,12 +64,13 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                 cmd.Parameters.AddWithValue("@serviceID", PrimaryView.Requests.serviceID);
                 cmd.Parameters.AddWithValue("@name", titleLabel.Content);
                 cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
+                cmd.Parameters.AddWithValue("@state", "PENDENTE");
 
                 cmd.ExecuteNonQuery();
             }
 
             data = "SELECT id FROM Requests WHERE phone_number = @phone AND email = @email " +
-                "AND [desc] = @desc AND services_id = @serviceID AND name = @name AND quantity = @quantity";
+                "AND [desc] = @desc AND services_id = @serviceID AND name = @name AND quantity = @quantity AND active = 1 AND state = 'PENDENTE'";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -79,6 +80,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                 cmd.Parameters.AddWithValue("@serviceID", PrimaryView.Requests.serviceID);
                 cmd.Parameters.AddWithValue("@name", titleLabel.Content);
                 cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
+
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {

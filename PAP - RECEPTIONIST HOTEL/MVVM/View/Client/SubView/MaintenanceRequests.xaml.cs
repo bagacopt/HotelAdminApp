@@ -53,8 +53,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
             // OPEN CONNECTION
             con.Open();
 
-            data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name, active)" +
-                "VALUES(@phone, @email, @desc, 3, @name, 1)";
+            data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name, active, state)" +
+                "VALUES(@phone, @email, @desc, 3, @name, 1, @state)";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -62,12 +62,13 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                 cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
                 cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
                 cmd.Parameters.AddWithValue("@name", titleLabel.Content);
+                cmd.Parameters.AddWithValue("@state", "PENDENTE");
 
                 cmd.ExecuteNonQuery();
             }
 
-            data = "SELECT id FROM Requests WHERE phone_number = @phone AND email = @email AND [desc] = @desc " +
-                "AND services_id = 3 AND name = @name";
+            data = "SELECT id FROM Requests WHERE phone_number = @phone AND email = @email AND [desc] = @desc AND" +
+                "AND services_id = 3 AND name = @name AND active = 1 AND state = 'PENDENTE'";
 
             using (SqlCommand cmd = new SqlCommand(data, con))
             {

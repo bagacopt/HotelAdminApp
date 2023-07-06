@@ -5,30 +5,44 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 {
     public class ChartViewModel : INotifyPropertyChanged
     {
-        private ChartValues<int> activeRequests;
-        public ChartValues<int> ActiveRequests
+        private ChartValues<int> pendingRequests;
+        public ChartValues<int> PendingRequests
         {
-            get { return activeRequests; }
+            get { return pendingRequests; }
             set
             {
-                if (activeRequests != value)
+                if (pendingRequests != value)
                 {
-                    activeRequests = value;
-                    OnPropertyChanged(nameof(ActiveRequests));
+                    pendingRequests = value;
+                    OnPropertyChanged(nameof(PendingRequests));
                 }
             }
         }
 
-        private ChartValues<int> finalizedRequests;
-        public ChartValues<int> FinalizedRequests
+        private ChartValues<int> concludedRequests;
+        public ChartValues<int> ConcludedRequests
         {
-            get { return finalizedRequests; }
+            get { return concludedRequests; }
             set
             {
-                if (finalizedRequests != value)
+                if (concludedRequests != value)
                 {
-                    finalizedRequests = value;
-                    OnPropertyChanged(nameof(FinalizedRequests));
+                    concludedRequests = value;
+                    OnPropertyChanged(nameof(ConcludedRequests));
+                }
+            }
+        }
+
+        private ChartValues<int> canceledRequests;
+        public ChartValues<int> CanceledRequests
+        {
+            get { return canceledRequests; }
+            set
+            {
+                if (canceledRequests != value)
+                {
+                    canceledRequests = value;
+                    OnPropertyChanged(nameof(CanceledRequests));
                 }
             }
         }

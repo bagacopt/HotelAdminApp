@@ -21,7 +21,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
         // VARIABLES
         public static int nClient;
         string[] tempnClient;
-
+        
         private void ManageRequests_Loaded(object sender, RoutedEventArgs e)
         {
             SelectRequestComboBox.SelectionChanged += SelectRequestSelectionChanged;

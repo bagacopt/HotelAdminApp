@@ -107,7 +107,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                 if (count > 0)
                 {
                     MessageBox.Show("Já existe um pedido pendente desta secção, " +
-                        "Por favor espere que o pedido seja realizado ou apague o pedido anterior e refaça o seu pedido", "Erro!");
+                        "Por favor espere que o pedido seja realizado ou apague o pedido anterior e refaça o seu pedido", "Alerta!");
 
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.ManageRequestsRadioButton.IsChecked = true;

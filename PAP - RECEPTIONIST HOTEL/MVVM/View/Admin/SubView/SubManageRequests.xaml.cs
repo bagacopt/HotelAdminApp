@@ -96,6 +96,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                     client = tempClient[1].ToString();
                     tempClient = client.Split('-');
                     client = tempClient[0];
+                    Border1.Visibility = System.Windows.Visibility.Visible;
                 }
                 else
                 {
@@ -103,6 +104,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                     client = tempClient[1].ToString();
                     tempClient = client.Split('-');
                     client = tempClient[0];
+                    Border2.Visibility = System.Windows.Visibility.Visible;
                 }
             }
             else
@@ -111,6 +113,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
                 client = tempClient[1].ToString();
                 tempClient = client.Split('-');
                 client = tempClient[0];
+                Border3.Visibility = System.Windows.Visibility.Visible;
             }
 
             // OPEN CONNECTION

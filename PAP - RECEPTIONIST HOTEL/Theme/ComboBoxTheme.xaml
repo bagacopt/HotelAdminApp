@@ -7,7 +7,7 @@
         <Setter Property="BorderBrush" Value="#55B0FF" />
         <Setter Property="BorderThickness" Value="0 0 0 1" />
         <Setter Property="Padding" Value="5" />
-        <Setter Property="Margin" Value="5 0 0 -1" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="IsDropDownOpen" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
@@ -59,6 +59,7 @@
                                 Background="{TemplateBinding Background}"
                                 Padding="0"
                                 Margin="0"
+                                    Width="{TemplateBinding Width}"
                                 CornerRadius="0"
                                 MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 <ScrollViewer>

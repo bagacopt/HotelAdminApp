@@ -29,7 +29,7 @@
                    Style="{StaticResource LabelTheme}"/>
 
             <ComboBox x:Name="SelectRequestComboBox" Margin="0 20 0 0"
-                      Width="150"
+                      Width="160"
                       HorizontalAlignment="Center"
                       SelectionChanged="SelectRequestSelectionChanged"
                       Style="{StaticResource ComboBoxTheme}"/>

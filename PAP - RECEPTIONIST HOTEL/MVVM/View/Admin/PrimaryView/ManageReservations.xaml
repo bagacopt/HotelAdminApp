@@ -54,7 +54,8 @@
                    HorizontalAlignment="Center" />
             <ComboBox x:Name="reservationComboBox"
                       Margin="0,20,0,0"
-                      SelectionChanged="ComboBoxSelectClient" 
+                      SelectionChanged="ComboBoxSelectClient"
+                      Width="200"
                       Style="{StaticResource ComboBoxTheme}"/>
         </StackPanel>
 
@@ -178,7 +179,8 @@
                           x:Name="changeRoomComboBox"
                           Visibility="Hidden"
                           SelectionChanged="ChangeRoomSelectionChanged" 
-                          DropDownClosed="ClosedDropDownChangeNRoom" />
+                          DropDownClosed="ClosedDropDownChangeNRoom" 
+                          Style="{StaticResource ComboBoxTheme}"/>
 
                 <Calendar x:Name="calendarPostPone" Width="180" Height="160"
                           VerticalAlignment="Top"

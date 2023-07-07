@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
 {
-    public partial class ControlPanel : System.Windows.Controls.UserControl
+    public partial class ControlPanel : UserControl
     {
         public ControlPanel()
         {
@@ -62,12 +62,12 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
             {
                 if (i <= rating)
                 {
-                    starList[i - 1].Source = new BitmapImage(new Uri("/Forms/Images/full_gold_star.png", 
+                    starList[i - 1].Source = new BitmapImage(new Uri("/Forms/Images/gold-star.png", 
                         UriKind.RelativeOrAbsolute));
                     continue;
                 }
 
-                starList[i -1].Source = new BitmapImage(new Uri("/Forms/Images/full_gray_star.png", 
+                starList[i -1].Source = new BitmapImage(new Uri("/Forms/Images/gray-star.png", 
                     UriKind.RelativeOrAbsolute));
             }
         }

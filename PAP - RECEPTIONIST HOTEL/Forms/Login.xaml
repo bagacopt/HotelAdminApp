@@ -32,7 +32,7 @@
 
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush ImageSource="Images/back-image.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="Images/background.jpg" Stretch="UniformToFill"/>
         </Border.Background>
 
         <Border CornerRadius="10" BorderThickness="2" Opacity="0.95">
@@ -84,7 +84,7 @@
                 </Grid>
 
                 <StackPanel Width="450" Orientation="Vertical" Margin="0,35,0,0" Grid.Row="2">
-                    <Image Source="Images/logo.png"
+                    <Image Source="Images/logo-login.png"
                            Width="250" Height="100"/>
 
                     <TextBlock Text="Início de sessão" Margin="0,30,0,0"

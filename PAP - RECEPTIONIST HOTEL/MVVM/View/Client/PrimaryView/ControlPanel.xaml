@@ -59,18 +59,18 @@
                    Style="{StaticResource LabelTheme}"/>
 
             <StackPanel Height="50" Orientation="Horizontal">
-                <Image x:Name="star_1" Source="/Forms/Images/full_gray_star.png" Width="30" Margin="27 0 0 0" MouseLeftButtonDown="ClassificationStars1_Click"/>
-                <Image x:Name="star_2" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="ClassificationStars2_Click"/>
-                <Image x:Name="star_3" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="ClassificationStars3_Click"/>
-                <Image x:Name="star_4" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="ClassificationStars4_Click"/>
-                <Image x:Name="star_5" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="ClassificationStars5_Click"/>
+                <Image x:Name="star_1" Source="/Forms/Images/gray-star.png" Width="30" Margin="27 0 0 0" MouseLeftButtonDown="ClassificationStars1_Click"/>
+                <Image x:Name="star_2" Source="/Forms/Images/gray-star.png" Width="30" MouseLeftButtonDown="ClassificationStars2_Click"/>
+                <Image x:Name="star_3" Source="/Forms/Images/gray-star.png" Width="30" MouseLeftButtonDown="ClassificationStars3_Click"/>
+                <Image x:Name="star_4" Source="/Forms/Images/gray-star.png" Width="30" MouseLeftButtonDown="ClassificationStars4_Click"/>
+                <Image x:Name="star_5" Source="/Forms/Images/gray-star.png" Width="30" MouseLeftButtonDown="ClassificationStars5_Click"/>
             </StackPanel>
 
             <Button Content="Classificar" Click="Ratehotel_Click" Style="{StaticResource ButtonTheme}" Margin="0 10 0 0"/>
         </StackPanel>
 
         <!-- Divisão das informações com os dados da reserva -->
-        <Image Source="/Forms/Images/line_vertical.png" Margin="0 -150 0 0" 
+        <Image Source="/Forms/Images/vertical-line.png" Margin="0 -150 0 0" 
                Width="3" Height="450" Stretch="Fill" 
                HorizontalAlignment="Left" Grid.Column="1" />
 
@@ -82,7 +82,7 @@
                    Style="{StaticResource LabelTheme}"/>
 
             <!-- Divisão do título com os dados da reserva -->
-            <Image Source="/Forms/Images/line_horizontal.png" 
+            <Image Source="/Forms/Images/horizontal-line.png" 
                    Width="507" Height="4" />
 
             <!-- Nome do cliente -->

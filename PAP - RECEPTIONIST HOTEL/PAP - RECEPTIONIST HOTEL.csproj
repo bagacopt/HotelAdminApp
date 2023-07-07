@@ -236,34 +236,18 @@
     <Folder Include="MVVM\Model\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Forms\Images\key-icon.png" />
-    <Resource Include="Forms\Images\user-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Forms\Images\back-image.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Forms\Images\logo-painel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Forms\Images\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Forms\Images\background.jpg" />
+    <Resource Include="Forms\Images\gold-star.png" />
+    <Resource Include="Forms\Images\gray-star.png" />
     <Resource Include="Forms\Images\hidepass.png" />
+    <Resource Include="Forms\Images\horizontal-line.png" />
+    <Resource Include="Forms\Images\key-icon.png" />
+    <Resource Include="Forms\Images\logo-login.png" />
+    <Resource Include="Forms\Images\logo-painel.png" />
     <Resource Include="Forms\Images\showpass.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Forms\Images\user-icon.png" />
     <Resource Include="Forms\Images\user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Forms\Images\full_gold_star.png" />
-    <Resource Include="Forms\Images\full_gray_star.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Forms\Images\line_horizontal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Forms\Images\line_vertical.png" />
+    <Resource Include="Forms\Images\vertical-line.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

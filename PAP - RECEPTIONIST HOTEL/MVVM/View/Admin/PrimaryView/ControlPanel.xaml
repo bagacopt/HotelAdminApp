@@ -102,7 +102,7 @@
             </StackPanel>
         </StackPanel>
 
-        <Image Source="/Forms/Images/line_vertical.png" 
+        <Image Source="/Forms/Images/vertical-line.png" 
                Width="3" Height="450" Margin="0,-100,0,0"
                Stretch="Fill" HorizontalAlignment="Left" Grid.Column="1" />
 

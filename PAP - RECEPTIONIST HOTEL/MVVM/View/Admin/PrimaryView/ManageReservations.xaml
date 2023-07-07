@@ -60,7 +60,7 @@
         </StackPanel>
 
         <!-- Divisão das informações com os dados da reserva -->
-        <Image Source="/Forms/Images/line_vertical.png" 
+        <Image Source="/Forms/Images/vertical-line.png" 
                Width="3" Height="450" 
                Stretch="Fill" 
                HorizontalAlignment="Left" 
@@ -76,7 +76,7 @@
                    HorizontalAlignment="Center" />
 
             <!-- Divisão do título com os dados da reserva -->
-            <Image Source="/Forms/Images/line_horizontal.png" 
+            <Image Source="/Forms/Images/horizontal-line.png" 
                    Width="507" Height="4" />
 
             <StackPanel Orientation="Horizontal">

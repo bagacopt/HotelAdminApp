@@ -22,6 +22,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
         string data;
         int idReservation, idRequest;
 
+        // OBJECTS
+        TextBox textBox = new TextBox();
+
         private void ServicesRequests_Loaded(object sender, RoutedEventArgs e)
         {
             // OPEN CONNECTION
@@ -47,7 +50,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                     titleLabel.Content = SubManageRequests.labelValues.ElementAtOrDefault(0);
                     mobileTxtBox.Text = SubManageRequests.labelValues.ElementAtOrDefault(1);
                     emailTxtBox.Text = SubManageRequests.labelValues.ElementAtOrDefault(2);
-                    quantityUpDown.Value = Convert.ToInt32(SubManageRequests.labelValues.ElementAtOrDefault(3));
+                    textBox = (TextBox)quantityUpDown.Template.FindName("PART_TextBox", quantityUpDown);
+                    textBox.Text = SubManageRequests.labelValues.ElementAtOrDefault(3);
                     descriptionTxtBox.Text = SubManageRequests.labelValues.ElementAtOrDefault(4);
                 }
             }
@@ -95,7 +99,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                             cmd.Parameters.AddWithValue("@phone", mobileTxtBox.Text);
                             cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
                             cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
-                            cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
+                            cmd.Parameters.AddWithValue("@quantity", Convert.ToInt32(textBox.Text));
                             cmd.Parameters.AddWithValue("@idRequest", SubManageRequests.client);
 
                             cmd.ExecuteNonQuery();
@@ -138,7 +142,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                         cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
                         cmd.Parameters.AddWithValue("@serviceID", PrimaryView.Requests.serviceID);
                         cmd.Parameters.AddWithValue("@name", titleLabel.Content);
-                        cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
+                        cmd.Parameters.AddWithValue("@quantity", Convert.ToInt32(textBox.Text));
                         cmd.Parameters.AddWithValue("@state", "PENDENTE");
 
                         cmd.ExecuteNonQuery();
@@ -154,7 +158,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                         cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
                         cmd.Parameters.AddWithValue("@serviceID", PrimaryView.Requests.serviceID);
                         cmd.Parameters.AddWithValue("@name", titleLabel.Content);
-                        cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
+                        cmd.Parameters.AddWithValue("@quantity", Convert.ToInt32(textBox.Text));
 
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -239,6 +243,31 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
             Close();
             Forms.MainWindow mainWindow = new Forms.MainWindow();
             mainWindow.Show();
+        }
+
+        private void IncrementButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(textBox.Text, out int currentValue))
+            {
+                textBox.Text = (currentValue + 1).ToString();
+            }
+            else
+            {
+                MessageBox.Show("Não pode conter letras!!", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            
+        }
+
+        private void DecreaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(textBox.Text, out int currentValue))
+            {
+                textBox.Text = (currentValue - 1).ToString();
+            }
+            else
+            {
+                MessageBox.Show("Não pode conter letras!!", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

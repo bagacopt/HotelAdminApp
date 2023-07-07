@@ -147,5 +147,10 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 
             ManageUsersViewCommand = new RelayCommand(o => { CurrentView = ManageUsersVM; });
         }
+
+        private void Increment()
+        {
+
+        }
     }
 }

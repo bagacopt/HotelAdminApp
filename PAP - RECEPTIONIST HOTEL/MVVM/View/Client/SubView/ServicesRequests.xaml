@@ -11,17 +11,17 @@
         MouseLeftButtonDown="Window_MouseDown" Loaded="ServicesRequests_Loaded">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Forms/Images/back-image.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="/Forms/Images/background.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
-        
-        <StackPanel Background="White" Height="60" VerticalAlignment="Top">
+
+        <StackPanel Background="#FC191819" Height="60" VerticalAlignment="Top">
             <Button Content="«" Margin="0,10,310,0"
                     Foreground="White" FontSize="16" FontFamily="Montserrat"
                     BorderThickness="0" Cursor="Hand"
                     Click="BackButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="Background" Value="#28AEED"/>
+                        <Setter Property="Background" Value="#55B0FF"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#278BEF"/>
@@ -41,75 +41,124 @@
             </Button>
 
             <Label x:Name="titleLabel" Margin="-10,-21,0,0"
-                   FontSize="15" Foreground="Black" FontWeight="Bold"
+                   FontSize="15" FontWeight="Bold"
                    HorizontalAlignment="Center" VerticalAlignment="Top"           
                    Style="{StaticResource LabelTheme}"/>
-            
+
             <StackPanel Orientation="Horizontal" Height="25">
                 <Label Content="Nº do quarto:" Margin="0,0,-10,0"
-                       FontSize="14" Foreground="Black"
+                       FontSize="14"
                        Style="{StaticResource LabelTheme}"/>
                 <Label x:Name="nRoomLabel" Margin="5,2,0,0"
-                       FontSize="12" Foreground="Black"
+                       FontSize="12"
                        Style="{StaticResource LabelTheme}">
                 </Label>
             </StackPanel>
         </StackPanel>
 
-        <Border CornerRadius="10" BorderThickness="2" Background="White" Height="350" Margin="25,25,25,0">
+        <Border CornerRadius="10" BorderThickness="2" Background="#FC191819" Height="350" Margin="25,25,25,0">
             <StackPanel Margin="0,10,0,0">
                 <StackPanel Margin="0,10,0,0">
                     <Label Content="Número de telefone" Margin="10,0,0,0"
-                           FontSize="14" Foreground="Black" 
+                           FontSize="14" 
                            Style="{StaticResource LabelTheme}"/>
                     <TextBox x:Name="mobileTxtBox" Margin="10,0,10,0"
-                             FontSize="12"
-                             BorderThickness="0,0,0,1"/>
+                             FontSize="12" Background="Transparent" Foreground="White"
+                             BorderThickness="0,0,0,1" BorderBrush="#55B0FF"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
                     <Label Content="Email" Margin="10,0,0,0"
-                           FontSize="14" Foreground="Black" 
+                           FontSize="14"
                            Style="{StaticResource LabelTheme}"/>
                     <TextBox x:Name="emailTxtBox" Margin="10,0,10,0"
-                             FontSize="12"
-                             BorderThickness="0,0,0,1"/>
+                             FontSize="12" Background="Transparent" Foreground="White"
+                             BorderThickness="0,0,0,1" BorderBrush="#55B0FF"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
                     <Label Content="Quantidade" Margin="10,0,0,0" x:Name="quantityLabel"
-                           FontSize="14" Foreground="Black" 
+                           FontSize="14"
                            Style="{StaticResource LabelTheme}"/>
-                    <syncfusion:UpDown x:Name="quantityUpDown" Margin="10,0,210,0"
+                    <syncfusion:UpDown x:Name="quantityUpDown" Margin="10,0,186,0"
                                        NumberDecimalDigits="0" ApplyZeroColor="False"
                                        FontSize="12" TextAlignment="Left"
-                                       BorderThickness="0,0,0,1"/>
+                                       BorderThickness="0,0,0,1" BorderBrush="#55B0FF"
+                                       Background="Transparent">
+                        <syncfusion:UpDown.Resources>
+                            <Style TargetType="syncfusion:UpDown">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="syncfusion:UpDown">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    BorderBrush="#55B0FF"
+                                                    BorderThickness="0 0 0 1"
+                                                    HorizontalAlignment="Left"
+                                                    Width="100"
+                                                    CornerRadius="0">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="80"/>
+                                                        <ColumnDefinition Width="20"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBox x:Name="PART_TextBox" Grid.Column="0"
+                                                             Background="Transparent"
+                                                             Foreground="White"
+                                                             BorderThickness="0"
+                                                             VerticalContentAlignment="Center"
+                                                             HorizontalContentAlignment="Left"/>
+                                                    <Grid Grid.Column="1">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <RepeatButton x:Name="PART_IncreaseButton"
+                                                                      Content="▲" Foreground="White" Background="Transparent"
+                                                                      HorizontalAlignment="Center"
+                                                                      FontSize="10"
+                                                                      VerticalAlignment="Top"
+                                                                      Click="IncrementButton_Click" BorderBrush="Transparent"
+                                                                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                                                      Width="16" Height="15"
+                                                                      Margin="0 0 0 10"/>
+                                                        
+                                                        <RepeatButton x:Name="PART_DecreaseButton"
+                                                                      Content="▼" Foreground="White" Background="Transparent"
+                                                                      HorizontalAlignment="Center"
+                                                                      FontSize="10"
+                                                                      VerticalAlignment="Bottom"
+                                                                      Click="DecreaseButton_Click" BorderBrush="Transparent"
+                                                                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                                                      Width="16" Height="15"
+                                                                      Margin="0 10 0 0"/>
+                                                    </Grid>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </syncfusion:UpDown.Resources>
+                    </syncfusion:UpDown>
                 </StackPanel>
 
                 <StackPanel Margin="0,10,0,0">
                     <Label Content="Descrição do pedido" Margin="10,0,0,0"
-                           FontSize="14" Foreground="Black" 
+                           FontSize="14"
                            Style="{StaticResource LabelTheme}" />
-                    <TextBox x:Name="descriptionTxtBox" Margin="10,0,10,0" Height="70" 
+                    <TextBox x:Name="descriptionTxtBox" Margin="10,0,10,0" Height="70" Background="Transparent" Foreground="White"
                              FontSize="12"
-                             BorderThickness="2" BorderBrush="Gray" TextWrapping="Wrap">
+                             BorderThickness="2" BorderBrush="#55B0FF" TextWrapping="Wrap">
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="Background" Value="Transparent" />
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
                 </StackPanel>
 
-                <Button Content="Requisitar" Margin="80,25,80,0" Height="30"
-                        Background="Transparent" Foreground="Black"
-                        Click="OrderButton_Click">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
+                <Button Content="Requisitar" Click="OrderButton_Click" Style="{StaticResource ButtonTheme}" Margin="80 15 80 0" Height="30"/>
             </StackPanel>
         </Border>
     </Grid>

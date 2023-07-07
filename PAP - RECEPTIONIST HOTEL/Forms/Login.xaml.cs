@@ -26,12 +26,6 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
             Application.Current.Shutdown();
         }
 
-        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            // MINIMIZES APPLICATION
-            WindowState = WindowState.Minimized;
-        }
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             // CAN MOVE APPLICATION FROM WHATEVER POINT OF THE APPLICATION SIZE
@@ -81,7 +75,7 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
                         // GOES TO FIRST SECTION OF THE APPLICATION
                         MainWindow program = new MainWindow();
                         program.Show();
-                        this.Close();
+                        Close();
                     }
                     else
                     {
@@ -100,7 +94,7 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
                         // GOES TO FIRST SECTION OF THE APPLICATION
                         MainWindow program = new MainWindow();
                         program.Show();
-                        this.Close();
+                        Close();
                     }
                     else
                     {
@@ -117,7 +111,7 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
             // GOES TO FORGOT PASSWORD
             ForgotPassword forgot = new ForgotPassword();
             forgot.Show();
-            this.Close();
+            Close();
         }
 
         private void HidePasswordChecked(object sender, RoutedEventArgs e)

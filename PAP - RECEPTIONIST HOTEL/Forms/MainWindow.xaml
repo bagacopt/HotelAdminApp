@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel"
         mc:Ignorable="d"
-        Height="750" Width="1280" Background="#FC191819"
+        Height="750" Width="1280" 
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
-        AllowsTransparency="True"
+        AllowsTransparency="True" Background="Transparent"  
         MouseLeftButtonDown="Window_MouseDown" Loaded="MainWindow_Loaded" KeyDown="GoBack">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
 
-    <Border CornerRadius="20">
+    <Border CornerRadius="20" Background="#FC191819">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -25,31 +25,6 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="735"/>
             </Grid.RowDefinitions>
-
-            <Button x:Name="btnMinimize"
-                    BorderThickness="0" HorizontalAlignment="Right" Margin="0,0,35,30" Grid.Column="1" 
-                    Foreground="White" FontSize="16" FontFamily="Montserrat" Cursor="Hand" Content="-"
-                    Click="BtnMinimize_Click">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="#28AEED"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#278BEF"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="18" Height="18"
-                                CornerRadius="9" Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
 
             <Button x:Name="btnClose"
                     BorderThickness="0" HorizontalAlignment="Right" Margin="0,0,10,30" Grid.Column="2"
@@ -112,12 +87,34 @@
                              Command="{Binding ManageUsersViewCommand}"/>
 
                 <RadioButton x:Name="LogoutRadioButton"
-                             Content="Terminar sessão" Foreground="White"
+                             Content="Terminar sessão" Foreground="White" FontSize="15" FontWeight="Medium"
                              Height="50"
-                             Checked="Logout_Checked"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Checked="Logout_Checked">
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource MenuButtonTheme}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="RadioButton">
+                                        <Grid>
+                                            <Border x:Name="border" Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="0 0 0 20"/>
+                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="border" Property="CornerRadius" Value="0 0 0 20"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </RadioButton.Style>
+                </RadioButton>
             </StackPanel>
-            
+
             <ContentControl Grid.Row="1" Grid.Column="1" Margin="0 0 0 50"
                             Content="{Binding CurrentView}"/>
         </Grid>

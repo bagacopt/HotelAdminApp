@@ -65,59 +65,73 @@
                         <!-- SERVIÇOS -->
                         <TabItem Header="Serviços" Width="500" Height="30">
                             <StackPanel>
-                                <Label Content="Serviço de limpeza de quartos diário" Margin="0 5 0 0"
+                                <Label Content="Serviço de limpeza de quartos diário" Margin="0 10 0 0"
                                        HorizontalAlignment="Left"
                                        Style="{StaticResource LabelTheme}"/>
-                                <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton1">
+                                <Button Height="42" Click="OrderButton_Click" x:Name="OrderButton1" Width="800" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
                                         </Style>
                                     </Button.Resources>
 
-                                    <Label Content="Requisitar" Foreground="Black"
+                                    <Label Content="Requisitar"
                                            Style="{StaticResource LabelTheme}"/>
                                 </Button>
 
-                                <Label Content="Serviço extra de limpeza de quarto" Margin="0 15 0 0"
+                                <Label Content="Serviço extra de limpeza de quarto" Margin="0 10 0 0"
                                        HorizontalAlignment="Left"
                                        Style="{StaticResource LabelTheme}"/>
-                                <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton2">
+                                <Button Click="OrderButton_Click" x:Name="OrderButton2" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
                                         </Style>
                                     </Button.Resources>
 
-                                    <Label Content="Requisitar" Foreground="Black"
+                                    <Label Content="Requisitar"
                                            Style="{StaticResource LabelTheme}"/>
                                 </Button>
 
-                                <Label Content="Kit de limpeza para uso dos hóspedes" Margin="0 15 0 0"
+                                <Label Content="Kit de limpeza para uso dos hóspedes" Margin="0 10 0 0"
                                        HorizontalAlignment="Left"
                                        Style="{StaticResource LabelTheme}"/>
-                                <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton3">
+                                <Button Click="OrderButton_Click" x:Name="OrderButton3" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
                                         </Style>
                                     </Button.Resources>
 
-                                    <Label Content="Requisitar" Foreground="Black"
+                                    <Label Content="Requisitar"
                                            Style="{StaticResource LabelTheme}"/>
                                 </Button>
 
-                                <Label Content="Serviço de abertura da cama" Margin="0 15 0 0"
+                                <Label Content="Serviço de abertura da cama" Margin="0 10 0 0"
                                        HorizontalAlignment="Left"
                                        Style="{StaticResource LabelTheme}"/>
-                                <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton4">
+                                <Button Click="OrderButton_Click" x:Name="OrderButton4" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="7"/>
                                         </Style>
                                     </Button.Resources>
 
-                                    <Label Content="Requisitar" Foreground="Black"
+                                    <Label Content="Requisitar"
+                                           Style="{StaticResource LabelTheme}"/>
+                                </Button>
+
+                                <Label Content="Serviço de comida ao quarto" Margin="0 10 0 0"
+                                       HorizontalAlignment="Left"
+                                       Style="{StaticResource LabelTheme}"/>
+                                <Button Click="OrderButton_Click" x:Name="OrderButton5" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="7"/>
+                                        </Style>
+                                    </Button.Resources>
+
+                                    <Label Content="Requisitar"
                                            Style="{StaticResource LabelTheme}"/>
                                 </Button>
                             </StackPanel>
@@ -127,86 +141,73 @@
                         <TabItem Header="Extras" Width="495" Height="30">
                             <Grid>
                                 <StackPanel>
-                                    <Label Content="Shampoo e gel de banho" Margin="0 5 0 0"
+                                    <Label Content="Shampoo e gel de banho" Margin="0 10 0 0"
                                            HorizontalAlignment="Left"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton5">
+                                    <Button Click="OrderButton_Click" x:Name="OrderButton6" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
                                             </Style>
                                         </Button.Resources>
                                         
-                                        <Label Content="Requisitar" Foreground="Black"
+                                        <Label Content="Requisitar"
                                                Style="{StaticResource LabelTheme}"/>
                                     </Button>
 
-                                    <Label Content="Condicionador" Margin="0 15 0 0"
+                                    <Label Content="Condicionador" Margin="0 10 0 0"
                                            HorizontalAlignment="Left"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton6">
+                                    <Button Click="OrderButton_Click" x:Name="OrderButton7" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
                                             </Style>
                                         </Button.Resources>
 
-                                        <Label Content="Requisitar" Foreground="Black"
+                                        <Label Content="Requisitar"
                                                Style="{StaticResource LabelTheme}"/>
                                     </Button>
 
-                                    <Label Content="Sabão" Margin="0 15 0 0"
+                                    <Label Content="Sabão" Margin="0 10 0 0"
                                            HorizontalAlignment="Left"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton7">
+                                    <Button Click="OrderButton_Click" x:Name="OrderButton8" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
                                             </Style>
                                         </Button.Resources>
 
-                                        <Label Content="Requisitar" Foreground="Black"
+                                        <Label Content="Requisitar"
                                                Style="{StaticResource LabelTheme}"/>
                                     </Button>
 
-                                    <Label Content="Kit de pasta de dentes" Margin="0 15 0 0"
+                                    <Label Content="Kit de pasta de dentes" Margin="0 10 0 0"
                                            HorizontalAlignment="Left"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton8">
+                                    <Button Click="OrderButton_Click" x:Name="OrderButton9" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
                                             </Style>
                                         </Button.Resources>
 
-                                        <Label Content="Requisitar" Foreground="Black"
+                                        <Label Content="Requisitar"
                                                Style="{StaticResource LabelTheme}"/>
                                     </Button>
 
-                                    <Label Content="Kit de barbear" Margin="0 15 0 0"
+                                    <Label Content="Kit de barbear" Margin="0 10 0 0"
                                            HorizontalAlignment="Left"
                                            Style="{StaticResource LabelTheme}"/>
-                                    <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton9">
+                                    <Button Click="OrderButton_Click" x:Name="OrderButton10" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="7"/>
                                             </Style>
                                         </Button.Resources>
 
-                                        <Label Content="Requisitar" Foreground="Black"
-                                               Style="{StaticResource LabelTheme}"/>
-                                    </Button>
-                                    <Label Content="Kit de costura" Margin="0 15 0 0"
-                                           HorizontalAlignment="Left"
-                                           Style="{StaticResource LabelTheme}"/>
-                                    <Button Height="35" Click="OrderButton_Click" x:Name="OrderButton10">
-                                        <Button.Resources>
-                                            <Style TargetType="Border">
-                                                <Setter Property="CornerRadius" Value="7"/>
-                                            </Style>
-                                        </Button.Resources>
-
-                                        <Label Content="Requisitar" Foreground="Black"
+                                        <Label Content="Requisitar"
                                                Style="{StaticResource LabelTheme}"/>
                                     </Button>
                                 </StackPanel>
@@ -219,87 +220,87 @@
             <!-- MANUNTENÇÃO -->
             <TabItem Header="Manutenção" Width="490" Height="30">
                 <StackPanel>
-                    <Label Content="Ar condicionado (A/C)" Margin="0 5 0 0"
+                    <Label Content="Ar condicionado (A/C)" Margin="0 10 0 0"
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton1">
+                    <Button Click="OrderButton_Click" x:Name="MaintainButton1" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar" Foreground="Black"
+                        <Label Content="Requisitar"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
 
-                    <Label Content="Cama" Margin="0 15 0 0"
+                    <Label Content="Cama" Margin="0 10 0 0"
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton2">
+                    <Button Click="OrderButton_Click" x:Name="MaintainButton2" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar" Foreground="Black"
+                        <Label Content="Requisitar"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
 
-                    <Label Content="Máquina do café" Margin="0 15 0 0"
+                    <Label Content="Máquina do café" Margin="0 10 0 0"
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton3">
+                    <Button Click="OrderButton_Click" x:Name="MaintainButton3" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar" Foreground="Black"
+                        <Label Content="Requisitar"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
 
-                    <Label Content="Pilhas do comando da televisão" Margin="0 15 0 0" 
+                    <Label Content="Pilhas do comando da televisão" Margin="0 10 0 0" 
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton4">
+                    <Button Click="OrderButton_Click" x:Name="MaintainButton4" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar" Foreground="Black"
+                        <Label Content="Requisitar"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
 
-                    <Label Content="Minibar" Margin="0 15 0 0"
+                    <Label Content="Minibar" Margin="0 10 0 0"
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton5">
+                    <Button Click="OrderButton_Click" x:Name="MaintainButton5" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar" Foreground="Black"
+                        <Label Content="Requisitar"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
 
-                    <Label Content="Secador" Margin="0 15 0 0"
+                    <Label Content="Secador" Margin="0 10 0 0"
                            HorizontalAlignment="Left"
                            Style="{StaticResource LabelTheme}"/>
-                    <Button Height="35" Click="OrderButton_Click" x:Name="MaintainButton6">
+                    <Button Click="OrderButton_Click" x:Name="MaintainButton6" Width="800" Height="42" Style="{StaticResource ButtonThemeRequests}" HorizontalAlignment="Left">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="7"/>
                             </Style>
                         </Button.Resources>
 
-                        <Label Content="Requisitar" Foreground="Black"
+                        <Label Content="Requisitar"
                                Style="{StaticResource LabelTheme}"/>
                     </Button>
                 </StackPanel>

@@ -16,7 +16,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
+        readonly SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         // VARIABLES
         int nStars;
@@ -93,7 +93,14 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                     {
                         idReservationLabel.Content = reader["reservation_id"].ToString();
                         nClienteLabel.Content = reader["fullname"].ToString();
-                        SetStars(Convert.ToInt32(reader["stars"]));
+                        if (reader["stars"] != DBNull.Value)
+                        {
+                            SetStars(Convert.ToInt32(reader["stars"]));
+                        }
+                        else
+                        {
+                            SetStars(0);
+                        }
                     }
                 }
             }
@@ -137,7 +144,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
             }
 
             // GET RESERVATION PRICE
-            data = "SELECT Reservations.reserva_price FROM Reservations " +
+            data = "SELECT Reservations.reservation_price FROM Reservations " +
                 "INNER JOIN Users ON Reservations.id = Users.reservation_id WHERE username = @user";
             using (SqlCommand cmd = new SqlCommand(data, con))
             {
@@ -147,7 +154,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                 {
                     while (reader.Read())
                     {
-                        paymentLabel.Content = reader["reserva_price"].ToString() + "€";
+                        paymentLabel.Content = reader["reservation_price"].ToString() + "€";
                     }
                 }
             }

@@ -1,26 +1,19 @@
-﻿using LiveCharts.Defaults;
-using LiveCharts;
-using PAP___RECEPTIONIST_HOTEL.Core;
+﻿using PAP___RECEPTIONIST_HOTEL.Core;
 using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Collections.ObjectModel;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 {
     class MainViewModel : ObservableObject
     {
         // CONNECTION
-        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
+        readonly SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         // VARIABLES
-        string data;
-        int typeUser;
+        readonly string data;
+        readonly int typeUser;
         private object _currentView;
-        private SeriesCollection _seriesCollection;
-        private List<string> _labels;
-        private ChartValues<ObservableValue> _series1Values, _series2Values;
 
         // ------------------------------------ RelayCommand ---------------------------------------- //
 
@@ -77,46 +70,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             {
                 _currentView = value;
                 OnPropertyChanged();
-            }
-        }
-
-        public SeriesCollection SeriesCollection
-        {
-            get { return _seriesCollection; }
-            set
-            {
-                _seriesCollection = value;
-                OnPropertyChanged("SeriesCollection");
-            }
-        }
-
-        public List<string> Labels
-        {
-            get { return _labels; }
-            set
-            {
-                _labels = value;
-                OnPropertyChanged("Labels");
-            }
-        }
-
-        public ChartValues<ObservableValue> Series1Values
-        {
-            get { return _series1Values; }
-            set
-            {
-                _series1Values = value;
-                OnPropertyChanged("Series1Values");
-            }
-        }
-
-        public ChartValues<ObservableValue> Series2Values
-        {
-            get { return _series2Values; }
-            set
-            {
-                _series2Values = value;
-                OnPropertyChanged("Series2Values");
             }
         }
 

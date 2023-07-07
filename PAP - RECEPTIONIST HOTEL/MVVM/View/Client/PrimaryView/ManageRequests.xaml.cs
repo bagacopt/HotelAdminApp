@@ -1,6 +1,4 @@
 ﻿using PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView;
-using PAP___RECEPTIONIST_HOTEL.Properties;
-using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 

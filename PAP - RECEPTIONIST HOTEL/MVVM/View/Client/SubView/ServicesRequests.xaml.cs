@@ -1,7 +1,9 @@
 ﻿using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
@@ -14,7 +16,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
+        readonly SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         // VARIABLES
         string data;
@@ -22,24 +24,51 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
 
         private void ServicesRequests_Loaded(object sender, RoutedEventArgs e)
         {
-            nRoomLabel.Content = PrimaryView.ControlPanel.nRoom;
-            titleLabel.Content = PrimaryView.Requests.serviceName;
-
             // OPEN CONNECTION
             con.Open();
 
-            data = "SELECT Reservations.id FROM Reservations INNER JOIN Users " +
-                "ON Reservations.id = Users.reservation_id WHERE Users.username = @user AND Reservations.active = 1";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
+            if (PrimaryView.Requests.typeService == "Manutenção")
             {
-                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
+                quantityLabel.Visibility = Visibility.Collapsed;
+                quantityUpDown.Visibility = Visibility.Collapsed;
+            }
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
+            if (SubManageRequests.verification == "edit this")
+            {
+                if (PrimaryView.Requests.typeService == "Manutenção")
                 {
-                    while (reader.Read())
+                    titleLabel.Content = SubManageRequests.labelValues.ElementAtOrDefault(0);
+                    mobileTxtBox.Text = SubManageRequests.labelValues.ElementAtOrDefault(1);
+                    emailTxtBox.Text = SubManageRequests.labelValues.ElementAtOrDefault(2);
+                    descriptionTxtBox.Text = SubManageRequests.labelValues.ElementAtOrDefault(4);
+                }
+                else
+                {
+                    titleLabel.Content = SubManageRequests.labelValues.ElementAtOrDefault(0);
+                    mobileTxtBox.Text = SubManageRequests.labelValues.ElementAtOrDefault(1);
+                    emailTxtBox.Text = SubManageRequests.labelValues.ElementAtOrDefault(2);
+                    quantityUpDown.Value = Convert.ToInt32(SubManageRequests.labelValues.ElementAtOrDefault(3));
+                    descriptionTxtBox.Text = SubManageRequests.labelValues.ElementAtOrDefault(4);
+                }
+            }
+            else
+            {
+                nRoomLabel.Content = PrimaryView.ControlPanel.nRoom;
+                titleLabel.Content = PrimaryView.Requests.serviceName;
+
+                data = "SELECT Reservations.id FROM Reservations INNER JOIN Users " +
+                    "ON Reservations.id = Users.reservation_id WHERE Users.username = @user AND Reservations.active = 1";
+
+                using (SqlCommand cmd = new SqlCommand(data, con))
+                {
+                    cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        idReservation = Convert.ToInt32(reader["id"]);
+                        while (reader.Read())
+                        {
+                            idReservation = Convert.ToInt32(reader["id"]);
+                        }
                     }
                 }
             }
@@ -53,66 +82,161 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
             // OPEN CONNECTION
             con.Open();
 
-            data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name, quantity, active, state) " +
-                "VALUES(@phone, @email, @desc, @serviceID, @name, @quantity, 1, @state)";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
+            if (SubManageRequests.verification == "edit this")
             {
-                cmd.Parameters.AddWithValue("@phone", mobileTxtBox.Text);
-                cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
-                cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
-                cmd.Parameters.AddWithValue("@serviceID", PrimaryView.Requests.serviceID);
-                cmd.Parameters.AddWithValue("@name", titleLabel.Content);
-                cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
-                cmd.Parameters.AddWithValue("@state", "PENDENTE");
-
-                cmd.ExecuteNonQuery();
-            }
-
-            data = "SELECT id FROM Requests WHERE phone_number = @phone AND email = @email " +
-                "AND [desc] = @desc AND services_id = @serviceID AND name = @name AND quantity = @quantity AND active = 1 AND state = 'PENDENTE'";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
-            {
-                cmd.Parameters.AddWithValue("@phone", mobileTxtBox.Text);
-                cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
-                cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
-                cmd.Parameters.AddWithValue("@serviceID", PrimaryView.Requests.serviceID);
-                cmd.Parameters.AddWithValue("@name", titleLabel.Content);
-                cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
-
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                try
                 {
-                    while (reader.Read())
+                    if (PrimaryView.Requests.typeService != "Manutenção")
                     {
-                        idRequest = Convert.ToInt32(reader["id"]);
+                        data = "UPDATE Requests SET phone_number = @phone, email = @email, [desc] = @desc, quantity = @quantity WHERE id = @idRequest";
+
+                        using (SqlCommand cmd = new SqlCommand(data, con))
+                        {
+                            cmd.Parameters.AddWithValue("@phone", mobileTxtBox.Text);
+                            cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
+                            cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
+                            cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
+                            cmd.Parameters.AddWithValue("@idRequest", SubManageRequests.client);
+
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        data = "UPDATE Requests SET phone_number = @phone, email = @email, [desc] = @desc WHERE id = @idRequest";
+
+                        using (SqlCommand cmd = new SqlCommand(data, con))
+                        {
+                            cmd.Parameters.AddWithValue("@phone", mobileTxtBox.Text);
+                            cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
+                            cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
+                            cmd.Parameters.AddWithValue("@idRequest", SubManageRequests.client);
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
+                catch
+                {
+
+                }
+                
+
+                MessageBox.Show("Pedido editado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
-            data = "INSERT INTO Reservations_Requests(reservation_id, request_id) VALUES (@idReservation, @idRequest)";
-
-            using (SqlCommand cmd = new SqlCommand(data, con))
+            else
             {
-                cmd.Parameters.AddWithValue("@idReservation", Convert.ToInt32(idReservation));
-                cmd.Parameters.AddWithValue("@idRequest", Convert.ToInt32(idRequest));
+                if (PrimaryView.Requests.typeService != "Manutenção")
+                {
+                    data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name, quantity, active, state) " +
+                    "VALUES(@phone, @email, @desc, @serviceID, @name, @quantity, 1, @state)";
 
-                cmd.ExecuteNonQuery();
+                    using (SqlCommand cmd = new SqlCommand(data, con))
+                    {
+                        cmd.Parameters.AddWithValue("@phone", mobileTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@serviceID", PrimaryView.Requests.serviceID);
+                        cmd.Parameters.AddWithValue("@name", titleLabel.Content);
+                        cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
+                        cmd.Parameters.AddWithValue("@state", "PENDENTE");
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    data = "SELECT id FROM Requests WHERE phone_number = @phone AND email = @email " +
+                        "AND [desc] = @desc AND services_id = @serviceID AND name = @name AND quantity = @quantity AND active = 1 AND state = 'PENDENTE'";
+
+                    using (SqlCommand cmd = new SqlCommand(data, con))
+                    {
+                        cmd.Parameters.AddWithValue("@phone", mobileTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@serviceID", PrimaryView.Requests.serviceID);
+                        cmd.Parameters.AddWithValue("@name", titleLabel.Content);
+                        cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
+
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                idRequest = Convert.ToInt32(reader["id"]);
+                            }
+                        }
+                    }
+
+                    data = "INSERT INTO Reservations_Requests(reservation_id, request_id) VALUES (@idReservation, @idRequest)";
+
+                    using (SqlCommand cmd = new SqlCommand(data, con))
+                    {
+                        cmd.Parameters.AddWithValue("@idReservation", Convert.ToInt32(idReservation));
+                        cmd.Parameters.AddWithValue("@idRequest", Convert.ToInt32(idRequest));
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    data = "INSERT INTO Requests(phone_number, email, [desc], services_id, name, active, state)" +
+                    "VALUES(@phone, @email, @desc, 3, @name, 1, @state)";
+
+                    using (SqlCommand cmd = new SqlCommand(data, con))
+                    {
+                        cmd.Parameters.AddWithValue("@phone", mobileTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@name", titleLabel.Content);
+                        cmd.Parameters.AddWithValue("@state", "PENDENTE");
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    data = "SELECT id FROM Requests WHERE phone_number = @phone AND email = @email AND [desc] = @desc " +
+                        "AND services_id = 3 AND name = @name AND active = 1 AND state = 'PENDENTE'";
+
+                    using (SqlCommand cmd = new SqlCommand(data, con))
+                    {
+                        cmd.Parameters.AddWithValue("@phone", mobileTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
+                        cmd.Parameters.AddWithValue("@name", titleLabel.Content);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                idRequest = Convert.ToInt32(reader["id"]);
+                            }
+                        }
+                    }
+
+                    Console.WriteLine(idRequest);
+
+                    data = "INSERT INTO Reservations_Requests(reservation_id, request_id) VALUES (@idReservation, @idRequest)";
+
+                    using (SqlCommand cmd = new SqlCommand(data, con))
+                    {
+                        cmd.Parameters.AddWithValue("@idReservation", Convert.ToInt32(idReservation));
+                        cmd.Parameters.AddWithValue("@idRequest", Convert.ToInt32(idRequest));
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Pedido criado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
             // CLOSE CONNECTION
             con.Close();
 
-            // CLOSE THE FORM
-            this.Close();
-            Forms.MainWindow mainWindow = new Forms.MainWindow();
-            mainWindow.Show();
+            BackButton_Click(sender, e);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            // CLOSE THE FORM
+            Close();
             Forms.MainWindow mainWindow = new Forms.MainWindow();
             mainWindow.Show();
         }

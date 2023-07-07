@@ -57,31 +57,6 @@
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="btnMinimize"
-                            BorderThickness="0" Grid.Column="1" Content="-"
-                            FontSize="16" FontFamily="Montserrat" Foreground="White" Cursor="Hand"
-                            Click="BtnMinimize_Click">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#28AEED"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
-                                        CornerRadius="9" Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-
                     <Button x:Name="btnClose"
                             BorderThickness="0" Content="X" Grid.Column="2"
                             Foreground="White" FontSize="12" FontFamily="Montserrat" Cursor="Hand"

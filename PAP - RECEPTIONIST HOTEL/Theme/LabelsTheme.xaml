@@ -7,4 +7,14 @@
             <Setter Property="FontFamily" Value="Montserrat" />
         </Style.Setters>
     </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockTheme">
+        <Style.Setters>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="Montserrat" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="MaxWidth" Value="100" />
+        </Style.Setters>
+    </Style>
 </ResourceDictionary>

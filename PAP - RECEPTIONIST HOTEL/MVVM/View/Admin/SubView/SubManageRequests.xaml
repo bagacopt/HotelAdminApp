@@ -81,7 +81,7 @@
                                               Style="{StaticResource ComboBoxTheme}"/>
                                 </StackPanel>
 
-                                <StackPanel x:Name="Border1" Margin="0,45,0,-96" Visibility="Hidden">
+                                <StackPanel x:Name="Border1" Margin="0,45,0,-96" Visibility="Visible">
                                     <Border BorderThickness="1" BorderBrush="White" CornerRadius="10" Margin="0" Height="300"/>
                                     <StackPanel Orientation="Horizontal" Height="40" Margin="10 -550 0 0">
                                         <Label Content="Nome do pedido:" Margin="0 10 0 0"
@@ -111,16 +111,18 @@
                                            Style="{StaticResource LabelTheme}"/>
                                     </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" Height="40" Margin="10 -230 0 0">
+                                    <StackPanel Orientation="Horizontal" Height="60" Margin="10 -230 0 0">
                                         <Label Content="Descrição do pedido:" Margin="0 10 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                        <Label x:Name="showDataArray4"  Margin="0 13 0 0" Padding="1 2 0 0" Visibility="Hidden"
-                                           Style="{StaticResource LabelTheme}"/>
+                                        <Label Margin="0 13 0 0" Padding="1 2 0 0" Visibility="Hidden" x:Name="showDataArray4" 
+                                           Style="{StaticResource LabelTheme}">
+                                            <TextBlock  Margin="0 13 0 4000" Style="{StaticResource TextBlockTheme}" Visibility="Visible"/>
+                                        </Label>
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal" Height="98" Width="790" Margin="0">
-                                        <Button Width="150" Height="40" Margin="456 -170 0 0" Content="Marcar como concluído" Click="ConcludedRequest_Click"/>
-                                        <Button Width="150" Height="40" Margin="20 -170 0 0" Content="Eliminar pedido" Click="EliminateRequest_Click"/>
+                                        <Button Width="150" Height="40" Margin="456 -170 0 0" Content="Marcar como concluído" Click="ConcludedRequest_Click" Style="{StaticResource ButtonTheme}"/>
+                                        <Button Width="150" Height="40" Margin="20 -170 0 0" Content="Eliminar pedido" Click="EliminateRequest_Click" Style="{StaticResource ButtonTheme}"/>
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>
@@ -131,7 +133,7 @@
                             <Grid Margin="0 0 199 119">
                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 350">
                                     <Label Content="Dados do Pedido:" Style="{StaticResource LabelTheme}" Margin="0 10 0 0"/>
-                                    <ComboBox Width="200" Height="20" Margin="5 5 0 -1" x:Name="RequestData2"
+                                    <ComboBox Width="250" Height="30" Margin="5 -10 0 0" x:Name="RequestData2" Padding="0 5 0 0"
                                               SelectionChanged="RequestDataSelectionChanged" Style="{StaticResource ComboBoxTheme}"/>
                                 </StackPanel>
 
@@ -168,13 +170,15 @@
                                     <StackPanel Orientation="Horizontal" Height="40" Margin="10 -230 0 0">
                                         <Label Content="Descrição do pedido:" Margin="0 10 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                                        <Label x:Name="showDataArray9"  Margin="0 13 0 0" Padding="1 2 0 0" Visibility="Hidden"
-                                           Style="{StaticResource LabelTheme}"/>
+                                        <Label Margin="0 13 0 0" Padding="1 2 0 0" Visibility="Hidden" x:Name="showDataArray9"
+                                           Style="{StaticResource LabelTheme}">
+                                            <TextBlock Style="{StaticResource TextBlockTheme}" Visibility="Visible"/>
+                                        </Label>
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal" Height="98" Width="790" Margin="0">
-                                        <Button Width="150" Height="40" Margin="456 -170 0 0" Content="Marcar como concluído" Click="ConcludedRequest_Click"/>
-                                        <Button Width="150" Height="40" Margin="20 -170 0 0" Content="Eliminar pedido" Click="EliminateRequest_Click"/>
+                                        <Button Width="150" Height="40" Margin="456 -170 0 0" Content="Marcar como concluído" Click="ConcludedRequest_Click" Style="{StaticResource ButtonTheme}"/>
+                                        <Button Width="150" Height="40" Margin="20 -170 0 0" Content="Eliminar pedido" Click="EliminateRequest_Click" Style="{StaticResource ButtonTheme}"/>
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>
@@ -219,13 +223,15 @@
                         <StackPanel Orientation="Horizontal" Height="40" Margin="10 -310 0 0">
                             <Label Content="Descrição do pedido:" Margin="0 10 0 0"
                                            Style="{StaticResource LabelTheme}"/>
-                            <Label x:Name="showDataArray13"  Margin="0 13 0 0" Padding="1 2 0 0" Visibility="Hidden"
-                                           Style="{StaticResource LabelTheme}"/>
+                            <Label Margin="0 13 0 0" Padding="1 2 0 0" Visibility="Hidden" x:Name="showDataArray13"
+                                           Style="{StaticResource LabelTheme}">
+                                <TextBlock Style="{StaticResource TextBlockTheme}" Visibility="Visible"/>
+                            </Label>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Height="98" Width="790" Margin="0">
-                            <Button Width="150" Height="40" Margin="456 -170 0 0" Content="Marcar como concluído" Click="ConcludedRequest_Click"/>
-                            <Button Width="150" Height="40" Margin="20 -170 0 0" Content="Eliminar pedido" Click="EliminateRequest_Click"/>
+                            <Button Width="150" Height="40" Margin="456 -170 0 0" Content="Marcar como concluído" Click="ConcludedRequest_Click" Style="{StaticResource ButtonTheme}"/>
+                            <Button Width="150" Height="40" Margin="20 -170 0 0" Content="Eliminar pedido" Click="EliminateRequest_Click" Style="{StaticResource ButtonTheme}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

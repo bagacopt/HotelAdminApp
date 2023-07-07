@@ -86,7 +86,7 @@
                        Margin="0,20,0,-5"
                        Style="{StaticResource LabelTheme}"/>
 
-                <Label x:Name="nClientLabel"  Margin="0 20 0 0" Height="27"
+                <Label x:Name="nClientLabel"  Margin="0 20 0 0" Height="30"
                    BorderBrush="White" BorderThickness="0 0 0 1" Visibility="Hidden"
                    FontWeight="Medium" HorizontalContentAlignment="Left"
                    Style="{StaticResource LabelTheme}"/>
@@ -146,7 +146,8 @@
                         Width="130" Height="60" 
                         Margin="-30,30,0,0"
                         IsEnabled="False"
-                        Click="ChangeNumberRoom_Click" >
+                        Click="ChangeNumberRoom_Click"
+                        Style="{StaticResource ButtonTheme}">
                     <TextBlock Text="Mudar número &#xa;do quarto" TextAlignment="Center" />
                 </Button>
                 <Button x:Name="PostPoneButton"
@@ -155,21 +156,24 @@
                         Content="Adiar estadia"
                         IsEnabled="False"
                         Visibility="Visible"
-                        Click="PostPoneStayButton_Click" />
+                        Click="PostPoneStayButton_Click" 
+                        Style="{StaticResource ButtonTheme}"/>
 
                 <Button x:Name="returnDateButton" 
                         Width="130" Height="60"
                         Margin="60,30,0,0"
                         Visibility="Collapsed"
                         Content="Retornar data" 
-                        Click="ReturnDateButton_Click" />
+                        Click="ReturnDateButton_Click" 
+                        Style="{StaticResource ButtonTheme}"/>
 
                 <Button x:Name="AntecipateCheckoutButton"
                         Width="130" Height="60"
                         Margin="60,30,-20,0"
                         Content="Antecipar check-out"
                         IsEnabled="False"
-                        Click="AntecipateCheckout_Click" />
+                        Click="AntecipateCheckout_Click" 
+                        Style="{StaticResource ButtonTheme}"/>
             </StackPanel>
 
             <!-- Dependendo do evento pressionado mostra diferentes objetos -->

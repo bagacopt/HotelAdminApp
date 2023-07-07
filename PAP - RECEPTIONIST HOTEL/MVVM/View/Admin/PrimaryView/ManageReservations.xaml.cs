@@ -172,7 +172,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
             ChangeRoomButton.IsEnabled = true;
             PostPoneButton.IsEnabled = true;
             AntecipateCheckoutButton.IsEnabled = true;
-            reservationComboBox.SelectionChanged -= ComboBoxSelectClient;
+            reservationComboBox.SelectionChanged += ComboBoxSelectClient;
         }
 
         private void ChangeNumberRoom_Click(object sender, RoutedEventArgs e)

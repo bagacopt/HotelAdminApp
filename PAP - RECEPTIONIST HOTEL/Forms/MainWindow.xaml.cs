@@ -14,7 +14,7 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
         }
 
         // CONNECTION
-        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
+        readonly SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         // VARIABLES
         string data;
@@ -51,11 +51,11 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
                 case 2:
                     ManageReservationsRadionButton.Visibility = Visibility.Collapsed;
                     ManageUsersRadionButton.Visibility = Visibility.Collapsed;
-                    LogoutRadioButton.Margin = new Thickness(0, 420, 0, 0);
+                    LogoutRadioButton.Margin = new Thickness(0, 425, 0, 0);
                     break;
                 default:
                     RequestsRadioButton.Visibility = Visibility.Collapsed;
-                    LogoutRadioButton.Margin = new Thickness(0, 350, 0, 0);
+                    LogoutRadioButton.Margin = new Thickness(0, 355, 0, 0);
                     break;
             }
 
@@ -66,12 +66,6 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
         {
             // CLOSES APPLICATION
             Application.Current.Shutdown();
-        }
-
-        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            // MINIMIZES APPLICATION
-            WindowState = WindowState.Minimized;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -87,7 +81,7 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
         {
             // OPENS LOGIN FORM
             Login login = new Login();
-            this.Close();
+            Close();
             login.Show();
         }
 
@@ -97,7 +91,7 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
             {
                 // OPENS LOGIN FORM
                 Login login = new Login();
-                this.Close();
+                Close();
                 login.Show();
             }
         }

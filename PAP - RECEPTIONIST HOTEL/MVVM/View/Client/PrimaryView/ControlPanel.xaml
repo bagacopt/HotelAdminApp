@@ -28,7 +28,7 @@
                    HorizontalAlignment="Center" Margin="0 5 0 0"
                    Style="{StaticResource LabelTheme}"/>
 
-            <Label x:Name="usernameLabel"  Margin="20 2 20 0" Height="27"
+            <Label x:Name="usernameLabel"  Margin="20 2 20 0" Height="31"
                    BorderBrush="White" BorderThickness="0 0 0 1" 
                    FontWeight="Medium" HorizontalContentAlignment="Center"
                    Style="{StaticResource LabelTheme}"/>
@@ -38,7 +38,7 @@
                    HorizontalAlignment="Center"
                    Style="{StaticResource LabelTheme}"/>
 
-            <Label x:Name="idReservationLabel"  Margin="20 2 20 0" Height="27"
+            <Label x:Name="idReservationLabel"  Margin="20 2 20 0" Height="31"
                    BorderBrush="White" BorderThickness="0 0 0 1" 
                    FontWeight="Medium" HorizontalContentAlignment="Center"
                    Style="{StaticResource LabelTheme}"/>
@@ -48,7 +48,7 @@
                    HorizontalAlignment="Center"
                    Style="{StaticResource LabelTheme}"/>
 
-            <Label x:Name="nRoomLabel"  Margin="20 2 20 0" Height="27"    
+            <Label x:Name="nRoomLabel"  Margin="20 2 20 0" Height="31"  
                    BorderBrush="White" BorderThickness="0 0 0 1" 
                    FontWeight="Medium" HorizontalContentAlignment="Center"
                    Style="{StaticResource LabelTheme}"/>
@@ -65,8 +65,8 @@
                 <Image x:Name="star_4" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="ClassificationStars4_Click"/>
                 <Image x:Name="star_5" Source="/Forms/Images/full_gray_star.png" Width="30" MouseLeftButtonDown="ClassificationStars5_Click"/>
             </StackPanel>
-            
-            <Button Content="Classificar" Click="Ratehotel_Click"/>
+
+            <Button Content="Classificar" Click="Ratehotel_Click" Style="{StaticResource ButtonTheme}" Margin="0 10 0 0"/>
         </StackPanel>
 
         <!-- Divisão das informações com os dados da reserva -->

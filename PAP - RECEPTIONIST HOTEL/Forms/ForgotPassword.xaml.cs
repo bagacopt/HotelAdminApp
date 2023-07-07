@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PAP___RECEPTIONIST_HOTEL.Properties;
+using System;
+using System.Data.SqlClient;
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
@@ -12,6 +14,12 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
         {
             InitializeComponent();
         }
+
+        // CONNECTION
+        readonly SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
+
+        // VARIABLES
+        string data;
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -45,8 +53,8 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
             {
                 From = new MailAddress("a30360@aemtg.pt"), // EMAIL COMES FROM ME
                 Subject = "Reposição da palavra-passe", // SUBJECT OF THE EMAIL
-                Body = "test123", // BODY OF THE EMAIL
-                To = { emailTxtBox.Text } // EMAIL GOES TO EMAIL WROTE   
+                Body = "Olá, a sua palavra-passe foi alterada para 1234.", // BODY OF THE EMAIL
+                To = { emailTxtBox.Text } // EMAIL GOES TO EMAIL WROTE
             };
 
             using (var smtp = new SmtpClient("smtp.gmail.com", 587))
@@ -54,14 +62,28 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
                 smtp.UseDefaultCredentials = false;
                 smtp.EnableSsl = true;
                 smtp.Credentials = new NetworkCredential("a30360@aemtg.pt", "papdesenvolvimento");
-
                 try
                 {
                     smtp.Send(mail);
 
-                    MessageBox.Show("Email enviado");
+                    // OPEN CONNECTION
+                    con.Open();
+
+                    data = "UPDATE Users SET password = 1234 WHERE email = @email";
+
+                    using (SqlCommand cmd = new SqlCommand(data, con))
+                    {
+                        cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // CLOSE CONNECTION
+                    con.Close();
+
+                    MessageBox.Show("E-mail enviado com sucesso!", "E-mail enviado", MessageBoxButton.OK, MessageBoxImage.Information);
+
                     Login login = new Login();
-                    this.Close();
+                    Close();
                     login.Show();
                 }
                 catch (Exception ex)
@@ -91,7 +113,7 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
         {
             Login login = new Login();
             login.Show();
-            this.Close();
+            Close();
         }
     }
 }

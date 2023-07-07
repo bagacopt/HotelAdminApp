@@ -22,7 +22,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.SubView
         int serviceSelected;
 
         // CONNECTION
-        SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
+        readonly SqlConnection con = new SqlConnection(Settings.Default.ConnectionString);
 
         public void SubManageRequests_Loaded(object sender, RoutedEventArgs e)
         {

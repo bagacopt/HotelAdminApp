@@ -104,9 +104,6 @@
     <Compile Include="MVVM\View\Client\PrimaryView\ManageRequests.xaml.cs">
       <DependentUpon>ManageRequests.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\Client\SubView\MaintenanceRequests.xaml.cs">
-      <DependentUpon>MaintenanceRequests.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MVVM\View\Admin\SubView\SubManageRequests.xaml.cs">
       <DependentUpon>SubManageRequests.xaml</DependentUpon>
     </Compile>
@@ -161,10 +158,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\Client\SubView\MaintenanceRequests.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MVVM\View\Admin\SubView\SubManageRequests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +169,10 @@
     <Page Include="MVVM\View\Client\SubView\SubManageRequests.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\ButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Theme\ComboBoxTheme.xaml">
       <SubType>Designer</SubType>

@@ -22,16 +22,16 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 
         public RelayCommand RequestsViewCommand { get; set; }
 
-        public RelayCommand ManageRequestsViewCommand { get; set; }
+        public RelayCommand ComplainsViewCommand { get; set; }
 
         // ADMIN
         public RelayCommand AdminControlPanelViewCommand { get; set; }
 
         public RelayCommand ManageReservationsViewCommand { get; set; }
 
-        public RelayCommand AdminManageRequestsViewCommand { get; set; }
+        public RelayCommand ManageRequestsViewCommand { get; set; }
 
-        public RelayCommand ManageUsersViewCommand { get; set; }
+        public RelayCommand ManageComplainsViewCommand { get; set; }
 
         // ------------------------------------- ViewModel ----------------------------------------- //
 
@@ -42,6 +42,8 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 
         public Client.RequestsViewModel RequestsVM { get; set; }
 
+        public Client.ComplainsViewModel ComplainsVM { get; set; }
+
         // ADMIN
         public Admin.ControlPanelViewModel AdminControlPanelVM { get; set; }
 
@@ -49,7 +51,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 
         public Admin.ManageRequestsViewModel AdminManageRequestsVM { get; set; }
 
-        public Admin.ManageUsersViewModel ManageUsersVM { get; set; }
+        public Admin.ManageComplainsViewModel ManageComplainsVM { get; set; }
 
         // ----------------------------------- CurrentView ---------------------------------------- //
 
@@ -80,12 +82,13 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
             ControlPanelVM = new Client.ControlPanelViewModel();
             ManageRequestsVM = new Client.ManageRequestsViewModel();
             RequestsVM = new Client.RequestsViewModel();
+            ComplainsVM = new Client.ComplainsViewModel();
 
             // ADMIN
             AdminControlPanelVM = new Admin.ControlPanelViewModel();
             ManageReservationsVM = new Admin.ManageReservationsViewModel();
             AdminManageRequestsVM = new Admin.ManageRequestsViewModel();
-            ManageUsersVM = new Admin.ManageUsersViewModel();
+            ManageComplainsVM = new Admin.ManageComplainsViewModel();
 
             // OPEN CONNECTION
             con.Open();
@@ -145,12 +148,9 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.ViewModel
 
             ManageReservationsViewCommand = new RelayCommand(o => { CurrentView = ManageReservationsVM; });
 
-            ManageUsersViewCommand = new RelayCommand(o => { CurrentView = ManageUsersVM; });
-        }
+            ComplainsViewCommand = new RelayCommand(o => { CurrentView = ComplainsVM; });
 
-        private void Increment()
-        {
-
+            ManageComplainsViewCommand = new RelayCommand(o => { CurrentView = ManageComplainsVM; });
         }
     }
 }

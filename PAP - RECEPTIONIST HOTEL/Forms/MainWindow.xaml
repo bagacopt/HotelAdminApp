@@ -80,11 +80,17 @@
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ManageRequestsViewCommand}"/>
 
-                <RadioButton x:Name="ManageUsersRadionButton" 
-                             Content="Gerir Utilizadores" Foreground="White"
+                <RadioButton x:Name="ComplainsRadionButton" 
+                             Content="Reclamações" Foreground="White"
                              Height="50" Margin="0,20,0,0"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ManageUsersViewCommand}"/>
+                             Command="{Binding ComplainsViewCommand}"/>
+
+                <RadioButton x:Name="ManageComplainsRadionButton" 
+                             Content="Gerir Reclamações" Foreground="White"
+                             Height="50" Margin="0,20,0,0"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ManageComplainsViewCommand}"/>
 
                 <RadioButton x:Name="LogoutRadioButton"
                              Content="Terminar sessão" Foreground="White" FontSize="15" FontWeight="Medium"

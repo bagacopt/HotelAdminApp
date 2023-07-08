@@ -29,6 +29,10 @@
                 <clientView:ManageRequests />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type clientViewModel:ComplainsViewModel}">
+                <clientView:Complains />
+            </DataTemplate>
+
             <!-- Admin Views -->
             <DataTemplate DataType="{x:Type adminViewModel:ControlPanelViewModel}">
                 <adminView:ControlPanel />
@@ -42,8 +46,8 @@
                 <adminView:ManageRequests />
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type adminViewModel:ManageUsersViewModel}">
-                <adminView:ManageUsers />
+            <DataTemplate DataType="{x:Type adminViewModel:ManageComplainsViewModel}">
+                <adminView:ManageComplains />
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

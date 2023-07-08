@@ -85,8 +85,9 @@
     <Compile Include="MVVM\ViewModel\Admin\ControlPanelViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Admin\ManageRequestsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Admin\ManageReservationsViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\Admin\ManageUsersViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Admin\ManageComplainsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ChartViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Client\ComplainsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Client\ManageRequestsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Client\RequestsViewModel.cs" />
     <Compile Include="Forms\ForgotPassword.xaml.cs">
@@ -101,6 +102,9 @@
     </Compile>
     <Compile Include="MVVM\ViewModel\Client\ControlPanelViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\View\Client\PrimaryView\Complains.xaml.cs">
+      <DependentUpon>Complains.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\Client\PrimaryView\ManageRequests.xaml.cs">
       <DependentUpon>ManageRequests.xaml</DependentUpon>
     </Compile>
@@ -126,6 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\Client\PrimaryView\Complains.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\Client\PrimaryView\ControlPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,7 +154,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\Admin\PrimaryView\ManageUsers.xaml">
+    <Page Include="MVVM\View\Admin\PrimaryView\ManageComplains.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,8 +212,8 @@
     <Compile Include="MVVM\View\Admin\PrimaryView\ManageRequests.xaml.cs">
       <DependentUpon>ManageRequests.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\Admin\PrimaryView\ManageUsers.xaml.cs">
-      <DependentUpon>ManageUsers.xaml</DependentUpon>
+    <Compile Include="MVVM\View\Admin\PrimaryView\ManageComplains.xaml.cs">
+      <DependentUpon>ManageComplains.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Client\PrimaryView\Requests.xaml.cs">
       <DependentUpon>Requests.xaml</DependentUpon>

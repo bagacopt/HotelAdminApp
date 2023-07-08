@@ -2,9 +2,9 @@
 
 namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
 {
-    public partial class ManageUsers : UserControl
+    public partial class ManageComplains : UserControl
     {
-        public ManageUsers()
+        public ManageComplains()
         {
             InitializeComponent();
         }

@@ -101,7 +101,7 @@
 
             <!-- Butões de eventos de gestão da reserva -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
-                <Button Width="130" Height="60" Margin="0 30 0 0" Content="Enviar Reclamação" Style="{StaticResource ButtonTheme}"/>
+                <Button Width="130" Height="60" Margin="0 30 0 0" Content="Enviar Reclamação" Style="{StaticResource ButtonTheme}" Click="SendComplain_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

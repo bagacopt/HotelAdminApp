@@ -58,5 +58,15 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
 
             nRoomLabel.Content = ControlPanel.nRoom;
         }
+
+        private void SendComplain_Click(object sender, RoutedEventArgs e)
+        {
+            // OPEN CONNECTION
+            con.Open();
+
+            data = "INSERT INTO Complains (complain, rooms_id) VALUES (@complain, @rooms_id)";
+
+
+        }
     }
 }

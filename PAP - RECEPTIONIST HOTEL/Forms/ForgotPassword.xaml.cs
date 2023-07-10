@@ -57,6 +57,9 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
                 To = { emailTxtBox.Text } // EMAIL GOES TO EMAIL WROTE
             };
 
+            // OPEN CONNECTION
+            con.Open();
+
             using (var smtp = new SmtpClient("smtp.gmail.com", 587))
             {
                 smtp.UseDefaultCredentials = false;
@@ -64,10 +67,15 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
                 smtp.Credentials = new NetworkCredential("a30360@aemtg.pt", "papdesenvolvimento");
                 try
                 {
-                    smtp.Send(mail);
+                    data = "SELECT email FROM Users WHERE email = @email";
 
-                    // OPEN CONNECTION
-                    con.Open();
+                    SqlCommand emailQuery = new SqlCommand(data, con);
+                    emailQuery.Parameters.AddWithValue("@email", emailTxtBox.Text); 
+                    int count = emailQuery.ExecuteNonQuery();
+                    if (count > 0) 
+                    {
+                        smtp.Send(mail);
+                    }
 
                     data = "UPDATE Users SET password = 1234 WHERE email = @email";
 

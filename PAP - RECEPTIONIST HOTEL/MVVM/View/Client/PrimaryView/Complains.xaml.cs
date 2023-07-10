@@ -28,6 +28,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
 
         // VARIABLES
         string data;
+        int id;
 
         // OBJECTS
 
@@ -64,9 +65,43 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
             // OPEN CONNECTION
             con.Open();
 
-            data = "INSERT INTO Complains (complain, rooms_id) VALUES (@complain, @rooms_id)";
+            data = "SELECT id FROM Users WHERE username = @user";
 
+            using (SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@user", Settings.Default.n_cliente);
 
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        id = Convert.ToInt32(reader["id"]);
+                    }
+                }
+            }
+
+            data = "INSERT INTO Complains (title, date_complain, description, id_user) VALUES (@title, @date, @desc, @idUser)";
+
+            using (SqlCommand cmd = new SqlCommand(data, con))
+            {
+                cmd.Parameters.AddWithValue("@title", titleTextBox.Text);
+                cmd.Parameters.AddWithValue("@date", dateComplainDateTime.Value);
+                cmd.Parameters.AddWithValue("@desc", descriptionTextBox.Text);
+                cmd.Parameters.AddWithValue("@idUser", id);
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Reclamação foi realizada com sucesso!", "Alerta", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Ocorreu um erro e a reclamação não pôde ser realizada", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            
+            // CLOSE CONNECTION
+            con.Close();
         }
     }
 }

@@ -69,35 +69,41 @@ namespace PAP___RECEPTIONIST_HOTEL.Forms
                 {
                     data = "SELECT email FROM Users WHERE email = @email";
 
-                    SqlCommand emailQuery = new SqlCommand(data, con);
-                    emailQuery.Parameters.AddWithValue("@email", emailTxtBox.Text); 
-                    int count = emailQuery.ExecuteNonQuery();
-                    if (count > 0) 
-                    {
-                        smtp.Send(mail);
-                    }
-
-                    data = "UPDATE Users SET password = 1234 WHERE email = @email";
-
                     using (SqlCommand cmd = new SqlCommand(data, con))
                     {
                         cmd.Parameters.AddWithValue("@email", emailTxtBox.Text);
                         cmd.ExecuteNonQuery();
-                    }
 
-                    // CLOSE CONNECTION
-                    con.Close();
+                        if (cmd.ExecuteScalar().ToString() == emailTxtBox.Text)
+                        {
+                            smtp.Send(mail);
+                            MessageBox.Show("E-mail enviado com sucesso!", "E-mail enviado", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show("A voltar ao menu principal...", "A voltar...", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    MessageBox.Show("E-mail enviado com sucesso!", "E-mail enviado", MessageBoxButton.OK, MessageBoxImage.Information);
+                            data = "UPDATE Users SET password = 1234 WHERE email = @email";
 
-                    Login login = new Login();
-                    Close();
-                    login.Show();
+                            SqlCommand emailQuery = new SqlCommand(data, con);
+
+                            emailQuery.Parameters.AddWithValue("@email", emailTxtBox.Text);
+                            emailQuery.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não foi possível encontrar este email registado nos nossos sistemas...", "Alerta!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            MessageBox.Show("A voltar ao menu principal...", "A voltar...", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    }                   
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Falha ao enviar e-mail");
                 }
+                // CLOSE CONNECTION
+                con.Close();
+
+                Login login = new Login();
+                Close();
+                login.Show();
             }
         }
 

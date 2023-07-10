@@ -142,7 +142,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                         cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
                         cmd.Parameters.AddWithValue("@serviceID", PrimaryView.Requests.serviceID);
                         cmd.Parameters.AddWithValue("@name", titleLabel.Content);
-                        cmd.Parameters.AddWithValue("@quantity", Convert.ToInt32(textBox.Text));
+                        cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
                         cmd.Parameters.AddWithValue("@state", "PENDENTE");
 
                         cmd.ExecuteNonQuery();
@@ -158,7 +158,7 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.SubView
                         cmd.Parameters.AddWithValue("@desc", descriptionTxtBox.Text);
                         cmd.Parameters.AddWithValue("@serviceID", PrimaryView.Requests.serviceID);
                         cmd.Parameters.AddWithValue("@name", titleLabel.Content);
-                        cmd.Parameters.AddWithValue("@quantity", Convert.ToInt32(textBox.Text));
+                        cmd.Parameters.AddWithValue("@quantity", quantityUpDown.Value);
 
 
                         using (SqlDataReader reader = cmd.ExecuteReader())

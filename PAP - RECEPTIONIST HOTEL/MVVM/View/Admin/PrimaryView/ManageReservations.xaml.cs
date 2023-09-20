@@ -304,7 +304,6 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Admin.PrimaryView
         private void PostPoneStayButton_Click(object sender, RoutedEventArgs e)
         {
             calendarPostPone.Visibility = Visibility.Visible;
-
             ChangeRoomButton.IsEnabled = false;
             AntecipateCheckoutButton.IsEnabled = false;
         }

@@ -1,4 +1,5 @@
-﻿using PAP___RECEPTIONIST_HOTEL.Properties;
+﻿using PAP___RECEPTIONIST_HOTEL.Forms;
+using PAP___RECEPTIONIST_HOTEL.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -93,10 +94,16 @@ namespace PAP___RECEPTIONIST_HOTEL.MVVM.View.Client.PrimaryView
                 {
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Reclamação foi realizada com sucesso!", "Alerta", MessageBoxButton.OK, MessageBoxImage.Information);
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.ControlPanelRadioButton.IsChecked = true;
+                    mainWindow.ControlPanelRadioButton.Command.Execute(null);
                 }
                 catch
                 {
                     MessageBox.Show("Ocorreu um erro e a reclamação não pôde ser realizada", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.ControlPanelRadioButton.IsChecked = true;
+                    mainWindow.ControlPanelRadioButton.Command.Execute(null);
                 }
             }
             
